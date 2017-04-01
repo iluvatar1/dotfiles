@@ -1,6 +1,14 @@
-if [ -f $HOME/.proxy ]; then 
+if [ -e $HOME/.proxy ]; then 
    source $HOME/.proxy
 fi
+
+if [ -e ~/.git-completion.bash ]; then 
+    source ~/.git-completion.bash  
+fi	  							     
+
+if [[ -e ~/.git-prompt.sh ]]; then 
+    source ~/.git-prompt.sh  
+fi	  							     
 
 fortune -a
 
