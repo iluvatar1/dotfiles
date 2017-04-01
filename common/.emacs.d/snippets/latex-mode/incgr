@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# contributor : William Oquendo (woquendo (at) gmail (dot) com )
+# name: include graphics
+# key: incgr
+# --
+\includegraphics[width=${1:widthscale}\textwidth]{${2:filename}}
+      

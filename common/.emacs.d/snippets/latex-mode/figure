@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# contributor : Shane Celis (shane (at) gnufoo (dot) org)
+# name: figure 
+# key: fig
+# --
+\begin{figure}
+  \centering
+  \includegraphics[width=${1:widthscale}\textwidth]{${2:filename}}
+  \caption[Short Label]{\label{$2}${3:Caption}}
+\end{figure}
+      

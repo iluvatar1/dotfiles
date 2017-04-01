@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# contributor : William Oquendo (woquendo (at) gmail (dot) com )
+# name: problem
+# key: problem
+# --
+% ${1:reference}
+\newproblem{
+  \pgfmathsetmacro{\FACTOR}{0.0}
+  \pgfmathrandominteger{\N}{-2}{20}
+  \pgfmathsetmacro{\X}{1.23*(1 + \FACTOR*rand)}
+\item \PTs{1.0} $0
+  \begin{answers}{2}\bChoices[random]
+    \Ans1 \NumEval{0} . \eAns
+    \Ans0 \NumEval{1} . \eAns
+    \eFreeze
+    \Ans0 ninguna de las anteriores. \eAns
+    \eChoices
+  \end{answers}
+}
+      

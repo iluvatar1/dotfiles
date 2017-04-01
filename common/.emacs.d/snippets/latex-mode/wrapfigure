@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# contributor : woquendo (at) gmail dot com
+# name: wrap figure
+# key: wrap
+# --
+\begin{wrapfigure}[11]{r}{0.50\textwidth}
+  \centering
+  \vspace*{-2em}
+  \includegraphics[width=${1:widthscale}\textwidth]{${2:filename}}
+\end{wrapfigure}

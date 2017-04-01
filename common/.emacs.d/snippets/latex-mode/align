@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# contributor : William Oquendo (woquendo (at) gmail (dot) com )
+# name: align
+# key: align
+# --
+\begin{align}\label{eq:${1:label}}
+  $0
+\end{align}
+      
