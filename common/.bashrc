@@ -1,3 +1,7 @@
+if [ -f $HOME/proxy ]; then 
+   source $HOME/.proxy
+fi
+
 fortune -a
 
 # Detect os
