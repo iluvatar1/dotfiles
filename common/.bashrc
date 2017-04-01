@@ -35,7 +35,6 @@ if [[ $platform == 'darwin' ]]; then
     #if [ -f `brew --prefix`/etc/bash_completion ]; then
     #    . `brew --prefix`/etc/bash_completion
     #fi
-    export HOMEBREW_GITHUB_API_TOKEN=a5dcf23c3aa8f4cc05c643f5fa5617fecc83ad98
     # fasd
     alias a='fasd -a'        # any
     alias s='fasd -si'       # show / search / select
