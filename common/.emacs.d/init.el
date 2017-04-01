@@ -665,12 +665,12 @@ executable.")
 ;;(require 'ecb-autoloads)
 
 
-;; symon : tiny system monitor
-(use-package symon
-  :defer 10
-  :config
-  (symon-mode)
-  )
+;; ;; symon : tiny system monitor
+;; (use-package symon
+;;   :defer 10
+;;   :config
+;;   (symon-mode)
+;;   )
 
 
 ;;;; magit : Magic with git inside emacs
