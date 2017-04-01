@@ -3,6 +3,11 @@
 ;; Check https://github.com/jinnovation/dotemacs
 
 
+;;load proxy config at work
+(if  (file-exists-p "~/.emacs_proxy_config") 
+    (load "~/.emacs_proxy_config")
+  )
+
 ;; Accept ad-redefinition warnings
 ;; from:http://andrewjamesjohnson.com/suppressing-ad-handle-definition-warnings-in-emacs/
 (setq ad-redefinition-action 'accept)
@@ -61,7 +66,7 @@
 (use-package beacon
   :ensure t
   :config
-  (beacon-(message "FORMATSTRING" &optional ARGS)ode 1)
+  (beacon-mode 1)
   ;; this color looks good for the zenburn theme but not for the one
   ;; I'm using for the videos
   ;; (setq beacon-color "#666600")

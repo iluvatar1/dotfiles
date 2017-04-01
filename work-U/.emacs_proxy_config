@@ -1,0 +1,12 @@
+;; The file ~/.emacs_proxy_credentials must have the following: (setq credentials "USERNAME:PASSWORD")
+(load "~/.emacs_proxy_credentials")
+(let ((proxy "proxyapp.unal.edu.co:8080") )
+  (setq url-proxy-services
+	`(("no_proxy" . "^\\(localhost\\|10.*\\)")
+	  ("http" . ,proxy)
+	  ("https" . ,proxy)))
+  
+  (setq url-http-proxy-basic-auth-storage
+	(list (list proxy
+		    (cons "wfoquendop"
+			  (base64-encode-string credentials))))))
