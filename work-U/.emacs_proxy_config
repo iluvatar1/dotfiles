@@ -1,3 +1,4 @@
+;; Based on : https://www.reddit.com/r/emacs/comments/51sixp/working_behind_a_proxy_how_do_i_manually_install/
 ;; The file ~/.emacs_proxy_credentials must have the following: (setq credentials "USERNAME:PASSWORD")
 (load "~/.emacs_proxy_credentials")
 (let ((proxy "proxyapp.unal.edu.co:8080") )
