@@ -31,20 +31,6 @@
 (setq use-package-verbose t)
 
 ;; Organizing packages automatically
-;; Inspired from :: http://stackoverflow.com/questions/21064916/auto-install-emacs-packages-with-melpa 
-;; package.el organization
-(if (not (package-installed-p 'use-package))
-    (progn
-      (package-refresh-contents)
-      (package-install 'use-package)))
-(require 'use-package)
-;;http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
-; fetch the list of packages available 
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
-
 ;;https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/
 (setq use-package-always-ensure t)
 
@@ -73,13 +59,13 @@
 ;; from : http://cestlaz.github.io/posts/using-emacs-17-misc/#.WBUKRpMrKHp
 ;; flashes the cursor's line when you scroll
 (use-package beacon
-:ensure t
-:config
-(beacon-mode 1)
-; this color looks good for the zenburn theme but not for the one
-; I'm using for the videos
-; (setq beacon-color "#666600")
-)
+  :ensure t
+  :config
+  (beacon-(message "FORMATSTRING" &optional ARGS)ode 1)
+  ;; this color looks good for the zenburn theme but not for the one
+  ;; I'm using for the videos
+  ;; (setq beacon-color "#666600")
+  )
 
 
 ;; deletes all the whitespace when you hit backspace or delete
@@ -92,6 +78,7 @@
 ;; BIBTEX
 ;; helm-bibtex
 (use-package helm-bibtex
+  :ensure t
   :mode ("\\.bib" . bibtex-mode)
   :config 
   (setq bibtex-completion-bibliography '("~/Dropbox/teaching/2016-I-USabana/08-ConvocatoriaUSabana/01-Proyecto/biblio-granulometry.bib" "~/Dropbox/teaching/2016-I-USabana/08-ConvocatoriaUSabana/01-Proyecto/bibliogeneral.bib"))
