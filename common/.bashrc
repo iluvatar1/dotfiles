@@ -1,4 +1,4 @@
-if [ -f $HOME/proxy ]; then 
+if [ -f $HOME/.proxy ]; then 
    source $HOME/.proxy
 fi
 
