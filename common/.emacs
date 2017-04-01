@@ -111,10 +111,6 @@
  '(show-paren-mode t)
  '(smtpmail-smtp-server "")
  '(smtpmail-smtp-service 25)
- '(tramp-default-proxies-alist
-   (quote
-    (("localhost#30022" "oquendo" "/ssh:oquendo@168.176.14.174#443:")
-     ("localhost" "oquendo" "/ssh:oquendo@168.176.14.174:"))))
  '(use-package-verbose t)
  '(vc-follow-symlinks t)
  '(version-control t)
