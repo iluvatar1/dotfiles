@@ -38,7 +38,15 @@
       (package-refresh-contents)
       (package-install 'use-package)))
 (require 'use-package)
+;;http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+; fetch the list of packages available 
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
 
+;;https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/
+(setq use-package-always-ensure t)
 
 ;; ;;(package-initialize)
 ;; (use-package ein
@@ -107,8 +115,7 @@
   )
 
 
-(use-package predictive
-  )
+
 
 (use-package pov-mode
   :mode (("\\.pov$" . pov-mode)
