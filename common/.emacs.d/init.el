@@ -17,10 +17,10 @@
 (unless (server-running-p) (server-start))
 
 ;; packages
+(require 'package)
 (when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
   (setq package-enable-at-startup nil)
   )
