@@ -4,7 +4,7 @@ files, which can be linked directly or through gnu stow.
 Structure description:
 * common
   Common files like bashrc.
-* latex
+* common/latex
   Config files for latex, org mode latex, etc.
 * work-U
   Old files specific to work with proxy.
