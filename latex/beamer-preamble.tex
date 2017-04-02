@@ -1,0 +1,82 @@
+%% PACKAGES
+\usepackage[spanish,english]{babel}
+% or whatever
+\usepackage[latin1]{inputenc}
+%\usepackage{times}
+%\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage{aecompl}
+%\renewcommand\mathfamilydefault{\rmdefault}
+%\renewcommand{\rmdefault}{cmss}
+\usefonttheme[onlymath]{serif}
+\usepackage{multimedia}
+\usepackage{media9}
+\usepackage{fancybox}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{framed} % for shaded environments
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+%\hypersetup{backref, pdfpagemode=FullScreen, colorlinks=true,  linkcolor=gray}
+\hypersetup{backref, colorlinks=true,  linkcolor=gray}
+
+%% from https://www.sharelatex.com/blog/2013/08/29/tikz-series-pt3.html
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%% Beamer setup
+\mode<presentation>
+{
+  %% \usetheme{Warsaw}
+  %% \usetheme{Boadilla}
+  \usetheme{Darmstadt}
+  % \usetheme{default}
+  %% \usetheme{CambridgeUS}
+  %% \usetheme{Rochester}
+  %% \usetheme{Singapore} %% punticos, light color
+  %%\usetheme{Berlin} %% punticos, bad color
+  %% or ...
+  
+  %% \setbeamercovered{transparent}
+  %% or whatever (possibly just delete it)
+  
+  %% \useinnertheme[shadow]{rounded}
+  
+  %% \usecolortheme{albatross}
+  %% \usecolortheme{beaver}
+  \usecolortheme[named=Brown]{structure}
+  %% \usecolortheme[RGB={205,173,0}]{structure}
+  
+  %\usefonttheme[onlysmall]{structurebold}
+  %\usefonttheme[onlymath]{serif}
+  %\usefonttheme{professionalfonts}
+}
+
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+%%\AtBeginSubsection[]
+% \AtBeginSection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+%\AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}

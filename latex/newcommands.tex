@@ -1,0 +1,193 @@
+%% new commands
+%\newfloat{Video}{tbp}{}
+%\def\ext{avi}
+\newcommand{\citenew}[1]{\textit{\scriptsize\textcolor{blue}{\cite{#1}}}}
+\newcommand{\bbb}[1]{\begin{block}{#1}}
+  \newcommand{\beb}{\end{block}}
+%%\newcommand{\bbb}[1]{\begin{beamerboxesrounded}{#1}}
+%%  \newcommand{\beb}{\end{beamerboxesrounded}}
+\newcommand{\bbc}{\begin{columns}}
+  \newcommand{\bec}{\end{columns}}
+\newcommand{\be}{\begin{equation}}
+  \newcommand{\ee}{\end{equation}}
+\newcommand{\bi}{\begin{itemize}}
+  \newcommand{\ei}{\end{itemize}}
+\newcommand{\bft}{\frametitle}
+\newcommand{\bfst}{\framesubtitle}
+\newcommand{\fig}[2]{\begin{center}\includegraphics[width=#1\textwidth]{#2}\end{center}}
+\newcommand{\deriv}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\derivn}[3]{\ensuremath{\frac{\partial^#3 #1}{\partial #2^#3}}}
+\newcommand{\parcial}[2] {\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\parcialdos}[3] {\frac{\partial^2{#1}}{\partial{#2}\partial{#3}}}
+\newcommand{\parcialcons}[3] {\left(\frac{\partial{#1}}{\partial{#2}}\right)_{#3}}
+\newcommand{\parcialconsgen} [4]{\left(\frac{\partial^{#4}{#1}}{\partial{#2}^{#4}}\right)_{#3}}
+\newcommand{\jacob}[4] {\frac{\partial\left({#1},{#2}\right)}{\partial\left({#3},{#4}\right)}}
+\newcommand{\Abs}[1]{\ensuremath{\bigl\lvert #1 \bigr\rvert}}
+%\newcommand{\Abs}[1] {\mid #1 \mid}
+\newcommand{\A}{\ensuremath{A}}
+\newcommand{\Q}{\ensuremath{\mathbf{q}}}
+\newcommand{\qcero}{\ensuremath{q_0}}
+\newcommand{\quno}{\ensuremath{q_1}}
+\newcommand{\qdos}{\ensuremath{q_2}}
+\newcommand{\qtres}{\ensuremath{q_3}}
+\newcommand{\aij}{\ensuremath{a_{{ij}}}}
+\newcommand{\hij}{\ensuremath{h_{{ij}}}}
+\newcommand{\fijt}{\ensuremath{f_{{ij}^{t}}}}
+\newcommand{\fjit}{\ensuremath{f_{{ji}^{t}}}}
+\newcommand{\nij}{\ensuremath{\hat{n}_{{ij}\,}}}
+\newcommand{\tij}{\ensuremath{\hat{t}_{{ij}\,}}}
+\newcommand{\tji}{\ensuremath{\hat{t}_{{ji}\,}}}
+\newcommand{\ri}{\ensuremath{\vec{r}_{{i}}}}
+\newcommand{\rj}{\ensuremath{\vec{r}_{{j}}}}
+\newcommand{\vt}{\ensuremath{\vec{v}_{{t}}}}
+\newcommand{\vi}{\ensuremath{\vec{v}_{{i}}}}
+\newcommand{\vj}{\ensuremath{\vec{v}_{{j}}}}
+\newcommand{\vij}{\ensuremath{\vec{v}_{{ij}}}}
+\newcommand{\vpi}{\ensuremath{\vec{v_p}_{i}}}
+\newcommand{\vpj}{\ensuremath{\vec{v_p}_{j}}}
+\newcommand{\wi}{\ensuremath{\vec{\omega}_{i}}}
+\newcommand{\wj}{\ensuremath{\vec{\omega}_{j}}}
+\newcommand{\vpij}{\ensuremath{\vec{v_p}_{ij}}}
+\newcommand{\vpji}{\ensuremath{\vec{v_p}_{ji}}}
+\newcommand{\tr}{\ensuremath{\theta_r}}
+\newcommand{\hs}{\ensuremath{h_s}\,}
+\newcommand{\n}{\ensuremath{\eta}\,}
+\newcommand{\mus}{\ensuremath{\mu_s}}
+\newcommand{\mud}{\ensuremath{\mu_d}}
+\newcommand{\vxi}{\ensuremath{\vec{\xi}\,}}
+\newcommand{\ftemp}{\ensuremath{\vec{f}_t^0\,}}
+\newcommand{\mij}{\ensuremath{m_{ij}}}
+\newcommand{\fn}{\ensuremath{\vec{f}_{n}}}
+\newcommand{\ft}{\ensuremath{\vec{f}_{t}}}
+\newcommand{\en}{\ensuremath{\epsilon_n}}
+\newcommand{\eq}{\ensuremath{\epsilon_q}}
+\newcommand{\ep}{\ensuremath{\epsilon_p}}
+\newcommand{\N}{\ensuremath{\mathcal{N}}}
+\newcommand{\W}{\ensuremath{\mathcal{W}}}
+\newcommand{\FH}{\ensuremath{\overrightarrow{FH}}}
+\newcommand{\FDN}{\ensuremath{\overrightarrow{F_{DAMP}}}}
+\newcommand{\FDYN}{\ensuremath{\overrightarrow{F_{DYN}}}}
+\newcommand{\FROL}{\ensuremath{\overrightarrow{F_{ROL}}}}
+\newcommand{\FSTA}{\ensuremath{\overrightarrow{F_{STA}}}}
+\newcommand{\Fijn}{\ensuremath{\Vec{F}_{ij}^n}}
+\newcommand{\Fjin}{\ensuremath{\Vec{F}_{ji}^n}}
+\newcommand{\la}{\ensuremath{\langle}}
+\newcommand{\ra}{\ensuremath{\rangle}}
+\newcommand{\mean}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\defgraphwidth}{0.7\textwidth}
+\newcommand{\dt}{\ensuremath{\delta t}}
+\newcommand{\X}{\chi}
+\newcommand{\sw}{\sigma_{\rm wall}}
+\newcommand{\vw}{v_{\rm wall}}
+\newcommand{\pmax}{\phi_{\rm max}}
+\newcommand{\rmax}{r_{\rm max}}
+\newcommand{\rmin}{r_{\rm min}}
+\newcommand{\vmin}{v_{\rm min}}
+\newcommand{\Vmin}{V_{\rm min}}
+\newcommand{\tmax}{t_{\rm max}} 
+\newcommand{\apone}{\ensuremath{\alpha + 1}}
+\newcommand{\ua}{\ensuremath{1/\alpha}}
+\newcommand{\dmax}{\ensuremath{d_{\textrm{max}}}}
+\newcommand{\dmin}{\ensuremath{d_{\textrm{min}}}}
+\newcommand{\email}[1]{\href{mailto:#1}{#1}}
+%% New colors
+\definecolor{cafe}{cmyk}{0,0.81,1,0.60}
+\definecolor{violeta}{cmyk}{0.07,0.90,0,0.34}
+\definecolor{esmeralda}{cmyk}{0.91,0,0.88,0.12}
+\definecolor{canela}{cmyk}{0.14,0.42,0.56,0}
+\definecolor{marron}{cmyk}{0,0.72,1,0.45}
+\definecolor{pino}{cmyk}{0.92,0,0.59,0.25}
+\definecolor{aguamarina}{cmyk}{0.85,0,0.33,0}
+\definecolor{gris-claro}{cmyk}{0,0,0,0.30}
+\definecolor{gris-oscuro}{cmyk}{0,0,0,0.50}
+
+%tables
+\newcolumntype{M}{>{$}c<{$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% math help commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% vector printing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\newcommand{\vecto}[1]{\ensuremath{\vec{\boldsymbol{#1}}}}
+\newcommand{\vecto}[1]{\ensuremath{\overrightarrow{\boldsymbol{#1}}}}
+%\newcommand{\Vecto}[1]{\ensuremath{\Vec{\boldsymbol{#1}}}}
+\newcommand{\Vecto}[1]{\ensuremath{\overrightarrow{\boldsymbol{#1}}}}
+\newcommand{\unit}[1]{\ensuremath{\widehat{\boldsymbol{#1}}}}
+\newcommand{\Unit}[1]{\ensuremath{\widehat{\boldsymbol{#1}}}}
+\newcommand{\hati}{\ensuremath{\widehat{\boldsymbol{\imath}}}}
+\newcommand{\hatj}{\ensuremath{\widehat{\boldsymbol{\jmath}}}}
+\newcommand{\hatk}{\ensuremath{\widehat{\boldsymbol{k}}}}
+%%%%%%%%%%%
+\newcommand{\suminverse}[2]{\dfrac{1}{#1_{\textrm{equiv}}^{\textrm{#2}}} = \sum \dfrac{1}{#1_i}}
+\newcommand{\sumdirect}[2]{#1_{\textrm{equiv}}^{\textrm{#2}} = \sum #1_i}
+\newcommand{\cross}[2]{\ensuremath{\vecto{#1} \times \vecto{#2}}}
+\newcommand{\Cross}[2]{\ensuremath{\Vecto{#1} \times \Vecto{#2}}}
+\newcommand{\DotPr}[2]{\ensuremath{\Vecto{#1} \circ \Vecto{#2}}}
+%% \newcommand{\Abs}[1]{\ensuremath{\lvert #1 \rvert}}
+\newcommand{\VF}{\Vecto{F}}
+\newcommand{\VE}{\Vecto{E}}
+\newcommand{\VB}{\Vecto{B}}
+\newcommand{\Ur}{\unit{r}}
+\newcommand{\DV}{\Delta V}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\ms}{\scriptscriptstyle}
+\newcommand{\ms}[1]{\scalebox{0.4}{$#1$}}
+\newcommand{\sss}[1]{\!_\ms{#1}}
+%%%%%% TODO 
+\newcommand{\xtodo}[2][]{\tikzexternaldisable\pgfkeys{/pgf/fpu=false}\todo[#1]{#2}\tikzexternalenable\pgfkeys{/pgf/fpu=true}}
+\newcommand{\xmissingfigure}[2][]{\tikzexternaldisable\pgfkeys{/pgf/fpu=false}\missingfigure[#1]{#2}\tikzexternalenable\pgfkeys{/pgf/fpu=true}}
+
+
+\newcommand{\whitebox}[1]{\fbox{{\textcolor{white}{#1}}}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Formatted numeric printing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\newcommand{\Num}[1]{\pgfmathprintnumber{#1}}
+%\newcommand{\NumPre}[2]{\pgfkeys{/pgf/number format/.cd, precision=#2}\pgfmathprintnumber{#1}\pgfkeys{/pgf/number format/.cd, precision=2}}
+%\newcommand{\NumSign}[1]{\pgfkeys{/pgf/number format/showpos=true}\Num{#1}\pgfkeys{/pgf/number format/showpos=false}}
+%\newcommand{\NumEval}[1]{\pgfmathparse{(1*#1)}\Num{\pgfmathresult}}
+%\newcommand{\NumSI}[2]{\Num{#1}\ \si{#2}}
+\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num{\tmpnum}}}
+\newcommand{\NumPre}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=places,round-precision=#2]{\tmpnum}}}
+\newcommand{\NumFig}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=#2]{\tmpnum}}}
+\newcommand{\NumSign}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[explicit-sign=+]{\tmpnum}}}
+\newcommand{\NumEval}[1]{\pgfmathparse{(1*(#1))}\Num{\pgfmathresult}}
+\newcommand{\NumEvalPre}[2]{\pgfmathparse{(1*(#1))}\NumPre{\pgfmathresult}{#2}}
+\newcommand{\NumEvalFig}[2]{\pgfmathparse{(1*(#1))}\NumFig{\pgfmathresult}{#2}}
+\newcommand{\NumSI}[2]{\mbox{\Num{#1}\ \si{#2}}}
+
+\newcommand{\phasors}[6]{
+  % arg 1: SXC = XC/R
+  % arg 2: ALPHA, XL = \ALPHA*\XC
+  % arg 3: \L, limits for coordinates axis
+  % arg 4: Angle for VC
+  % arg 5: Angle for VL
+  % arg 6: Label
+  \pgfkeys{/pgf/fpu=false}
+  \pgfmathsetmacro{\L}{\pgfmathfloatvalueof{#3}}
+  \pgfmathsetmacro{\SXC}{\pgfmathfloatvalueof{#1}}
+  \pgfmathsetmacro{\ALPHA}{\pgfmathfloatvalueof{#2}}
+  \pgfmathsetmacro{\SXL}{\pgfmathfloatvalueof{\ALPHA*\ALPHA*\SXC}}
+  \begin{tikzpicture}
+    % \begin{axis}[scale=0.35, axis equal=true, scale only axis, grid=both, xmin=\XMIN, xmax=\XMAX, ymin=\YMIN, ymax=\YMAX, xticklabel=\empty, yticklabel=\empty, minor tick num=1, axis lines = middle, xlabel={$x$}, ylabel={$y$}, label style={at={(ticklabel cs:1.1)}}]
+    \begin{axis}[scale=0.35, axis equal=true, scale only axis, grid=both, xmin=-\L, xmax=\L, ymin=-\L, ymax=\L, xticklabel=\empty, yticklabel=\empty, minor tick num=1, axis lines = middle, xlabel={$x$}, ylabel={$y$}, label style={at={(ticklabel cs:1.1)}}]
+      \coordinate (A) at (0, 0);
+      \coordinate (VR) at (0.707, 0.707);
+      \coordinate (VC) at ($(A)!\SXC!#4:(VR)$);
+      \coordinate (VL) at ($(A)!\SXL!#5:(VR)$);
+      \draw [->,line width=2pt, red] (A) -- (VR) node[above,scale=1.3, pos=0.8] {$v_R$};
+      \draw [->,line width=2pt, orange, dashed] (A) -- (VC)
+      node[right,scale=1.3, pos=0.8] {$v_C$};
+      \draw [->,line width=2pt, olive, dotted] (A) -- (VL)
+      node[above,scale=1.3, pos=0.8] {$v_L$};
+      \node at (-0.8*\L, -0.8*\L) [scale=1.5] {\textbf{(#6)}};
+    \end{axis}
+  \end{tikzpicture}
+  \pgfkeys{/pgf/fpu=true}
+}
+

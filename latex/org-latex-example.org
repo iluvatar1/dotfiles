@@ -1,0 +1,133 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [10pt,letterpaper,twocolumn]
+#+LATEX_HEADER:\usepackage[AUTO]{inputenc}
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+OPTIONS: toc:nil # do not put toc, remove if you want a toc
+#+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
+#+AUTHOR: William Oquendo, woquendo@gmail.com
+#+EMAIL: woquendo@gmail.com
+#+TITLE: TITLE TITLE
+#+DATE: 
+ 
+* Objetivo General
+  Introducir  al estudiante a las diversas
+  herramientas técnicas (control de versiones, profiling, optimización,
+  etc), métodos  de la física computacional (Integración, Números
+  aleatorios, Sistemas Dinámicos, etc), y las diversas herramientas de
+  análisis y postprocessing (matplotlib, scipy, etc).
+
+* Contenidos Generales
+
+  - Preliminaries : Programming languages, shell usage, text
+    manipulation tools, etc \cite{landau1998computational}.
+  # (1) Intro.pdf and wiki Shell basics
+  - Python specific tools: Anaconda, spyder, emacs, ipython notebooks. 
+    # ????
+  - Version control with git (and [[https://bitbucket.org][bitbucket]]). 
+  # (1) Wiki Intro Scientific Computing 02
+  - Brief review of Programming in Python I
+    \cite{Langtangen2012,varoquaux2015scipy,oliveira2006writing} : Control flow,
+    functions, scripts, Object Oriented.
+  # (2)
+  - Brief review of Programming in Python II
+    \cite{Langtangen2012,varoquaux2015scipy}: numpy, matplotlib,
+    scipy, Mayavi
+  # (2)
+  - Floating point arithmetic, errors and stability \cite{landau1998computational,Sirca2012} . 
+  # (1) errors-fpnumbers.pdf + STABILITY VON_NEUMAN
+  - Debugging and Profiling \cite{varoquaux2015scipy} 
+  # (2) Lectures + Wiki profiling and  Debugging
+  - Numerical Calculus: Integration, Differentiation, Roots
+    \cite{landau1998computational,pang2006introduction,Sirca2012}
+  # [1,3,6] (2)
+  - Linear matrix systems: $Ax=b$ and Eigensystems thorough  
+    numerical libraries \cite{landau1998computational,pang2006introduction,Sirca2012}
+  # [1,3] (2)
+  - Interpolation and fitting \cite{landau1998computational,Sirca2012}
+  # [1,3,6] # (1)
+  - Special functions through numerical libraries \cite{landau1998computational}
+  # (1)
+  - Random Numbers and Transformations of random distributions \cite{landau1998computational,Sirca2012}
+  # [1,6]  (1)
+  - Introduction to Monte Carlo methods I: Non-thermal
+    \cite{landau1998computational,pang2006introduction,giordano1997computational}
+  # [2,3,4,6] (1)
+  - Minimization and Maximization \cite{landau1998computational,varoquaux2015scipy,Sirca2012}
+  # (1)
+  - Fast Fourier Transform and Spectral analysis
+    \cite{landau1998computational,pang2006introduction,giordano1997computational,Sirca2012}
+  # [1,3,6] (2)
+  - Ordinary differential equations: Euler, Runge-Kutta,
+    Verlet. \cite{landau1998computational,pang2006introduction,Sirca2012}
+  # [1,2,3,6]  (2)
+  - Numerical Chaos : Chaotic Pendulum, Bifurcation maps, Lyapunov
+    exponents \cite{landau1998computational,giordano1997computational}
+  # [2,4,6] (2)
+  - Molecular Dynamics : Verlet, Leap-frog \cite{pang2006introduction}
+  # [3, 7, 8] (2)
+  - Image Manipulation and SciKit  \cite{varoquaux2015scipy}
+  - Partial differential equations : Poisson, diffusion, and wave
+    equations. \cite{landau1998computational, pang2006introduction,giordano1997computational,Sirca2012}
+  # [1,2,3] (4)
+
+* Contenidos Opcionales
+  - Symbolic Python, Graphical Interfaces\cite{varoquaux2015scipy}
+  - Cellular Automata 
+  # (1)
+  - Introduction to Monte Carlo methods II: Ising Model,
+    Percolation. \cite{landau1998computational,gould1988introduction,Sirca2012}
+  # [2,3,4,6] (2)
+  - Visualization and Analysis with Paraview. 
+  # (1)
+  - Introducton to parallel programming with MPI \cite{pitt2012guide}
+    and IPython \cite{rossant2015learning}.
+  # (1) 
+  # - Introduction to CUDA. 
+  #  (1)
+  - Neural Networks and Genetic Algorithms\cite{pang2006introduction}
+  # [3,4] # (1)
+
+* Evaluación
+  |---------------------------------+------------|
+  | Item                            | Porcentaje |
+  |---------------------------------+------------|
+  | Proyecto Intermedio             |         30 |
+  | Examen Intermedio               |         20 |
+  | Participación en clase y tareas |         20 |
+  | Proyectos Finales               |         30 |
+  |---------------------------------+------------|
+
+* Metodología de evaluación
+  La nota se dividirá en cuatro ítems : Dos proyectos, que se
+  entregarán a mediados y final de semestre en grupos de (máximo) tres
+  personas, tareas y participación en clase, que se tomarán a partir
+  del desarrollo de ejercicios asignados, y un examen intermedio tipo
+  parcial. El tema del primer proyecto se asignará por parte del
+  profesor mientras que el segundo proyecto vendrá de una propuesta
+  pre-aprobada. Las tareas se revisarán de forma individual. La
+  participación se medirá a partir de explicaciones dadas en clase
+  sobre las tareas previas o ejercicios asignados en la clase
+  misma. Los codigos de tareas, proyectos, etc, deberán estar en un
+  repositorio de control de versiones que se descargará
+  atuomáticamente en cada entrega.  El código fuente debe ejecutarse
+  exitosamente y producir la solución correcta, de otra manera no será
+  válida la entrega. Así mismo, se revisará que el repositorio tenga
+  solamente los archivos apropiados y además que haya varios
+  commits. En los trabajos en grupo se exige que en el repositorio
+  principal haya un pull request de algún integrante del grupo.
+
+* Fechas Especiales
+  Se confirmará luego si hay o no clase (puede haber reemplazo)  
+  - Semana Universitaria : Sept 16-21.
+    
+* Bibliografía
+  \nocite{*}
+  \bibliographystyle{unsrt}
+  \bibliography{Info-HerramientasComp}
+
+#+BEGIN_COMMENT
+%%% Local Variables:
+%%% reftex-default-bibliography: ("./Info-HerramientasComp.bib")
+%%% End:
+#+END_COMMENT

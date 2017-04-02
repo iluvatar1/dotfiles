@@ -1,0 +1,11 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [10pt,letterpaper,onecolumn]
+#+LATEX_HEADER:\usepackage[AUTO]{inputenc}
+#+LATEX_HEADER:\usepackage[svgnames]{xcolor}
+#+LATEX_HEADER:\usepackage{minted}
+#+LATEX_HEADER: \usepackage{enumerate}
+#+LATEX_HEADER: \usepackage{multicol}
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
+#+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
