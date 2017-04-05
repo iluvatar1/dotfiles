@@ -4,6 +4,7 @@
 [core]
 	excludesfile = /Users/oquendo/.gitignore_global
 	editor = emacs -nw
+	pager = less -R
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
