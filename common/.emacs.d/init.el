@@ -115,6 +115,13 @@
   )
 
 
+;; power line
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme)
+  )
+
 ;; (use-package fill-column-indicator
 ;;   :config
 ;;   (setq fci-rule-width 10)
@@ -149,7 +156,7 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((sh . t)))
   (org-babel-do-load-languages
-   'org-babel-load-languages '((shell . t)))
+   'org-babel-load-languages '((sh . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages '((latex . t)))
   (org-babel-do-load-languages
@@ -637,10 +644,28 @@ executable.")
 
 ;; Theme
 (use-package color-theme
-  :ensure t)
-(use-package moe-theme
-  :ensure t)
-(moe-light)
+  :ensure t
+  :defer t
+  )
+;; (use-package moe-theme
+;;   :ensure t
+;;   )
+;; ;;(moe-light)
+;; ;;(moe-dark)
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   )
+;; ;(load-theme 'zenburn t)
+(use-package leuven-theme
+  :ensure t
+  )
+(load-theme 'leuven t)
+;;(use-package color-theme-sanityinc-tomorrow
+;;   :ensure t
+;;   )
+;;(load-theme 'color-theme-sanityinc-tomorrow-day t)
+;;(load-theme 'color-theme-sanityinc-tomorrow-niht t)
+;;(load-theme 'color-theme-sanityinc-tomorrow-bright t)
 
 
 ;; from http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
