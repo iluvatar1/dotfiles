@@ -397,13 +397,13 @@ executable.")
 
 
 ;; Auctex for latex
-;; (use-package cdlatex
-;;   :config
-;;   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
-;;   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
-;;   (add-hook 'latex-mode-hook 'cdlatex-mode)
-;;   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-;;   )
+(use-package cdlatex
+  :config
+  (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
+  (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
+  (add-hook 'latex-mode-hook 'cdlatex-mode)
+  (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+  )
 ;; Based on https://github.com/Schnouki/dotfiles/blob/master/emacs/init-20-tex.el
 (use-package tex  
   :ensure auctex
