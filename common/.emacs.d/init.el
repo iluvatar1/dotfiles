@@ -175,6 +175,7 @@ executable.")
   ;; cdlatex
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
   ;;(add-hook 'org-mode-hook 'wc-mode)
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq org-latex-listings 'minted) ;; colored latex 
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-minted-options
@@ -420,6 +421,7 @@ executable.")
     (add-hook 'Latex-mode-hook 'turn-on-orgtbl)
     (add-hook 'latex-mode-hook 'turn-on-orgtbl)
     (add-hook 'TeX-mode-hook 'turn-on-orgtbl)
+    (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
     (add-hook 'LaTeX-mode-hook 'latex-extra-mode)
     (add-hook 'LaTeX-mode-hook #'TeX-fold-mode) ;; Automatically activate TeX-fold-mode. C-c C-o C-b
     (add-hook 'latex-mode-hook #'TeX-fold-mode) ;; Automatically activate TeX-fold-mode.

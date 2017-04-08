@@ -95,7 +95,7 @@
  '(inhibit-startup-screen t)
  '(ispell-highlight-face (quote flyspell-incorrect))
  '(keyboard-coding-system (quote utf-8-unix))
- '(ns-function-modifier (quote hyper) t)
+ '(ns-function-modifier (quote hyper))
  '(org-latex-image-default-width ".45\\textwidth")
  '(org-latex-images-centered nil)
  '(osx-clipboard-mode t)
