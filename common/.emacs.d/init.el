@@ -32,8 +32,14 @@
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 (package-initialize)
 (setq use-package-verbose t)
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
+
 
 ;; Organizing packages automatically
 ;;https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/
@@ -59,6 +65,11 @@
     )
   )
 (global-hl-line-mode 1)
+
+
+;; winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations
+(use-package winner
+  :defer t)
 
 
 ;; from : http://cestlaz.github.io/posts/using-emacs-17-misc/#.WBUKRpMrKHp
@@ -107,6 +118,25 @@
   )
 
 
+;; To move between windows
+(use-package windmove
+  :bind
+  (("<f2> <right>" . windmove-right)
+   ("<f2> <left>" . windmove-left)
+   ("<f2> <up>" . windmove-up)
+   ("<f2> <down>" . windmove-down)
+   )
+   :config 
+   ;;(global-set-key (kbd "<M-up>") 'windmove-up)
+   ;;(global-set-key (kbd "<M-down>") 'windmove-down)
+   ;;(global-set-key (kbd "<M-left>") 'windmove-left)
+   ;;(global-set-key (kbd "<M-right>") 'windmove-right)
+   (global-set-key ((kbd "") "S-C-<left>") 'shrink-window-horizontally)
+   (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+   (global-set-key (kbd "S-C-<down>") 'shrink-window)
+   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+   )
+
 
 
 (use-package pov-mode
