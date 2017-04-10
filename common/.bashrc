@@ -114,6 +114,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export MANPATH=$MANPATH:/usr/local/man
 export MANPATH=$MANPATH:/usr/local/share/man
 #export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+# PATH local commands 
+export PATH=$PATH:$HOME/local/bin
+export MANPATH=$MANPATH:$HOME/local/man
+export MANPATH=$MANPATH:$HOME/local/share/man
+
 
 # From arch bash wiki
 ## Modified commands ## {{{
@@ -164,9 +169,6 @@ alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in
 # for gracegtk
 #export GRACEGTK_HOME=/usr/local/gracegtk 
 #export PATH=$PATH:/usr/local/gracegtk/bin
-
-# PATH local commands 
-export PATH=$PATH:$HOME/local/bin
 
 # shell config
 export HISTCONTROL=ignorespace
