@@ -57,6 +57,7 @@
  '(ispell-highlight-face (quote flyspell-incorrect))
  '(keyboard-coding-system (quote utf-8-unix))
  '(ns-function-modifier (quote hyper))
+ '(org-agenda-files (quote ("~/Dropbox/TODO/TODO.org")))
  '(org-latex-image-default-width ".45\\textwidth")
  '(org-latex-images-centered nil)
  '(osx-clipboard-mode t)

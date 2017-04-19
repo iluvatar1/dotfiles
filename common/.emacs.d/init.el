@@ -186,7 +186,7 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((sh . t)))
   (org-babel-do-load-languages
-   'org-babel-load-languages '((sh . t)))
+   'org-babel-load-languages '((ditaa . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages '((latex . t)))
   (org-babel-do-load-languages
