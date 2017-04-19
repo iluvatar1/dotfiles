@@ -238,11 +238,6 @@ executable.")
 	  ("j" "Journal" entry (file+datetree "~/Dropbox/TODO/journal.org")
 	   "* %?\nEntered on %U\n  %i\n  %a")))
   (setq org-agenda-files (list "~/Dropbox/TODO/TODO.org"
-			       "~/Dropbox/TODO/RESEARCH.org"
-			       "~/Dropbox/TODO/EVENTS.org"
-			       "~/Dropbox/TODO/MOOC.org"
-			       "~/Dropbox/TODO/BOOKS.org"
-			       "~/Dropbox/TODO/TEACHING.org"
 			       ))
   ;; (add-to-list 'org-export-latex-classes
   ;;         '("koma-article"
