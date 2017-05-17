@@ -70,6 +70,8 @@ if [[ $platform == 'darwin' ]]; then
     export PATH
     # pdftk
     export PATH=$PATH:/opt/pdflabs/pdftk/bin/
+    # custom libs without interfering with system libs
+    export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib
 fi
 
 # Linux only commands
