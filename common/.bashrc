@@ -167,6 +167,7 @@ alias ln='ln -i'
 alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in Terminology)
 # }}}
 
+bind -x '"\C-l": clear;'
 
 # for gracegtk
 #export GRACEGTK_HOME=/usr/local/gracegtk 
