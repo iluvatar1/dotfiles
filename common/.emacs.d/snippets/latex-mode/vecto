@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor : William Oquendo (woquendo (at) gmail (dot) com )
+# name: Vecto
+# key: V
+# --
+\Vecto{$1} 

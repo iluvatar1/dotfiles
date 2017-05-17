@@ -10,8 +10,8 @@
   \pgfmathsetmacro{\X}{1.23*(1 + \FACTOR*rand)}
 \item \PTs{1.0} $0
   \begin{answers}{2}\bChoices[random]
-    \Ans1 \NumEval{0} . \eAns
-    \Ans0 \NumEval{1} . \eAns
+    \Ans1 \NumEval{0} \eAns
+    \Ans0 \NumEval{1} \eAns
     \eFreeze
     \Ans0 ninguna de las anteriores. \eAns
     \eChoices
