@@ -69,8 +69,6 @@
  '(scroll-step 1)
  '(send-mail-function (quote smtpmail-send-it))
  '(setenv "PDFLATEX" t)
- '(smtpmail-smtp-server "")
- '(smtpmail-smtp-service 25)
  '(use-package-verbose t)
  '(version-control t)
  '(woman-locale "en_US.UTF-8"))
