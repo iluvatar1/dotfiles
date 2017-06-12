@@ -421,6 +421,15 @@ executable.")
 ;;(use-package align
 ;;  :ensure t)
 
+;; tikz
+;; latex mode for .tikz files
+(add-to-list 'auto-mode-alist '("\\.tikz$" . LaTeX-mode))
+;; preview tikz with auctex : Command->TeXing Options->PDF Mode from the menu, or press C-c C-t C-p
+(eval-after-load "preview"
+  '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t)
+  )
+
+
 
 ;; Auctex for latex
 (use-package cdlatex
