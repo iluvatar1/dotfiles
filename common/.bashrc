@@ -208,7 +208,8 @@ export XUGGLE_HOME="/usr/local/xuggler"
 export TRACKER_HOME="/usr/local/tracker"
 
 ## LMGC90 2016
-export PYTHONPATH=${PYTHONPATH}:$HOME/local/src/2016-LMGC90/lmgc90_user/build/
+export PYTHONPATH=${PYTHONPATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/build
+export PATH=${PATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/src/addons
 #export OMP_SCHEDULE=STATIC
 #export OMP_NUM_THREADS=4
 
