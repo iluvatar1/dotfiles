@@ -72,6 +72,18 @@
   :defer t)
 
 
+;; recent file mode
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 500)
+  (setq recentf-max-menu-items 15)
+  (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+  ;; disable recentf-cleanup on Emacs start, because it can cause
+  ;; problems with remote files
+  (setq recentf-auto-cleanup 'never)
+  (recentf-mode +1))
+
+
 ;; from : http://cestlaz.github.io/posts/using-emacs-17-misc/#.WBUKRpMrKHp
 ;; flashes the cursor's line when you scroll
 (use-package beacon
@@ -126,16 +138,18 @@
    ("<f2> <up>" . windmove-up)
    ("<f2> <down>" . windmove-down)
    )
-   :config 
-   ;;(global-set-key (kbd "<M-up>") 'windmove-up)
-   ;;(global-set-key (kbd "<M-down>") 'windmove-down)
-   ;;(global-set-key (kbd "<M-left>") 'windmove-left)
-   ;;(global-set-key (kbd "<M-right>") 'windmove-right)
-   (global-set-key ((kbd "") "S-C-<left>") 'shrink-window-horizontally)
-   (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-   (global-set-key (kbd "S-C-<down>") 'shrink-window)
-   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
-   )
+  :config
+  ;; use shift + arrow keys to switch between visible buffers
+  (windmove-default-keybindings)
+  ;;(global-set-key (kbd "<M-up>") 'windmove-up)
+  ;;(global-set-key (kbd "<M-down>") 'windmove-down)
+  ;;(global-set-key (kbd "<M-left>") 'windmove-left)
+  ;;(global-set-key (kbd "<M-right>") 'windmove-right)
+  (global-set-key ((kbd "") "S-C-<left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "S-C-<down>") 'shrink-window)
+  (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+  )
 
 
 
@@ -202,6 +216,12 @@ executable.")
   (defvar org-babel-C++-compiler "g++-5"
     "Command used to compile a C++ source code file into an
 executable.")
+  (add-hook 'org-mode-hook 
+	    \t  (lambda ()
+		  \t    'turn-on-font-lock
+		  \t    (setq word-wrap 1)
+		  \t    (setq truncate-lines nil)
+		  \t    (flyspell-mode 1)))
   ;; cdlatex
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
   ;;(add-hook 'org-mode-hook 'wc-mode)
@@ -234,7 +254,9 @@ executable.")
   (setq org-default-notes-file (concat org-directory "~/Dropbox/TODO/TODO.org"))
   (setq org-capture-templates
 	'(("t" "Todo" entry (file+headline "~/Dropbox/TODO/TODO.org" "Tasks")
-	   "* TODO %?\n  %i\n  %a")
+	   "* TODO %?\nEntered on %U\n %i\n  %a")
+	  ("n" "Note" entry (file+headline "~/Dropbox/TODO/NOTES.org" "Notes")
+	   "* %?\nEntered on %U\n %i\n  %a")
 	  ("j" "Journal" entry (file+datetree "~/Dropbox/TODO/journal.org")
 	   "* %?\nEntered on %U\n  %i\n  %a")))
   (setq org-agenda-files (list "~/Dropbox/TODO/TODO.org"
@@ -450,6 +472,7 @@ executable.")
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (add-hook 'latex-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-orgtbl)
     (add-hook 'Latex-mode-hook 'turn-on-orgtbl)
@@ -472,8 +495,7 @@ executable.")
 	  ;;TeX-electric-escape 1
 	  TeX-insert-braces 1
 	  ;;TeX-insert-braces 1
-	  TeX-PDF-mode t
-	  TeX-master nil)))
+	  TeX-PDF-mode t)))
 (setq-default TeX-master nil)
 
 (add-hook 'LaTeX-mode-hook
@@ -537,6 +559,9 @@ executable.")
 	 (file-exists-p (buffer-file-name))
 	 (reftex-parse-all))
       (define-key org-mode-map (kbd "C-c (") 'reftex-citation))
+  :config
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (add-hook 'latex-mode-hook 'turn-on-reftex)
   )
 ;; Auto-fill for LaTeX
 (defun schnouki/latex-auto-fill ()
