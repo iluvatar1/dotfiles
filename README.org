@@ -8,3 +8,12 @@ Structure description:
   Config files for latex, org mode latex, etc.
 * work-U
   Old files specific to work with proxy.
+  
+
+* Adding new files 
+  What to do when adding a new file which is not linked?
+  When everything is fine:
+  - Add it to the repo: git add ...
+  - Make the commit: git commit -m "..."
+  - stow it (this assumes that the file was created under the folder "common"): 
+  stow common 
