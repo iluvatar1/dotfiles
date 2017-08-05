@@ -441,6 +441,7 @@ executable.")
 ;; align toalign regions, useful with latex tables, but sometimes annoying
 ;;(use-package align
 ;;  :ensure t)
+
 
 ;; tikz
 ;; latex mode for .tikz files
@@ -449,15 +450,28 @@ executable.")
 (eval-after-load "preview"
   '(add-to-list 'preview-default-preamble "\\PreviewEnvironment{tikzpicture}" t)
   )
+
 
-
-
-;; Auctex for latex
+;; cdlatex mode. NOTE: Generates problems with yasnippet completion
 (use-package cdlatex
   :config
   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+  (defun yas/advise-indent-function (function-symbol)
+    (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+	     ,(format
+	       "Try to expand a snippet before point, then call `%s' as usual"
+	       function-symbol)
+	     (let ((yas-fallback-behavior nil))
+	       (unless (and (called-interactively-p 'interactive)
+			    (yas-expand))
+		 ad-do-it)))))
+  (yas/advise-indent-function 'cdlatex-tab)
   )
+
+
+
+;; Auctex for latex
 ;; Based on https://github.com/Schnouki/dotfiles/blob/master/emacs/init-20-tex.el
 (use-package tex  
   :ensure auctex
@@ -477,7 +491,7 @@ executable.")
     (add-hook 'latex-mode-hook 'turn-on-orgtbl)
     (add-hook 'TeX-mode-hook 'turn-on-orgtbl)
     (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-    (add-hook 'LaTeX-mode-hook 'latex-extra-mode)
+    ;;(add-hook 'LaTeX-mode-hook 'latex-extra-mode)
     (add-hook 'LaTeX-mode-hook #'TeX-fold-mode) ;; Automatically activate TeX-fold-mode. C-c C-o C-b
     (add-hook 'latex-mode-hook #'TeX-fold-mode) ;; Automatically activate TeX-fold-mode.
     (add-hook 'TeX-mode-hook #'TeX-fold-mode) ;; Automatically activate TeX-fold-mode.
