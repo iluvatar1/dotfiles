@@ -64,7 +64,7 @@
  '(package-enable-at-startup t)
  '(package-selected-packages
    (quote
-    (smart-mode-line zenburn-theme yasnippet yaml-mode writegood-mode which-key w3m use-package symon solarized-theme smex smartparens selected rainbow-delimiters powerline pov-mode pdf-tools page-break-lines outshine osx-clipboard org-pomodoro org-gcal names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hungry-delete htmlize helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-complete auctex-latexmk aggressive-indent)))
+    (smart-mode-line zenburn-theme yasnippet yaml-mode writegood-mode which-key w3m use-package symon solarized-theme smex smartparens selected rainbow-delimiters powerline pov-mode pdf-tools page-break-lines outshine osx-clipboard org-pomodoro org-gcal names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hungry-delete htmlize helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auctex-latexmk aggressive-indent)))
  '(scalable-fonts-allowed t)
  '(scroll-step 1)
  '(send-mail-function (quote smtpmail-send-it))

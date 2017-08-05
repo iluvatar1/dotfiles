@@ -4,7 +4,7 @@
 
 
 ;;load proxy config at work
-(if  (file-exists-p "~/.emacs_proxy_config") 
+(if  (file-exists-p "~/.emacs_proxy_config")
     (load "~/.emacs_proxy_config")
   )
 
@@ -222,8 +222,6 @@ executable.")
 		  \t    (setq word-wrap 1)
 		  \t    (setq truncate-lines nil)
 		  \t    (flyspell-mode 1)))
-  ;; cdlatex
-  (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
   ;;(add-hook 'org-mode-hook 'wc-mode)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq org-latex-listings 'minted) ;; colored latex 
@@ -278,6 +276,7 @@ executable.")
   ;; 	    (org-agenda-skip-function '(org-agenda-skip-entry-if 'notregexp ":DAILY:"))))
   ;; 	  ;; other commands here
   ;; 	  ))
+  (setf (nth 4 org-emphasis-regexp-components) 4)
   )
 ;;(set 'org-file-apps '((auto-mode . emacs) ... ("\\.pdf\\'" . default)))
 ;; org habits
@@ -330,7 +329,7 @@ executable.")
   :ensure t
   :init
   (yas-global-mode 1)
-  :config
+  :config 
   (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
 
 ;; auto insert templates
@@ -457,8 +456,6 @@ executable.")
 (use-package cdlatex
   :config
   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
-  (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
-  (add-hook 'latex-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
   )
 ;; Based on https://github.com/Schnouki/dotfiles/blob/master/emacs/init-20-tex.el
@@ -469,6 +466,7 @@ executable.")
   :init 
   (progn
     (add-hook 'LaTeX-mode-hook 'LaTeX-preview-setup)
+    (add-hook 'LaTeX-mode-hook 'yas-global-mode)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
@@ -501,7 +499,8 @@ executable.")
 (add-hook 'LaTeX-mode-hook
 	  (lambda()
 	    (local-set-key [C-tab] 'TeX-complete-symbol)))
-(add-hook 'LaTeX-mode-hook 'predictive-mode)
+;;(require 'predictive) ;; need to be installed
+;;(add-hook 'LaTeX-mode-hook 'predictive-mode)
 
 
 ;; PDF tools
@@ -641,7 +640,7 @@ executable.")
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;;(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
   (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
   (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
