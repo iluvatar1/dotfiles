@@ -5,7 +5,9 @@
 #+LATEX_HEADER:\usepackage{minted}
 #+LATEX_HEADER: \usepackage{enumerate}
 #+LATEX_HEADER: \usepackage{multicol}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{microtype}
 # Fix the margins
-#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+LATEX_HEADER: \usepackage[letterpaper,margin=2cm]{geometry}
 #   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
 #+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
