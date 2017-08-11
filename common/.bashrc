@@ -215,11 +215,11 @@ export PATH=${PATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/src/add
 
 # mechsys
 export MECHSYS_ROOT=$HOME/local/src/2016-MECHSYS/
-# PATH="/Users/oquendo/perl5/bin${PATH+:}${PATH}"; export PATH;
-# PERL5LIB="/Users/oquendo/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/Users/oquendo/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/Users/oquendo/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/Users/oquendo/perl5"; export PERL_MM_OPT;
+# PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
+# PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # Android sdk
 if [ -d "$HOME/Library/Android/sdk/platform-tools" ] ; then
