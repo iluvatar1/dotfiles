@@ -198,6 +198,9 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((C . t)))
   (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((makefile . t)))
+  (org-babel-do-load-languages
    'org-babel-load-languages '((sh . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages '((ditaa . t)))
@@ -225,6 +228,7 @@ executable.")
   ;;(add-hook 'org-mode-hook 'wc-mode)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq org-latex-listings 'minted) ;; colored latex 
+  (setq org-src-preserve-indentation t) ;; for preserving indentation when tangling
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-minted-options
 	'(("frame" "lines")
@@ -466,7 +470,7 @@ executable.")
 	       (unless (and (called-interactively-p 'interactive)
 			    (yas-expand))
 		 ad-do-it)))))
-  (yas/advise-indent-function 'cdlatex-tab)
+  ;;(yas/advise-indent-function 'cdlatex-tab)
   )
 
 

@@ -128,11 +128,11 @@
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
 ;; misc
-(setq mac-command-key-is-meta nil)
-(setq mac-option-key-is-meta t)
-(setq mac-option-modifier 'meta)
+;;(setq mac-command-key-is-meta nil)
+(setq mac-option-key-is-meta nil)
+;;(setq mac-option-modifier 'meta)
 ;;(setq mac-command-modifier 'meta)
-;;(setq mac-option-modifier nil)
+(setq mac-option-modifier nil)
 (setq ns-function-modifier 'hyper)
 ;;(add-to-list 'ido-ignore-files "\\.DS_Store")
 
