@@ -21,24 +21,41 @@
 (load "server")
 (unless (server-running-p) (server-start))
 
-;; packages
+;; ;; packages
+;; (require 'package)
+;; (setq package-enable-at-startup nil)
+;; (when (>= emacs-major-version 24)
+;;   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;   (setq package-enable-at-startup nil)
+;;   )
+;; (when (< emacs-major-version 24)
+;;   ;; For important compatibility libraries like cl-lib
+;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
+;; (package-initialize)
+;; (setq use-package-verbose t)
+;; (use-package auto-compile
+;;   :config (auto-compile-on-load-mode))
+;; (setq load-prefer-newer t)
+
+;; from http://cachestocaches.com/2015/8/getting-started-use-package/
 (require 'package)
-(when (>= emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  (setq package-enable-at-startup nil)
-  )
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
-(setq use-package-verbose t)
-(use-package auto-compile
-  :config (auto-compile-on-load-mode))
-(setq load-prefer-newer t)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 
 ;; Organizing packages automatically
