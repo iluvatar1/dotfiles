@@ -474,16 +474,24 @@ executable.")
   :config
   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-  (defun yas/advise-indent-function (function-symbol)
-    (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
-	     ,(format
-	       "Try to expand a snippet before point, then call `%s' as usual"
-	       function-symbol)
-	     (let ((yas-fallback-behavior nil))
-	       (unless (and (called-interactively-p 'interactive)
-			    (yas-expand))
-		 ad-do-it)))))
-  (yas/advise-indent-function 'cdlatex-tab)
+  ;; from : https://joaotavora.github.io/yasnippet/faq.html#sec-2
+  (add-hook 'cdlatex-mode-hook
+	    (let ((original-command (lookup-key cdlatex-mode-map [tab])))
+	      `(lambda ()
+		 (setq yas-fallback-behavior
+		       '(apply ,original-command))
+		 (local-(setq )et-key [tab] 'yas-expand))))
+  ;; From: ....
+  ;; (defun yas/advise-indent-function (function-symbol)
+  ;;   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+  ;; 	     ,(format
+  ;; 	       "Try to expand a snippet before point, then call `%s' as usual"
+  ;; 	       function-symbol)
+  ;; 	     (let ((yas-fallback-behavior nil))
+  ;; 	       (unless (and (called-interactively-p 'interactive)
+  ;; 			    (yas-expand))
+  ;; 		 ad-do-it)))))
+  ;;(yas/advise-indent-function 'cdlatex-tab)
   )
 
 
