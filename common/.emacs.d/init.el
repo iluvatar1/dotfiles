@@ -244,8 +244,8 @@ executable.")
 		  \t    (flyspell-mode 1)))
   ;;(add-hook 'org-mode-hook 'wc-mode)
   ;; indent mode: https://github.com/syl20bnr/spacemacs/issues/7290
-  (setq org-startup-indented t)
-  ;;(setq org-indent-mode t)
+  ;; (setq org-startup-indented t)
+  ;; (setq org-indent-mode t)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq org-latex-listings 'minted) ;; colored latex 
   (setq org-src-preserve-indentation t) ;; for preserving indentation when tangling
