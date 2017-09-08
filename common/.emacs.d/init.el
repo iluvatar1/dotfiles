@@ -243,6 +243,9 @@ executable.")
 		  \t    (setq truncate-lines nil)
 		  \t    (flyspell-mode 1)))
   ;;(add-hook 'org-mode-hook 'wc-mode)
+  ;; indent mode: https://github.com/syl20bnr/spacemacs/issues/7290
+  (setq org-startup-indented t)
+  ;;(setq org-indent-mode t)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (setq org-latex-listings 'minted) ;; colored latex 
   (setq org-src-preserve-indentation t) ;; for preserving indentation when tangling
@@ -478,13 +481,13 @@ executable.")
   :config
   (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-  ;; from : https://joaotavora.github.io/yasnippet/faq.html#sec-2
-  (add-hook 'cdlatex-mode-hook
-	    (let ((original-command (lookup-key cdlatex-mode-map [tab])))
-	      `(lambda ()
-		 (setq yas-fallback-behavior
-		       '(apply ,original-command))
-		 (local-(setq )et-key [tab] 'yas-expand))))
+  ;; from : https://joaotavora.github.io/yasnippet/faq.html#sec-2 // better this one
+  ;; (add-hook 'cdlatex-mode-hook
+  ;; 	    (let ((original-command (lookup-key cdlatex-mode-map [tab])))
+  ;; 	      `(lambda ()
+  ;; 		 (setq yas-fallback-behavior
+  ;; 		       '(apply ,original-command))
+  ;; 		 (local-(setq )et-key [tab] 'yas-expand))))
   ;; From: ....
   ;; (defun yas/advise-indent-function (function-symbol)
   ;;   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
