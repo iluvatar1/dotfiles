@@ -3,10 +3,16 @@
 ;; Check https://github.com/jinnovation/dotemacs
 
 
-;;load proxy config at work
-(if  (file-exists-p "~/.emacs_proxy_config")
-    (load "~/.emacs_proxy_config")
-  )
+;; DEPRECATED: load proxy config at work
+;;
+;; DEPRECATED: now it is better to set the proxy credentials from the
+;; command line (https_proxy etc) and then open emacs
+
+;; (if  (file-exists-p "~/.emacs_proxy_config")
+;;     (load "~/.emacs_proxy_config")
+;;   )
+
+
 
 ;; Accept ad-redefinition warnings
 ;; from:http://andrewjamesjohnson.com/suppressing-ad-handle-definition-warnings-in-emacs/
