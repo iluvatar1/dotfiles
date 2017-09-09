@@ -236,3 +236,25 @@ fi
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export MP_FULLNAME="William Fernando Oquendo Patino"
 
+###########################################
+# utility functions
+###########################################
+
+# exports and reset proxy at unal
+function reset_proxy {
+    export PROXY=""
+    export http_proxy=""
+    export https_proxy=""
+    export ftp_proxy=""
+    export RSYNC_PROXY=""
+}
+function set_unal_proxy {
+    # PROXY_AUTH sets PROXY_USER and PROXY_PASSWD and is private
+    echo "Decrypting file to read proxy credentials ..."
+    source <( gpg --decrypt ~/.PROXY_AUTH.gpg )
+    export PROXY="$PROXY_USER:$PROXY_PASSWD@proxyapp.unal.edu.co:8080/"
+    export http_proxy="http://$PROXY"                                 
+    export https_proxy="https://$PROXY"                               
+    export ftp_proxy="$http_proxy"                                    
+    export RSYNC_PROXY="$PROXY"                                       
+}
