@@ -57,6 +57,11 @@
 (require 'diminish)
 (require 'bind-key)
 
+;;https://github.com/rranelli/auto-package-update.el
+;; run: M-x auto-package-update-now
+;;(use-package auto-package-update
+;;  :ensure t)
+
 
 ;; Organizing packages automatically
 ;;https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/
@@ -642,6 +647,19 @@ executable.")
 ;; From http://tex.stackexchange.com/questions/52179/what-is-your-favorite-emacs-and-or-auctex-command-trick
 ;;(add-hook 'TeX-mode-hook
 ;;(lambda () (TeX-fold-mode 1))); Automatically activate TeX-fold-mode.
+
+
+;; improve latex
+;; from : https://thenybble.de/projects/inhibit-auto-fill.html
+(defcustom LaTeX-inhibited-auto-fill-environments
+  '("tabular" "tikzpicture") "For which LaTeX environments not to run auto-fill.")
+(defun LaTeX-limited-auto-fill ()
+  (let ((environment (LaTeX-current-environment)))
+    (when (not (member environment LaTeX-inhibited-auto-fill-environments))
+      (do-auto-fill))))
+(add-hook 'LaTeX-mode-hook
+          (lambda () (setq auto-fill-function #'LaTeX-limited-auto-fill)) t)
+
 
 
 
