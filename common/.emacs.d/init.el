@@ -92,7 +92,7 @@
     (global-linum-mode 1)
     )
   )
-(global-hl-line-mode 1)
+;;(global-hl-line-mode 1)
 
 
 ;; winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations
@@ -191,7 +191,8 @@
 (use-package powerline
   :ensure t
   :config
-  (powerline-default-theme)
+  (powerline-center-theme)
+  ;;(powerline-default-theme)
   )
 
 ;; (use-package fill-column-indicator
@@ -829,7 +830,7 @@ executable.")
 
 ;;;; magit : Magic with git inside emacs
 (use-package magit
-  :bind ("C-x g" . magit-status)
+  :bind ("C-c g" . magit-status)
   )
 ;;(magit-mode)
 
