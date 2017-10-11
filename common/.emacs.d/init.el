@@ -229,8 +229,8 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((makefile . t)))
-  (org-babel-do-load-languages
-   'org-babel-load-languages '((sh . t)))
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages '((sh . t)))
   (org-babel-do-load-languages
    'org-babel-load-languages '((shell . t)))
   (org-babel-do-load-languages
