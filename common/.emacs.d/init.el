@@ -792,16 +792,27 @@ executable.")
 ;;   :ensure t
 ;;   )
 ;; ;(load-theme 'zenburn t)
-(use-package leuven-theme
-  :ensure t
-  )
-(load-theme 'leuven t)
+
+;; (use-package leuven-theme
+;;   :ensure t
+;;   )
+;; (load-theme 'leuven t)
+;; ;; (use-package leuven-theme-dark
+;; ;;   :ensure t
+;; ;;   )
+;; ;; (load-theme 'leuven-dark t)
+
 ;;(use-package color-theme-sanityinc-tomorrow
 ;;   :ensure t
 ;;   )
 ;;(load-theme 'color-theme-sanityinc-tomorrow-day t)
 ;;(load-theme 'color-theme-sanityinc-tomorrow-niht t)
 ;;(load-theme 'color-theme-sanityinc-tomorrow-bright t)
+
+(use-package dracula-theme
+  :ensure t
+  )
+
 
 
 ;; from http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
