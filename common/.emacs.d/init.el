@@ -244,6 +244,9 @@
   (org-babel-do-load-languages
    'org-babel-load-languages '((calc . t)))
   (setq org-src-fontify-natively t)
+  (defun my-org-confirm-babel-evaluate (lang body)
+  (not (member lang '("cpp" "shell"))))
+  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
   (defvar org-babel-C-compiler "gcc-5"
     "Command used to compile a C source code file into an
 executable.")
