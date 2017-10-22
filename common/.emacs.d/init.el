@@ -83,16 +83,23 @@
 ;;   )
 
 
-(when window-system
-  (use-package linum
-    :ensure t
-    :config
-    (line-number-mode 1)
-    (column-number-mode 1)
-    (global-linum-mode 1)
-    )
+;;(when window-system
+(use-package linum
+  :ensure t
+  :config
+  (line-number-mode 1)
+  (column-number-mode 1)
+  (global-linum-mode 1)
+  (setq linum-format "%3d \u2502 ")
   )
+ ;;)
 ;;(global-hl-line-mode 1)
+;; config fringe
+;;(fringe-mode 4) ;; both left and right 4 pixels
+;;(fringe-mode '(4 . 0)) ;; left 4 pixels, right dissapears
+;;(set-window-margins nil 1) ;; add a margin
+
+
 
 
 ;; winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations
