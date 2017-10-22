@@ -783,11 +783,11 @@ executable.")
   :ensure t
   :defer t
   )
-;; (use-package moe-theme
-;;   :ensure t
-;;   )
+(use-package moe-theme
+  :ensure t
+  )
 ;; ;;(moe-light)
-;; ;;(moe-dark)
+(moe-dark)
 ;; (use-package zenburn-theme
 ;;   :ensure t
 ;;   )
@@ -809,9 +809,9 @@ executable.")
 ;;(load-theme 'color-theme-sanityinc-tomorrow-niht t)
 ;;(load-theme 'color-theme-sanityinc-tomorrow-bright t)
 
-(use-package dracula-theme
-  :ensure t
-  )
+;; (use-package dracula-theme
+;;   :ensure t
+;;   )
 
 
 
