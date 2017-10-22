@@ -1100,6 +1100,13 @@ executable.")
 
 ;; C++ irony mode and completion
 ;; from http://cachestocaches.com/2015/8/c-completion-emacs/
+
+(defun setup-c-clang-options ()
+  (setq irony-additional-clang-options (quote ("-std=c11"))))
+
+(defun setup-cpp-clang-options ()
+(setq irony-additional-clang-options (quote ("-std=c++14" "-stdlib=libc++"))))
+
 ;; == irony-mode ==
 (use-package irony
   :defer t
@@ -1118,6 +1125,9 @@ executable.")
       'irony-completion-at-point-async))
   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (progn
+    (add-hook 'c++-mode-hook 'setup-cpp-clang-options)
+    (add-hook 'c-mode-hook 'setup-c-clang-options))
   )
 
 
@@ -1200,7 +1210,9 @@ executable.")
 
 ;; clang-format
 (use-package clang-format
+  :ensure t
   :bind (([C-M-tab] . clang-format-region))
+  :commands clang-format clang-format-buffer clang-format-region
   )
 
 
