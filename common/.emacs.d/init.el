@@ -230,6 +230,12 @@
 	 ("\\.txt$" . org-mode))
   :commands (org-mode org-capture-mode)
   :config
+  ;; org agenda refile : see https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 6)))
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-completion-use-ido nil)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
   ;; org babel
   (org-babel-do-load-languages
    'org-babel-load-languages '((C . t)))
