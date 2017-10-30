@@ -384,7 +384,9 @@ executable.")
   :init
   (yas-global-mode 1)
   :config 
-  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
+  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
+  )
 
 ;; auto insert templates
 ;; (use-package auto-insert
@@ -519,16 +521,16 @@ executable.")
   ;; 		       '(apply ,original-command))
   ;; 		 (local-(setq )et-key [tab] 'yas-expand))))
   ;; From: ....
-  ;; (defun yas/advise-indent-function (function-symbol)
-  ;;   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
-  ;; 	     ,(format
-  ;; 	       "Try to expand a snippet before point, then call `%s' as usual"
-  ;; 	       function-symbol)
-  ;; 	     (let ((yas-fallback-behavior nil))
-  ;; 	       (unless (and (called-interactively-p 'interactive)
-  ;; 			    (yas-expand))
-  ;; 		 ad-do-it)))))
-  ;;(yas/advise-indent-function 'cdlatex-tab)
+  (defun yas/advise-indent-function (function-symbol)
+    (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+  	     ,(format
+  	       "Try to expand a snippet before point, then call `%s' as usual"
+  	       function-symbol)
+  	     (let ((yas-fallback-behavior nil))
+  	       (unless (and (called-interactively-p 'interactive)
+  			    (yas-expand))
+  		 ad-do-it)))))
+  (yas/advise-indent-function 'cdlatex-tab)
   )
 
 
