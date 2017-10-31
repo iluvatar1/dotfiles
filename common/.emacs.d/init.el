@@ -386,6 +386,19 @@ executable.")
   :config 
   (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
   (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
+  ;; from: https://emacs.stackexchange.com/questions/9670/yasnippet-not-working-with-auto-complete-mode?rq=1
+  ;;(define-key yas-minor-mode-map (kbd "<tab>") nil)
+  ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
+  ;;(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
+  ;;
+  ;; From https://github.com/joaotavora/yasnippet/blob/master/doc/snippet-expansion.org
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
+  ;; will still call `self-insert-command' otherwise).
+  (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+  ;;;; Bind `C-c y' to `yas-expand' ONLY.
+  ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   )
 
 ;; auto insert templates
@@ -520,17 +533,40 @@ executable.")
   ;; 		 (setq yas-fallback-behavior
   ;; 		       '(apply ,original-command))
   ;; 		 (local-(setq )et-key [tab] 'yas-expand))))
-  ;; From: ....
-  (defun yas/advise-indent-function (function-symbol)
-    (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
-  	     ,(format
-  	       "Try to expand a snippet before point, then call `%s' as usual"
-  	       function-symbol)
-  	     (let ((yas-fallback-behavior nil))
-  	       (unless (and (called-interactively-p 'interactive)
-  			    (yas-expand))
-  		 ad-do-it)))))
-  (yas/advise-indent-function 'cdlatex-tab)
+  ;; ;; From: ....
+  ;; (defun yas/advise-indent-function (function-symbol)
+  ;;   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+  ;; 	     ,(format
+  ;; 	       "Try to expand a snippet before point, then call `%s' as usual"
+  ;; 	       function-symbol)
+  ;; 	     (let ((yas-fallback-behavior nil))
+  ;; 	       (unless (and (called-interactively-p 'interactive)
+  ;; 			    (yas-expand))
+  ;; 		 ad-do-it)))))
+  ;;(yas/advise-indent-function 'cdlatex-tab)
+  ;; From : https://emacs.stackexchange.com/questions/29758/yasnippets-and-org-mode-yas-next-field-or-maybe-expand-does-not-expand
+  ;;(defun yas-org-very-safe-expand ()
+  ;;(let ((yas-fallback-behavior 'return-nil)) (yas-expand)))
+  ;;(add-hook 'org-mode-hook
+  ;;    (lambda ()
+  ;;      (add-to-list 'org-tab-first-hook 'yas-org-very-safe-expand)
+  ;;      (define-key yas-keymap [tab] 'yas-next-field)))
+  ;;
+  ;; from https://tex.stackexchange.com/questions/340591/failed-to-preview-latex-in-emacs
+  ;;(defun yas/advise-indent-function (function-symbol)
+  ;;  (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+  ;;           ,(format
+  ;;             "Try to expand a snippet before point, then call `%s' as usual"
+  ;;             function-symbol)
+  ;;           (let ((yas-fallback-behavior nil))
+  ;;            (unless (and (called-interactively-p 'interactive)
+  ;;                          (yas-expand))
+  ;;              ad-do-it))
+  ;;)))
+  ;;(yas/advise-indent-function 'cdlatex-tab)
+  ;;(yas/advise-indent-function 'org-cycle)
+  ;;(yas/advise-indent-function 'org-try-cdlatex-tab)
+  (add-hook 'org-mode-hook 'yas/minor-mode-on)
   )
 
 
