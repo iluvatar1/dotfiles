@@ -84,7 +84,7 @@ export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
 alias ec="emacsclient -t"
 function killemacs {
-    for a in $(ps aux | grep emacs | grep -v grep | awk '{print $2}'); do
+    for a in $(ps aux | grep emacs | grep -v grep | grep -v emacs.d | awk '{print $2}'); do
 	echo "Killing pid : $a"
 	kill -3 $a &>/dev/null;
 	echo "Done."

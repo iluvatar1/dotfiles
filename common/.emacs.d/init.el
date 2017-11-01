@@ -83,16 +83,23 @@
 ;;   )
 
 
-(when window-system
-  (use-package linum
-    :ensure t
-    :config
-    (line-number-mode 1)
-    (column-number-mode 1)
-    (global-linum-mode 1)
-    )
+;;(when window-system
+(use-package linum
+  :ensure t
+  :config
+  (line-number-mode 1)
+  (column-number-mode 1)
+  (global-linum-mode 1)
+  (setq linum-format "%3d \u2502 ")
   )
+ ;;)
 ;;(global-hl-line-mode 1)
+;; config fringe
+;;(fringe-mode 4) ;; both left and right 4 pixels
+;;(fringe-mode '(4 . 0)) ;; left 4 pixels, right dissapears
+;;(set-window-margins nil 1) ;; add a margin
+
+
 
 
 ;; winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations
@@ -223,6 +230,12 @@
 	 ("\\.txt$" . org-mode))
   :commands (org-mode org-capture-mode)
   :config
+  ;; org agenda refile : see https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 6)))
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-completion-use-ido nil)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
   ;; org babel
   (org-babel-do-load-languages
    'org-babel-load-languages '((C . t)))
@@ -371,7 +384,22 @@ executable.")
   :init
   (yas-global-mode 1)
   :config 
-  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
+  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
+  ;; from: https://emacs.stackexchange.com/questions/9670/yasnippet-not-working-with-auto-complete-mode?rq=1
+  ;;(define-key yas-minor-mode-map (kbd "<tab>") nil)
+  ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
+  ;;(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
+  ;;
+  ;; From https://github.com/joaotavora/yasnippet/blob/master/doc/snippet-expansion.org
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
+  ;; will still call `self-insert-command' otherwise).
+  (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+  ;;;; Bind `C-c y' to `yas-expand' ONLY.
+  ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+  )
 
 ;; auto insert templates
 ;; (use-package auto-insert
@@ -505,7 +533,7 @@ executable.")
   ;; 		 (setq yas-fallback-behavior
   ;; 		       '(apply ,original-command))
   ;; 		 (local-(setq )et-key [tab] 'yas-expand))))
-  ;; From: ....
+  ;; ;; From: ....
   ;; (defun yas/advise-indent-function (function-symbol)
   ;;   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
   ;; 	     ,(format
@@ -516,6 +544,29 @@ executable.")
   ;; 			    (yas-expand))
   ;; 		 ad-do-it)))))
   ;;(yas/advise-indent-function 'cdlatex-tab)
+  ;; From : https://emacs.stackexchange.com/questions/29758/yasnippets-and-org-mode-yas-next-field-or-maybe-expand-does-not-expand
+  ;;(defun yas-org-very-safe-expand ()
+  ;;(let ((yas-fallback-behavior 'return-nil)) (yas-expand)))
+  ;;(add-hook 'org-mode-hook
+  ;;    (lambda ()
+  ;;      (add-to-list 'org-tab-first-hook 'yas-org-very-safe-expand)
+  ;;      (define-key yas-keymap [tab] 'yas-next-field)))
+  ;;
+  ;; from https://tex.stackexchange.com/questions/340591/failed-to-preview-latex-in-emacs
+  ;;(defun yas/advise-indent-function (function-symbol)
+  ;;  (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+  ;;           ,(format
+  ;;             "Try to expand a snippet before point, then call `%s' as usual"
+  ;;             function-symbol)
+  ;;           (let ((yas-fallback-behavior nil))
+  ;;            (unless (and (called-interactively-p 'interactive)
+  ;;                          (yas-expand))
+  ;;              ad-do-it))
+  ;;)))
+  ;;(yas/advise-indent-function 'cdlatex-tab)
+  ;;(yas/advise-indent-function 'org-cycle)
+  ;;(yas/advise-indent-function 'org-try-cdlatex-tab)
+  (add-hook 'org-mode-hook 'yas/minor-mode-on)
   )
 
 
@@ -783,11 +834,11 @@ executable.")
   :ensure t
   :defer t
   )
-;; (use-package moe-theme
-;;   :ensure t
-;;   )
+(use-package moe-theme
+  :ensure t
+  )
 ;; ;;(moe-light)
-;; ;;(moe-dark)
+(moe-dark)
 ;; (use-package zenburn-theme
 ;;   :ensure t
 ;;   )
@@ -809,9 +860,9 @@ executable.")
 ;;(load-theme 'color-theme-sanityinc-tomorrow-niht t)
 ;;(load-theme 'color-theme-sanityinc-tomorrow-bright t)
 
-(use-package dracula-theme
-  :ensure t
-  )
+;; (use-package dracula-theme
+;;   :ensure t
+;;   )
 
 
 
@@ -1093,6 +1144,13 @@ executable.")
 
 ;; C++ irony mode and completion
 ;; from http://cachestocaches.com/2015/8/c-completion-emacs/
+
+(defun setup-c-clang-options ()
+  (setq irony-additional-clang-options (quote ("-std=c11"))))
+
+(defun setup-cpp-clang-options ()
+(setq irony-additional-clang-options (quote ("-std=c++14" "-stdlib=libc++"))))
+
 ;; == irony-mode ==
 (use-package irony
   :defer t
@@ -1111,6 +1169,9 @@ executable.")
       'irony-completion-at-point-async))
   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (progn
+    (add-hook 'c++-mode-hook 'setup-cpp-clang-options)
+    (add-hook 'c-mode-hook 'setup-c-clang-options))
   )
 
 
@@ -1193,7 +1254,9 @@ executable.")
 
 ;; clang-format
 (use-package clang-format
+  :ensure t
   :bind (([C-M-tab] . clang-format-region))
+  :commands clang-format clang-format-buffer clang-format-region
   )
 
 

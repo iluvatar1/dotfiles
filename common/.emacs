@@ -76,9 +76,6 @@
 ;; syntax highlight everywhere
 (global-font-lock-mode t)
 (transient-mark-mode t)
-(when window-system
-  (global-linum-mode t)
-  )
 ;; Show matching parens (mixed style)
 (show-paren-mode t)
 (setq show-paren-delay 0.0)

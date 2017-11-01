@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # contributor : William Oquendo (woquendo (at) gmail (dot) com )
 # name: problem
-# key: problem
+# key: prb
 # --
 % ${1:reference}
 \newproblem{
