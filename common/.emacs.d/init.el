@@ -27,7 +27,7 @@
 (load "server")
 (unless (server-running-p) (server-start))
 
-;; ;; packages
+;; ;; packages
 ;; (require 'package)
 ;; (setq package-enable-at-startup nil)
 ;; (when (>= emacs-major-version 24)
@@ -83,6 +83,142 @@
 ;;   )
 
 
+;; GENERAL CONFIG TO AVOID USING .emacs
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(display-time-mode 1)
+(display-battery-mode 1)
+(setq inhibit-startup-message t)
+(setq inhibit-splash-screen t); Disable splash screen
+(setq show-trailing-whitespace t)
+(setq longlines-show-hard-newlines t) ; displays "\" at the end of lines that wrap past the window's edge"
+(setq suggest-key-bindings t)
+(setq vc-follow-symlinks t) ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/General-VC-Options.html
+;; complete file name : Better try to use helm complete file name?
+(autoload 'comint-dynamic-complete-filename "comint" nil t)
+(global-set-key "\M-]" 'comint-dynamic-complete-filename)
+(setq visible-bell t); Flashes on error
+(setq calendar-week-start-day 1); Calendar should start on Monday
+;; camel case word navigation
+(when (boundp 'subword-mode)
+  (add-hook 'after-change-major-mode-hook '(lambda () (subword-mode 1))))
+(setq enable-local-variables :safe)
+(setq byte-compile-verbose nil)
+(setq comment-column 80)
+(setq compile-command "g++-5")
+(setq delete-selection-mode t)
+(setq keyboard-coding-system (quote utf-8-unix))
+(setq osx-clipboard-mode t)
+(delete-selection-mode 1)
+;; syntax highlight everywhere
+(global-font-lock-mode t)
+(transient-mark-mode t)
+(setq woman-locale "en_US.UTF-8")
+;; confirm exit
+(when window-system
+  (add-hook 'kill-emacs-query-functions
+	    (lambda () (y-or-n-p "Do you really want to exit Emacs? "))
+	    'append) )
+;; allow to write y or n instead of yes or no
+(fset 'yes-or-no-p 'y-or-n-p)
+;; reload file
+;;(global-set-key [(control c) r] 'revert-buffer)
+(global-set-key (kbd "C-c r") 'revert-buffer)
+;; all indent in spaces
+(setq indent-tabs-mode nil)
+;; compilation mode
+(setq compilation-scroll-output 'first-error)
+
+;; integrate copy/paste with X
+(setq x-select-enable-clipboard t)
+;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+
+;; from http://zeekat.nl/articles/making-emacs-work-for-me.html
+(when (not (window-system))
+  (xterm-mouse-mode +1))
+
+;; Oppening compressed files
+(auto-compression-mode 1)
+
+;; save command history
+(setq savehist-additional-variables    ;; also save...
+      '(kill-ring search-ring regexp-search-ring))    ;; ... my search entries
+(setq savehist-file "~/.emacs.d/savehist") ;; keep my home clean
+(savehist-mode 1) ;; customize and THEN activate mode
+
+;; ibuffer mode
+;;(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
+;; misc
+;;(setq mac-command-key-is-meta nil)
+(setq mac-option-key-is-meta nil)
+;;(setq mac-option-modifier 'meta)
+;;(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+(setq ns-function-modifier 'hyper)
+;;(add-to-list 'ido-ignore-files "\\.DS_Store")
+
+;; utf 8 support
+(prefer-coding-system 'utf-8)
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+;;(set-terminal-coding-system 'utf-8)
+;;(set-keyboard-coding-system 'utf-8)
+;;(prefer-coding-system 'utf-8)
+
+
+;; occur mode
+(global-set-key (kbd "C-c o") 'occur)
+
+
+
+;; ===== Automatically load abbreviations table =====
+;; Note that emacs chooses, by default, the filename
+;; "~/.abbrev_defs", so don't try to be too clever
+;; by changing its name
+(setq-default abbrev-mode t)
+(read-abbrev-file "~/.abbrev_defs")
+(setq save-abbrevs t)
+
+
+;; ========== Line by line scrolling ==========
+;; This makes the buffer scroll by only a single line when the up or
+;; down cursor keys push the cursor (tool-bar-mode) outside the
+;; buffer. The standard emacs behaviour is to reposition the cursor in
+;; the center of the screen, but this can make the scrolling confusing
+(setq scroll-step 1)
+
+
+;; emacs backup
+;; ========== Prevent Emacs from making backup files ==========
+;;(setq make-backup-files nil)
+;; ========== Place Backup Files in Specific Directory ==========
+;; Enable backup files.
+(setq make-backup-files t)
+;; Save all backup file in this directory.
+(setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
+;; Enable versioning with default values (keep five last versions, I think!)
+(setq version-control t)
+(setq delete-old-versions t)
+(setq kept-new-versions 6)
+(setq kept-old-versions 2)
+
+
+;; Fix tmux and emacs arrow problem
+;; http://stackoverflow.com/questions/4548106/screen-somehow-unmaps-my-arrow-keys-in-emacs-after-a-z
+(define-key function-key-map "\eOA" [up])
+(define-key function-key-map "\e[A" [up])
+(define-key function-key-map "\eOB" [down])
+(define-key function-key-map "\e[B" [down])
+(define-key function-key-map "\eOC" [right])
+(define-key function-key-map "\e[C" [right])
+(define-key function-key-map "\eOD" [left])
+(define-key function-key-map "\e[D" [left])
+
+
+
+;; Linum mode : Line number
 ;;(when window-system
 (use-package linum
   :ensure t
@@ -98,8 +234,6 @@
 ;;(fringe-mode 4) ;; both left and right 4 pixels
 ;;(fringe-mode '(4 . 0)) ;; left 4 pixels, right dissapears
 ;;(set-window-margins nil 1) ;; add a margin
-
-
 
 
 ;; winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations
@@ -277,6 +411,8 @@ executable.")
   ;; (setq org-startup-indented t)
   ;; (setq org-indent-mode t)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  (setq org-latex-image-default-width ".45\\textwidth")
+  (setq org-latex-images-centered nil)
   (setq org-latex-listings 'minted) ;; colored latex 
   (setq org-src-preserve-indentation t) ;; for preserving indentation when tangling
   (add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -293,6 +429,11 @@ executable.")
   (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape  -interaction nonstopmode' -pdf -bibtex -f %f"))
   (setq org-latex-to-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape  -interaction nonstopmode' -pdf -bibtex -f %f"))
   (setq org-todo-keywords '((sequence "TODO" "ONGOING" "WAIT"  "|" "DONE" )))
+  (defun my-org-mode-hook ()
+  (auto-fill-mode)
+  (electric-indent-mode)
+  (flyspell-mode))
+  (add-hook 'org-mode-hook 'my-org-mode-hook)
   (setq org-log-done 'time)
   (setq org-clock-persist 'history)
   (setq org-deadline-warning-days 21) ;; default value is 14
@@ -505,6 +646,13 @@ executable.")
   ;;(add-hook 'latex-mode-hook 'smartparens-mode 1)
   ;;(add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
   )
+;; ;; Show matching parens (mixed style)
+;; (show-paren-mode t)
+;; (setq show-paren-delay 0.0)
+;; (setq show-paren-mismatch t)
+;; (setq show-paren-style 'parenthesis)	; highlight just parens
+;; ;;(setq show-paren-style 'expression) ; highlight entire expression
+
 
 
 ;; align toalign regions, useful with latex tables, but sometimes annoying
@@ -655,6 +803,7 @@ executable.")
   :init
   (progn
     (setq reftex-plug-into-AUCTeX t)
+    (setq LaTeX-label-function (quote reftex-label))
     ;;(reftex-use-external-file-finders t)
     (setq reftex-enable-partial-scans t)
     (setq reftex-save-parse-info t)
@@ -741,11 +890,12 @@ executable.")
 
 
 ;; helm
-(use-package helm
+(use-package helm 
   :init
   (progn
     ;;(require 'helm-config)
     (setq helm-candidate-number-limit 100)
+    (setq enable-recursive-minibuffers t) ;; allows to use Complete at point
     ;;(helm-mode)
     )
   :bind (("C-c h" . helm-mini)
@@ -936,6 +1086,7 @@ executable.")
 (use-package ispell
   :defer 5
   :config
+  (setq ispell-highlight-face (quote flyspell-incorrect))
   (progn
     (cond
      ((executable-find "aspell")
@@ -1133,7 +1284,7 @@ executable.")
 (use-package flycheck
   :defer t
   :init
-  (custom-set-variables '(flycheck-indication-mode 'left-fringe))
+  ;;(custom-set-variables '(flycheck-indication-mode 'left-fringe))
   (global-flycheck-mode t)
   :config
   (add-hook 'prog-mode-hook 'flycheck-mode)
