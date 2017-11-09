@@ -11,3 +11,4 @@
 #+LATEX_HEADER: \usepackage[letterpaper,margin=2cm]{geometry}
 #   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
 #+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
+#+OPTIONS: tex:t
