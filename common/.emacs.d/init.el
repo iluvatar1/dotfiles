@@ -532,14 +532,14 @@ executable.")
   ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
   ;;(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
   ;;
-  ;; From https://github.com/joaotavora/yasnippet/blob/master/doc/snippet-expansion.org
-  (define-key yas-minor-mode-map (kbd "<tab>") nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
-  ;; will still call `self-insert-command' otherwise).
-  (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
-  ;;;; Bind `C-c y' to `yas-expand' ONLY.
-  ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+  ;; ;; From https://github.com/joaotavora/yasnippet/blob/master/doc/snippet-expansion.org
+  ;; (define-key yas-minor-mode-map (kbd "<tab>") nil)
+  ;; (define-key yas-minor-mode-map (kbd "TAB") nil)
+  ;; ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
+  ;; ;; will still call `self-insert-command' otherwise).
+  ;; (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
+  ;; ;;;; Bind `C-c y' to `yas-expand' ONLY.
+  ;; ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   )
 
 ;; auto insert templates
@@ -672,7 +672,7 @@ executable.")
 ;; cdlatex mode. NOTE: Generates problems with yasnippet completion
 (use-package cdlatex
   :config
-  (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
+  ;;(add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
   ;; from : https://joaotavora.github.io/yasnippet/faq.html#sec-2 // better this one
   ;; (add-hook 'cdlatex-mode-hook
@@ -1442,3 +1442,17 @@ executable.")
    ("rc$"              . conf-mode))
   )
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (helm-themes zenburn-theme yasnippet yaml-mode writegood-mode which-key w3m use-package underwater-theme symon solarized-theme smex smartparens smart-mode-line selected rainbow-delimiters powerline pov-mode pdf-tools page-break-lines outshine osx-clipboard org-pomodoro org-gcal names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hungry-delete htmlize helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb dracula-theme default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-package-update auctex-latexmk aggressive-indent))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

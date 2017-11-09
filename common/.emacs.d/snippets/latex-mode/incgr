@@ -3,5 +3,5 @@
 # name: include graphics
 # key: incgr
 # --
-\includegraphics[width=${1:widthscale}\textwidth]{${2:filename}}
+\includegraphics[width=${1:widthscale}\columnwidth]{${2:filename}}
       
