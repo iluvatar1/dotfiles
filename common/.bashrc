@@ -176,6 +176,10 @@ alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in
 
 bind -x '"\C-l": clear;'
 
+function url2pdf {
+	 chromium --headless --disable-gpu --sleepMillis=1000 --print-to-pdf=url.pdf "${1}"
+}
+
 # for gracegtk
 #export GRACEGTK_HOME=/usr/local/gracegtk 
 #export PATH=$PATH:/usr/local/gracegtk/bin
