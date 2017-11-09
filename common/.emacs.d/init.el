@@ -936,6 +936,11 @@ executable.")
 ;;(require 'helm-config)
 
 
+;; helm-themes : For color themes
+(use-package helm-themes
+  :ensure t
+)
+
 ;; bring up help for key bindings
 (use-package which-key
   :ensure t 
