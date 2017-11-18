@@ -1468,57 +1468,75 @@ executable.")
 
 
 ;; == company-mode ==
-;; (use-package company
-;;   :ensure t
-;;   :defer t
-;;   :init (add-hook 'after-init-hook 'global-company-mode)
-;;   (global-company-mode 1)
-;;   ;:bind ("C-;" . company-complete-common)
-;;   :bind ([(tab)] . company-complete-common)
-;;   :config
-;;   (add-hook 'prog-mode-hook 'company-mode)
-;;   (setq company-idle-delay              nil
-;; 	company-minimum-prefix-length   2
-;; 	company-show-numbers            t
-;; 	company-tooltip-limit           20
-;; 	company-dabbrev-downcase        nil
-;; 	company-backends                '((company-irony company-gtags company-abbrev company-clang company-files company-capf company-semantic company-cmake company-my-backend))
-;; 	;;(define-key c-mode-map  [(tab)] 'company-complete)
-;; 	;;(define-key c++-mode-map  [(tab)] 'company-complete)
-;; 	;;(add-to-list 'company-backends 'company-c-headers)
-;; 	;;(add-to-list 'company-c-headers-path-system "/usr/local/include/c++/5.3.0/")
-;; 	)
-;;   ;; from https://github.com/company-mode/company-mode/wiki/Writing-backends 
-;;   ;; http://sixty-north.com/blog/writing-the-simplest-emacs-company-mode-backend
-;;   (require 'cl-lib)
-;;   (require 'company)
-;;   ;; (defun company-my-backend (command &optional arg &rest ignored)
-;;   ;;   (pcase command
-;;   ;;     (`prefix (company-grab-symbol))
-;;   ;;     (`candidates (list "woquendo@gmail.com" "william.oquendo@unisabana.edu.co" "wfoquendo@unal.edu.co"))
-;;   ;;     (`meta (format "This value is named %s" arg)))
-;;   ;;   )
-;;   (defun company-simple-backend (command &optional arg &rest ignored)
-;;     (interactive (list 'interactive))
-;;     (cl-case command
-;;       (interactive (company-begin-backend 'company-simple-backend))
-;;       (prefix (when (looking-back "\N\\>")
-;;   		(match-string 0)))
-;;       (candidates (when (equal arg "\N")
-;;   		    (list "\NumSI{\}{}" "\NumSI" "\NumPre{\}{}")))
-;;       (meta (format "This value is named %s" arg)))
-;;     )
-;;   (defun company-sample-backend (command &optional arg &rest ignored)
-;;     (interactive (list 'interactive))
-;;     (cl-case command
-;;       (interactive (company-begin-backend 'company-sample-backend))
-;;       (prefix (when (looking-back "pgf\\>")
-;;   		(match-string 0)))
-;;       (candidates (when (equal arg "pgf")
-;;   		    (list "pgfmathsetmacro{\}{}" "\pgfmathrandoninteger{\}{}{}" "\pgfmathsetseed{}")))
-;;       (meta (format "This value is named %s" arg)))
-;;     )
-;;   )
+(use-package company
+  :ensure t
+  :defer t
+  :commands company-mode
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  ;;(global-company-mode 1)
+  ;:bind ("C-;" . company-complete-common)
+  (add-hook 'prog-mode-hook 'company-mode)
+  (add-hook 'LaTeX-mode-hook 'company-mode)
+  (add-hook 'org-mode-hook 'company-mode)
+  ;;:bind ([(tab)] . company-complete-common)
+  :config
+  (setq company-idle-delay              .1
+	company-minimum-prefix-length   2
+	company-show-numbers            t
+	company-tooltip-limit           20
+	company-dabbrev-downcase        nil
+	company-backends                '((company-irony company-gtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
+	;; (define-key c-mode-map  [(tab)] 'company-complete)
+	;; (define-key c++-mode-map  [(tab)] 'company-complete)
+	;; (add-to-list 'company-backends 'company-c-headers)
+	;; (add-to-list 'company-c-headers-path-system "/usr/local/include/c++/5.3.0/")
+	)
+
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (or (not yas-minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+              (company-complete-common)
+	    (indent-for-tab-command)))))
+  ;; Also these lines are useful to trigger the completion 
+  ;; pressing the key you want.
+  (global-set-key [backtab] 'tab-indent-or-complete)
+  
+  ;;   ;; from https://github.com/company-mode/company-mode/wiki/Writing-backends 
+  ;;   ;; http://sixty-north.com/blog/writing-the-simplest-emacs-company-mode-backend
+  ;;   (require 'cl-lib)
+  ;;   (require 'company)
+  ;;   ;; (defun company-my-backend (command &optional arg &rest ignored)
+  ;;   ;;   (pcase command
+  ;;   ;;     (`prefix (company-grab-symbol))
+  ;;   ;;     (`candidates (list "woquendo@gmail.com" "william.oquendo@unisabana.edu.co" "wfoquendo@unal.edu.co"))
+  ;;   ;;     (`meta (format "This value is named %s" arg)))
+  ;;   ;;   )
+  ;;   (defun company-simple-backend (command &optional arg &rest ignored)
+  ;;     (interactive (list 'interactive))
+  ;;     (cl-case command
+  ;;       (interactive (company-begin-backend 'company-simple-backend))
+  ;;       (prefix (when (looking-back "\N\\>")
+  ;;   		(match-string 0)))
+  ;;       (candidates (when (equal arg "\N")
+  ;;   		    (list "\NumSI{\}{}" "\NumSI" "\NumPre{\}{}")))
+  ;;       (meta (format "This value is named %s" arg)))
+  ;;     )
+  ;;   (defun company-sample-backend (command &optional arg &rest ignored)
+  ;;     (interactive (list 'interactive))
+  ;;     (cl-case command
+  ;;       (interactive (company-begin-backend 'company-sample-backend))
+  ;;       (prefix (when (looking-back "pgf\\>")
+  ;;   		(match-string 0)))
+  ;;       (candidates (when (equal arg "pgf")
+  ;;   		    (list "pgfmathsetmacro{\}{}" "\pgfmathrandoninteger{\}{}{}" "\pgfmathsetseed{}")))
+  ;;       (meta (format "This value is named %s" arg)))
+  ;;     )
+  )
 ;; (add-to-list 'company-backends 'company-my-backend)
 ;; (add-to-list 'company-backends 'company-simple-backend)
 ;; (add-to-list 'company-backends 'company-sample-backend)
