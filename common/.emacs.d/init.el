@@ -761,16 +761,26 @@ executable.")
 
 
 ;;smartparens
+;; Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 (use-package smartparens
   :ensure t
   ;;:defer t
+  :commands smartparens-mode
   :config
-  ;;(add-hook 'prog-mode-hook 'smartparens-mode) ; ; ;
+  (add-hook 'prog-mode-hook 'smartparens-mode) ; ; ;
+  (add-hook 'org-mode-hook 'smartparens-mode) ; ; ;
   ;;(add-hook 'latex-mode-hook 'smartparens-mode 1)
-  ;;(add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
+  (add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
+  (show-smartparens-global-mode t)
+  (sp-local-pair 'org-mode "_" "_" )
+  (sp-local-pair 'latex-mode "$" "$" )
+  (sp-local-pair 'latex-mode "\\left(" "\\right)" :trigger "\\l(")
+  ;; highligh matching brackets
+  (show-paren-mode 1) 
+  (setq show-paren-style 'expression)
   )
 ;; ;; Show matching parens (mixed style)
-;; (show-paren-mode t)
+(show-paren-mode t)
 ;; (setq show-paren-delay 0.0)
 ;; (setq show-paren-mismatch t)
 ;; (setq show-paren-style 'parenthesis)	; highlight just parens
