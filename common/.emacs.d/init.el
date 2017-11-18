@@ -344,6 +344,18 @@
   :defer t)
 
 
+;; aggressive indent
+(use-package aggressive-indent
+  ;;:ensure t
+  :config
+  ;;(global-aggressive-indent-mode 1)
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+  (add-hook 'css-mode-hook #'aggressive-indent-mode)
+  (add-hook 'org-mode-hook #'aggressive-indent-mode)
+  (add-hook 'prog-mode-hook #'aggressive-indent-mode)
+  (add-hook 'LaTeX-mode-hook #'aggressive-indent-mode)
+)
+
 ;; recent file mode
 (use-package recentf
   :config
