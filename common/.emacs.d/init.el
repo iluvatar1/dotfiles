@@ -936,13 +936,12 @@ executable.")
   :after latex
   :ensure t
   :commands turn-on-reftex
+  :bind ("C-c =" . reftex-toc)
   :init
   (progn
     (setq reftex-plug-into-AUCTeX t)
     (setq LaTeX-label-function (quote reftex-label))
     ;;(reftex-use-external-file-finders t)
-    (setq reftex-enable-partial-scans t)
-    (setq reftex-save-parse-info t)
     (setq reftex-use-multiple-selection-buffers t)
     ;;(setq reftex-default-bibliography '("./biblio.bib"))
     (setq reftex-default-bibliography
@@ -960,6 +959,12 @@ executable.")
   :config
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (add-hook 'latex-mode-hook 'turn-on-reftex)
+  (setq reftex-cite-prompt-optional-args t) ; Prompt for empty optional arguments in cite
+  ;; https://www.gnu.org/software/emacs/manual/html_mono/reftex.html
+  (setq reftex-enable-partial-scans t)
+  (setq reftex-keep-temporary-buffers nil)
+  (setq reftex-save-parse-info t)
+  (setq reftex-trust-label-prefix '("fig:" "eq:"))
   )
 ;; Auto-fill for LaTeX
 (defun schnouki/latex-auto-fill ()
