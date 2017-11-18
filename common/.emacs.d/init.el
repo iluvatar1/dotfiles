@@ -365,13 +365,14 @@
   ;; disable recentf-cleanup on Emacs start, because it can cause
   ;; problems with remote files
   (setq recentf-auto-cleanup 'never)
-  (recentf-mode +1))
+  (recentf-mode +1)
+  )
 
 
 ;; from : http://cestlaz.github.io/posts/using-emacs-17-misc/#.WBUKRpMrKHp
 ;; flashes the cursor's line when you scroll
 (use-package beacon
-  :ensure t
+  :defer 2
   :config
   (beacon-mode 1)
   ;; this color looks good for the zenburn theme but not for the one
@@ -445,7 +446,7 @@
 
 ;; power line
 (use-package powerline
-  :ensure t
+  :defer t
   :config
   (powerline-center-theme)
   ;;(powerline-default-theme)
@@ -638,9 +639,10 @@ executable.")
 ;; yasnippet
 ;; from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 (use-package yasnippet
-  :ensure t
-  :init
-  (yas-global-mode 1)
+  ;;:ensure t
+  :defer t
+  ;;:init
+  ;;(yas-global-mode 1)
   :config 
   (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
   (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
@@ -788,6 +790,7 @@ executable.")
 
 ;; cdlatex mode. NOTE: Generates problems with yasnippet completion
 (use-package cdlatex
+  :defer t
   :config
   ;;(add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
@@ -916,6 +919,8 @@ executable.")
 
 ;;; see : http://www.clarkdonley.com/blog/2014-10-26-org-mode-and-writing-papers-some-tips.html
 (use-package reftex
+  :after latex
+  :ensure t
   :commands turn-on-reftex
   :init
   (progn
@@ -994,7 +999,7 @@ executable.")
 
 ;; pages bvreak lines mode with ctrl+q ctrl+l
 (use-package page-break-lines
-  :ensure t
+  :defer 5
   :config (global-page-break-lines-mode))
 
 
@@ -1008,13 +1013,7 @@ executable.")
 
 ;; helm
 (use-package helm 
-  :init
-  (progn
-    ;;(require 'helm-config)
-    (setq helm-candidate-number-limit 100)
-    (setq enable-recursive-minibuffers t) ;; allows to use Complete at point
-    ;;(helm-mode)
-    )
+  :defer t
   :bind (("C-c h" . helm-mini)
 	 ("C-h a" . helm-apropos)
 	 ("C-x C-b" . helm-buffers-list)
@@ -1053,12 +1052,12 @@ executable.")
 
 ;; helm-themes : For color themes
 (use-package helm-themes
-  :ensure t
+  :defer t
 )
 
 ;; bring up help for key bindings
 (use-package which-key
-  :ensure t 
+  :defer t 
   :config
   (which-key-mode))
 
@@ -1106,20 +1105,20 @@ executable.")
   :ensure t
   :defer t
   )
-(use-package moe-theme
-  :ensure t
-  )
+;; (use-package moe-theme
+;;   :ensure t
+;;   )
 ;; ;;(moe-light)
-(moe-dark)
+;;(moe-dark)
 ;; (use-package zenburn-theme
 ;;   :ensure t
 ;;   )
 ;; ;(load-theme 'zenburn t)
 
-;; (use-package leuven-theme
-;;   :ensure t
-;;   )
-;; (load-theme 'leuven t)
+(use-package leuven-theme
+  :defer t
+  )
+(load-theme 'leuven t)
 ;; ;; (use-package leuven-theme-dark
 ;; ;;   :ensure t
 ;; ;;   )
@@ -1179,12 +1178,31 @@ executable.")
   :defer t
   :config 
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'latex-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'LaTeX-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   )
+
+
+;; highlight
+(use-package highlight-symbol
+  :ensure t
+  :commands highlight-symbol-mode
+  :init
+  (add-hook 'prog-mode-hook #'highlight-symbol-mode)
+  (add-hook 'matlab-mode-hook #'highlight-symbol-mode))
+(use-package highlight-parentheses
+  :ensure t
+  :commands highlight-parentheses-mode
+  :init
+  (add-hook 'prog-mode-hook 'highlight-parentheses-mode)
+  (add-hook 'org-mode-hook 'highlight-parentheses-mode)
+  (add-hook 'LaTeX-mode-hook 'highlight-parentheses-mode)
+  (add-hook 'python-mode-hook 'highlight-parentheses-mode))
+
 
 ;; tags for code navigation
 (use-package ggtags
-  :ensure t
+  :defer t
   :config 
   (add-hook 'c-mode-common-hook
 	    (lambda ()
@@ -1195,7 +1213,7 @@ executable.")
 
 ;; aggressive-indent
 (use-package aggressive-indent
-  :defer t
+  :defer 1
   :config
   ;;(add-hook 'prog-mode-hook #'global-aggressive-indent-mode)
   (add-hook 'latex-mode-hook #'global-aggressive-indent-mode)
@@ -1269,8 +1287,8 @@ executable.")
 
 ;;htmlize for org html source code export
 (use-package htmlize
-  ;;  :defer t
-  :ensure t
+  :defer t
+  ;;:ensure t
   )
 
 
@@ -1348,8 +1366,9 @@ executable.")
 
 ;; Camel case words browsed right
 (use-package subword
+  :defer t
   :diminish subword-mode
-  :init
+  :config
   (global-subword-mode)
   )
 
@@ -1404,11 +1423,11 @@ executable.")
 
 ;; flycheck
 (use-package flycheck
-  :defer t
-  :init
+  :defer 2
+  ;; :init
   ;;(custom-set-variables '(flycheck-indication-mode 'left-fringe))
-  (global-flycheck-mode t)
   :config
+  (global-flycheck-mode t)
   (add-hook 'prog-mode-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'flycheck-mode)
