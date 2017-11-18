@@ -1138,14 +1138,14 @@ executable.")
 
 
 ;; from http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
-;(use-package whitespace
-;  :bind (("C-c T w" . whitespace-mode))
-;  :init
-;  (dolist (hook '(prog-mode-hook text-mode-hooki
-;				 conf-mode-hook))
-;    (add-hook hook #'whitespace-mode))
-;  :config (setq whitespace-line-column nil)
-;  :diminish whitespace-mode)
+                                                                                ;(use-package whitespace
+                                                                                ;  :bind (("C-c T w" . whitespace-mode))
+                                                                                ;  :init
+                                                                                ;  (dolist (hook '(prog-mode-hook text-mode-hooki
+                                                                                ;				 conf-mode-hook))
+                                                                                ;    (add-hook hook #'whitespace-mode))
+                                                                                ;  :config (setq whitespace-line-column nil)
+                                                                                ;  :diminish whitespace-mode)
 
 
 ;; ECB
@@ -1307,6 +1307,19 @@ executable.")
 ;;(require 'w3m)
 
 
+;; web mode
+(use-package web-mode
+  :ensure t
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.css\\'" . web-mode)
+         ("\\.js\\'" . web-mode)
+         ("\\.mustache\\'" . web-mode))
+  :config
+  (add-hook 'web-mode-hook 'smartparens-mode)
+  (use-package smartparens-html)
+  )
+
+
 ;;quick access hacker news
 (defun hn ()
   (interactive)
@@ -1349,12 +1362,12 @@ executable.")
 
 
 ;; esup for profiling emacs startup
-;;(use-package esup
-;;  :ensure t)
+(use-package esup
+  :ensure t)
 ;;(require 'esup-child)
 ;;(require 'cl-lib)
 ;; 
-;; BETTER TO USE    https://www.emacswiki.org/emacs/ProfileDotEmacs
+;; ALSO CAN USE    https://www.emacswiki.org/emacs/ProfileDotEmacs
 
 (use-package tramp
   :defer t
