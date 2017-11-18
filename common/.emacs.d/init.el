@@ -26,40 +26,20 @@
 (add-to-list 'exec-path "/Library/TeX/texbin/")
 ;;(add-to-list 'exec-path "/Users/oquendo/anaconda2/bin/")
 
-(load "server")
-(unless (server-running-p) (server-start))
-
 ;; ;; packages
-;; (require 'package)
-;; (setq package-enable-at-startup nil)
-;; (when (>= emacs-major-version 24)
-;;   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-;;   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;   (setq package-enable-at-startup nil)
-;;   )
-;; (when (< emacs-major-version 24)
-;;   ;; For important compatibility libraries like cl-lib
-;;   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-;; (unless (package-installed-p 'use-package)
-;;   (package-install 'use-package))
-;; (package-initialize)
-;; (setq use-package-verbose t)
-;; (use-package auto-compile
-;;   :config (auto-compile-on-load-mode))
+;; (setq use-package-verbose t) ;; make startup slower
 ;; (setq load-prefer-newer t)
 
 ;; from http://cachestocaches.com/2015/8/getting-started-use-package/
 (require 'package)
 (setq package-enable-at-startup nil)
+(package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)
@@ -67,8 +47,8 @@
 
 ;;https://github.com/rranelli/auto-package-update.el
 ;; run: M-x auto-package-update-now
-;;(use-package auto-package-update
-;;  :ensure t)
+(use-package auto-package-update
+ :defer 5)
 
 
 ;; Organizing packages automatically
