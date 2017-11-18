@@ -210,12 +210,121 @@
 (define-key function-key-map "\eOD" [left])
 (define-key function-key-map "\e[D" [left])
 
+
+;; autocompile
+;; See: https://github.com/youngker/emacs.d/blob/master/init.el#L153
+(use-package auto-compile
+  :commands (auto-compile-on-load-mode
+             auto-compile-on-save-mode)
+  :config
+  (setq load-prefer-newer t)
+  (auto-compile-on-load-mode)
+(auto-compile-on-save-mode))
+
+
+;; hydra mode
+;; Check : https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
+(use-package hydra
+  :ensure t
+  :bind
+  (("C-c C-w" . hydra-window-resize/body)
+   ("C-x C-o" . hydra-outline/body)
+   ("C-x C-m " . multiple-cursors-hydra/body))
+  ;; :config
+  ;; (require 'hydra-examples)
+  ;; (hydra-create "<f2>"
+  ;; 		'(("g" text-scale-increase)
+  ;; 		  ("l" text-scale-decrease)))
+  :config
+  (defun my-funcs/resize-window-down ()
+    "Resize a window downwards."
+    (interactive)
+    (if (window-in-direction 'below)
+        (enlarge-window 1)
+      (shrink-window 1)))
+  (defun my-funcs/resize-window-up ()
+    "Resize a window upwards."
+    (interactive)
+    (if (window-in-direction 'above)
+        (enlarge-window 1)
+      (shrink-window 1)))
+  (defun my-funcs/resize-window-left ()
+    "Resize a window leftwards."
+    (interactive)
+    (if (window-in-direction 'left)
+        (enlarge-window-horizontally 1)
+      (shrink-window-horizontally 1)))
+  (defun my-funcs/resize-window-right ()
+    "Resize a window rightwards."
+    (interactive)
+    (if (window-in-direction 'right)
+        (enlarge-window-horizontally 1)
+      (shrink-window-horizontally 1)))
+  (defhydra hydra-window-resize (global-map "C-c w")
+    "Window resizing"
+    ("j" my-funcs/resize-window-down "down")
+    ("k" my-funcs/resize-window-up "up")
+    ("l" my-funcs/resize-window-right "right")
+    ("h" my-funcs/resize-window-left "left"))
+  (defhydra hydra-outline (:color pink :hint nil)
+    "
+ ^Hide^             ^Show^           ^Move
+ ^^^^^^------------------------------------------------------
+ _q_: sublevels     _a_: all         _u_: up
+ _t_: body          _e_: entry       _n_: next visible
+ _o_: other         _i_: children    _p_: previous visible
+ _c_: entry         _k_: branches    _f_: forward same level
+ _l_: leaves        _s_: subtree     _b_: backward same level
+ _d_: subtree   _<tab>_: cycle
+ "
+    ;; Hide
+    ("q" hide-sublevels)  ; Hide everything but the top-level headings
+    ("t" hide-body)    ; Hide everything but headings (all body lines)
+    ("o" hide-other)   ; Hide other branches
+    ("c" hide-entry)   ; Hide this entry's body
+    ("l" hide-leaves)  ; Hide body lines in this entry and sub-entries
+    ("d" hide-subtree) ; Hide everything in this entry and sub-entries
+    ;; Show
+    ("a" show-all)                      ; Show (expand) everything
+    ("e" show-entry)                    ; Show this heading's body
+    ("i" show-children) ; Show this heading's immediate child sub-headings
+    ("k" show-branches) ; Show all sub-headings under this heading
+    ("s" show-subtree) ; Show (expand) everything in this heading & below
+    ("<tab>" org-cycle)
+    ;; Move
+    ("u" outline-up-heading)               ; Up
+    ("n" outline-next-visible-heading)     ; Next
+    ("p" outline-previous-visible-heading) ; Previous
+    ("f" outline-forward-same-level)       ; Forward - same level
+    ("b" outline-backward-same-level)      ; Backward - same level
+    ("z" nil "leave"))
+  
+  (defhydra multiple-cursors-hydra (:hint nil)
+    "
+      ^Up^            ^Down^        ^Other^
+ ----------------------------------------------
+ [_p_]   Next    [_n_]   Next    [_l_] Edit lines
+ [_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+ [_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
+ ^ ^             ^ ^             [_q_] Quit
+ "
+    ("l" mc/edit-lines :exit t)
+    ("a" mc/mark-all-like-this :exit t)
+    ("n" mc/mark-next-like-this)
+    ("N" mc/skip-to-next-like-this)
+    ("M-n" mc/unmark-next-like-this)
+    ("p" mc/mark-previous-like-this)
+    ("P" mc/skip-to-previous-like-this)
+    ("M-p" mc/unmark-previous-like-this)
+    ("r" mc/mark-all-in-region-regexp :exit t)
+    ("q" nil))
+  )
 
 
 ;; Linum mode : Line number
 ;;(when window-system
 (use-package linum
-  :ensure t
+  :defer 2
   :config
   (line-number-mode 1)
   (column-number-mode 1)
