@@ -65,6 +65,18 @@
 ;;   )
 
 
+;; server
+;; Check: https://github.com/youngker/emacs.d/blob/master/init.el#L146
+(use-package server
+  :ensure nil
+  :commands server-running-p
+  :config
+  (unless (server-running-p)
+    (server-start)))
+;;(load "server")
+;;(unless (server-running-p) (server-start))
+
+
 ;; GENERAL CONFIG TO AVOID USING .emacs
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (display-time-mode 1)
