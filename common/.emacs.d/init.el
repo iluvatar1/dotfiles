@@ -1046,6 +1046,8 @@ executable.")
 	 ("C-x c b" . my/helm-do-grep-book-notes)
 	 ("C-x c SPC" . helm-all-mark-rings))
   :config
+  (setq helm-candidate-number-limit 100)
+  (setq enable-recursive-minibuffers t) ;; allows to use Complete at point
   ;; from http://tuhdo.github.io/helm-intro.html
   ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
   ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
