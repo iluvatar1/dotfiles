@@ -1,0 +1,12 @@
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# scape
+#"\e[1;5D": backward-word
+#"\e[1;5C": forward-word
+
+# alt
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+"\eh": backward-kill-word # iterm2 : make left option send esc+
