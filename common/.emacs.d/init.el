@@ -68,7 +68,7 @@
 ;; server
 ;; Check: https://github.com/youngker/emacs.d/blob/master/init.el#L146
 (use-package server
-  :ensure nil
+  :ensure t
   :commands server-running-p
   :config
   (unless (server-running-p)
