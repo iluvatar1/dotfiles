@@ -1231,6 +1231,18 @@ executable.")
 		(ggtags-mode 1))))
   )
 
+;; deactivated because currently I really dont know if I need it
+;; ;; rtags from https://geokon-gh.github.io/.emacs.d/
+;; (use-package rtags
+;;   :config
+;;   (rtags-enable-standard-keybindings)
+;;   (setq rtags-autostart-diagnostics t)
+;;   (rtags-diagnostics)
+;;   (setq rtags-completions-enabled t)
+;;   (rtags-start-process-unless-running)
+;;   )
+
+
 
 ;; aggressive-indent
 (use-package aggressive-indent
@@ -1509,7 +1521,7 @@ executable.")
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   ;;(global-company-mode 1)
-  ;:bind ("C-;" . company-complete-common)
+  ;;:bind ("C-;" . company-complete-common)
   (add-hook 'prog-mode-hook 'company-mode)
   (add-hook 'LaTeX-mode-hook 'company-mode)
   (add-hook 'org-mode-hook 'company-mode)
@@ -1520,7 +1532,7 @@ executable.")
 	company-show-numbers            t
 	company-tooltip-limit           20
 	company-dabbrev-downcase        nil
-	company-backends                '((company-irony company-gtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
+	company-backends                '((company-irony company-gtags company-rtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
 	;; (define-key c-mode-map  [(tab)] 'company-complete)
 	;; (define-key c++-mode-map  [(tab)] 'company-complete)
 	;; (add-to-list 'company-backends 'company-c-headers)
