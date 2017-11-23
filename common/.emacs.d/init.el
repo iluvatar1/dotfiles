@@ -765,7 +765,7 @@ executable.")
 (use-package smartparens
   :ensure t
   ;;:defer t
-  :commands smartparens-mode
+  ;;:commands smartparens-mode
   :config
   (add-hook 'prog-mode-hook 'smartparens-mode) ; ; ;
   (add-hook 'org-mode-hook 'smartparens-mode) ; ; ;
@@ -773,8 +773,9 @@ executable.")
   (add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
   (show-smartparens-global-mode t)
   (sp-local-pair 'org-mode "_" "_" )
-  (sp-local-pair 'latex-mode "$" "$" )
-  (sp-local-pair 'latex-mode "\\left(" "\\right)" :trigger "\\l(")
+  (sp-local-pair 'org-mode "$" "$" )
+  (sp-local-pair 'LaTeX-mode "$" "$" )
+  (sp-local-pair 'LaTeX-mode "\\left(" "\\right)" :trigger "\\l(")
   ;; highligh matching brackets
   (show-paren-mode 1) 
   (setq show-paren-style 'expression)
