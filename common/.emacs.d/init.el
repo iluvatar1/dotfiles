@@ -625,7 +625,16 @@ executable.")
 	   :tend "\\end{tabular}"
 	   :lstart "" :lend " \\\\" :sep " & "
 	   :efmt "%s\\,(%s)" :hline "\\hline")))
-        (orgtbl-to-generic table (org-combine-plists params2 params))))
+    (orgtbl-to-generic table (org-combine-plists params2 params))))
+
+
+;; org bullets
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+
 
 ;; ;; org pomodoro
 ;; (use-package org-pomodoro
