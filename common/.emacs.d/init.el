@@ -361,15 +361,16 @@
 
 ;; aggressive indent
 (use-package aggressive-indent
-  ;;:ensure t
+  :defer 1
   :config
   ;;(global-aggressive-indent-mode 1)
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'css-mode-hook #'aggressive-indent-mode)
-  (add-hook 'org-mode-hook #'aggressive-indent-mode)
+  ;; (add-hook 'org-mode-hook #'aggressive-indent-mode) ;; does not help when creating new sections
   (add-hook 'prog-mode-hook #'aggressive-indent-mode)
   (add-hook 'LaTeX-mode-hook #'aggressive-indent-mode)
-)
+  )
+
 
 ;; recent file mode
 (use-package recentf
@@ -633,7 +634,7 @@ executable.")
 ;;   :config
 ;;   (setq alert-user-configuration (quote ((((:category . "org-pomodoro")) libnotify nil)))))
 
- 
+
 ;; ;; org-gcal : http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WIyKvLYrKHq
 ;; (setq package-check-signature nil)
 ;; (use-package org-gcal
@@ -1258,15 +1259,6 @@ executable.")
 ;;   (rtags-start-process-unless-running)
 ;;   )
 
-
-
-;; aggressive-indent
-(use-package aggressive-indent
-  :defer 1
-  :config
-  ;;(add-hook 'prog-mode-hook #'global-aggressive-indent-mode)
-  (add-hook 'latex-mode-hook #'global-aggressive-indent-mode)
-  )
 
 
 ;; ispell mode and hooks
