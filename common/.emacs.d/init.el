@@ -321,6 +321,18 @@
   )
 
 
+;; dired, from : http://cestlaz.github.io/posts/using-emacs-38-dired/#.Whg1B1Hdxcw.reddit
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
+;; regex without much scapes
+(use-package pcre2el
+  :ensure t
+  :config 
+  (pcre-mode)
+  )
+
 ;; Linum mode : Line number
 ;;(when window-system
 (use-package linum
@@ -1655,7 +1667,7 @@ executable.")
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (diminish helm-themes zenburn-theme yasnippet yaml-mode writegood-mode which-key w3m use-package underwater-theme symon solarized-theme smex smartparens smart-mode-line selected rainbow-delimiters powerline pov-mode pdf-tools page-break-lines outshine osx-clipboard org-pomodoro org-gcal names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hungry-delete htmlize helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb dracula-theme default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-package-update auctex-latexmk aggressive-indent)))
+    (smartparens-html diminish helm-themes zenburn-theme yasnippet yaml-mode writegood-mode which-key w3m use-package underwater-theme symon solarized-theme smex smartparens smart-mode-line selected rainbow-delimiters powerline pov-mode pdf-tools page-break-lines outshine osx-clipboard org-pomodoro org-gcal names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hungry-delete htmlize helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb dracula-theme default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-package-update auctex-latexmk aggressive-indent)))
  '(reb-re-syntax (quote string)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
