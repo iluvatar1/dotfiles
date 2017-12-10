@@ -407,6 +407,14 @@
   )
   #+END_SRC
 
+* Expand Region
+  expand the marked region in semantic increments (negative prefix to reduce region)
+  #+BEGIN_SRC emacs-lisp
+  (use-package expand-region
+  :ensure t
+  :config 
+  (global-set-key (kbd "C-=") 'er/expand-region))
+  #+END_SRC
 * [DEACTIVATED - too much hungry] Hungry delete: deletes all the whitespace when you hit backspace or delete
   #+BEGIN_SRC emacs-lisp
 ;(use-package hungry-delete
