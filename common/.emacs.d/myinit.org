@@ -656,6 +656,18 @@ executable.")
   ;; 	  ;; other commands here
   ;; 	  ))
   (setf (nth 4 org-emphasis-regexp-components) 4)
+  ;; skeleton : http://orgmode.org/worg/org-contrib/babel/how-to-use-Org-Babel-for-R.html
+  (define-skeleton org-skeleton
+  "Header info for a emacs-org file."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Your Name\n"
+  "#+email: your-email@server.com\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes \n"
+  "-----"
+  )
+  (global-set-key [C-S-f4] 'org-skeleton)
   )
 ;;(set 'org-file-apps '((auto-mode . emacs) ... ("\\.pdf\\'" . default)))
 ;; org habits
