@@ -20,8 +20,10 @@
   (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
+(use-package diminish
+  :ensure t)
+(use-package bind-key
+  :ensure t)
 
 ;;https://github.com/rranelli/auto-package-update.el
 ;; run: M-x auto-package-update-now
