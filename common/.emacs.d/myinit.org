@@ -230,7 +230,17 @@
   )
   #+END_SRC
 
-* Spaceline
+* Modeline
+** [DEACTIVATED] power line
+  #+BEGIN_SRC emacs-lisp :exports none
+  (use-package powerline
+  :defer t
+  :config
+  (powerline-center-theme)
+  ;;(powerline-default-theme)
+  )  
+  #+END_SRC
+** Spaceline
   #+BEGIN_SRC emacs-lisp
   (use-package spaceline
   :ensure t
@@ -530,16 +540,6 @@
   )
   #+END_SRC
   
-* power line
-  #+BEGIN_SRC emacs-lisp
-(use-package powerline
-  :defer t
-  :config
-  (powerline-center-theme)
-  ;;(powerline-default-theme)
-  )  
-  #+END_SRC
-
 * Fill column indicator
   #+BEGIN_SRC emacs-lisp
   ;; (use-package fill-column-indicator
