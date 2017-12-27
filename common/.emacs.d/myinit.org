@@ -387,18 +387,20 @@
   :defer t)  
   #+END_SRC
 
-* Aggressive indent
-  #+BEGIN_SRC emacs-lisp  
-(use-package aggressive-indent
-  :defer 1
-  :config
-  ;;(global-aggressive-indent-mode 1)
-  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-  (add-hook 'css-mode-hook #'aggressive-indent-mode)
-  ;; (add-hook 'org-mode-hook #'aggressive-indent-mode) ;; does not help when creating new sections
-  (add-hook 'prog-mode-hook #'aggressive-indent-mode)
-  (add-hook 'LaTeX-mode-hook #'aggressive-indent-mode)
-  )
+* [DEACTIVATED] Agressive indent
+#   #+BEGIN_SRC emacs-lisp  
+# (use-package aggressive-indent
+#   :defer 1
+#   :config
+#   ;;(global-aggressive-indent-mode 1)
+#   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+#   (add-hook 'css-mode-hook #'aggressive-indent-mode)
+#   ;; (add-hook 'org-mode-hook #'aggressive-indent-mode) ;; does not help when creating new sections
+#   (add-hook 'prog-mode-hook #'aggressive-indent-mode)
+#   (add-hook 'LaTeX-mode-hook #'aggressive-indent-mode)
+#   )
+#   #+END_SRC
+
 * Code folding
   From :
   https://github.com/mwfogleman/.emacs.d/blob/master/michael.org#hideshow
