@@ -363,24 +363,37 @@
   #+END_SRC
 
 * Linum mode : Line number
+** nlinum: Much faster than linum
   #+BEGIN_SRC emacs-lisp
-  ;;(when window-system
-(use-package linum
-  :defer 2
-  :config
-  (line-number-mode 1)
-  (column-number-mode 1)
-  (global-linum-mode 1)
-  (setq linum-format "%3d \u2502 ")
+(use-package nlinum
+  :ensure t
+  :config 
+  (global-nlinum-mode 1)
   )
- ;;)
-;;(global-hl-line-mode 1)
-;; config fringe
-;;(fringe-mode 4) ;; both left and right 4 pixels
-;;(fringe-mode '(4 . 0)) ;; left 4 pixels, right dissapears
-;;(set-window-margins nil 1) ;; add a margin
   #+END_SRC
 
+** Linum mode: Dot not use, is very slow for large files  
+  # #+BEGIN_SRC emacs-lisp
+  # ;;(when window-system
+  # ;; linum is versy slow with large files
+  # ;;(use-package linum
+  # ;;  :defer 2
+  # ;;  :config
+  # ;;  (line-number-mode 1)
+  # ;;  (column-number-mode 1)
+  # ;;  (global-linum-mode 1)
+  # ;;  (setq linum-format "%3d \u2502 ")
+  # ;;  )
+  # ;;)
+  # #+END_SRC
+** Old manual config, not so adaptable
+  # #+BEGIN_SRC emacs-lisp
+  # ;;(global-hl-line-mode 1)
+  # ;; config fringe
+  # ;;(fringe-mode 4) ;; both left and right 4 pixels
+  # ;;(fringe-mode '(4 . 0)) ;; left 4 pixels, right dissapears
+  # ;;(set-window-margins nil 1) ;; add a margin
+  # #+END_SRC
 * winner-mode lets you use C-c <left> and C-c <right> to switch between window configurations\
   #+BEGIN_SRC emacs-lisp
 (use-package winner
@@ -732,7 +745,14 @@ executable.")
   #+END_SRC
 
 ** [DEACTIVATED] Org gcal
+   I need to find a way to store the password authenticated
   #+BEGIN_SRC emacs-lisp
+;; ;; check http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WG52MOtj0wE.reddit
+;;(if  (file-exists-p "~/.emacs_gcal_config")
+;;     (load "~/.emacs_gcal_config")
+;;   )
+
+
 ;; ;; org-gcal : http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WIyKvLYrKHq
 ;; (setq package-check-signature nil)
 ;; (use-package org-gcal
