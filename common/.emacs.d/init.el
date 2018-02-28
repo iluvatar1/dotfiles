@@ -30,9 +30,9 @@
 (use-package auto-package-update
   :defer 5)
 
-;; from http://cestlaz.github.io/posts/using-emacs-1-setup/
-(use-package try
-  :ensure t)
+;;; from http://cestlaz.github.io/posts/using-emacs-1-setup/
+;;(use-package try
+;;  :ensure t)
 
 ;; Organizing packages automatically
 ;;https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/
