@@ -6,9 +6,15 @@
 #+LATEX_HEADER: \usepackage{enumerate}
 #+LATEX_HEADER: \usepackage{multicol}
 #+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{fancyhdr}
 #+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \usepackage{wrapfig}
+#+LATEX_HEADER: \usepackage{tcolorbox}
+#+LATEX_HEADER: \usepackage{pgfplots}
 # Fix the margins
-#+LATEX_HEADER: \usepackage[letterpaper,margin=2cm]{geometry}
+#+LATEX_HEADER: \usepackage[letterpaper,margin=2.5cm]{geometry}
+#+LATEX_HEADER:\pagestyle{fancy}
 #   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
+#+LATEX_HEADER: \usepackage{lmodern}
 #+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
 #+OPTIONS: tex:t
