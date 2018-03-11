@@ -180,7 +180,10 @@
 (setq scroll-step 1)   
    #+END_SRC
 
-
+** Speed up scrolling
+   #+BEGIN_SRC emacs-lisp
+   (setq auto-window-vscroll nil)   
+   #+END_SRC
 ** emacs backup
    #+BEGIN_SRC emacs-lisp
    ;; ========== Prevent Emacs from making backup files ==========
@@ -1169,24 +1172,24 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 * smartparens
 Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 #+BEGIN_SRC emacs-lisp
-(use-package smartparens
-  :ensure t
-  ;;:defer t
-  ;;:commands smartparens-mode
-  :config
-  (add-hook 'prog-mode-hook 'smartparens-mode) ; ; ;
-  (add-hook 'org-mode-hook 'smartparens-mode) ; ; ;
-  ;;(add-hook 'latex-mode-hook 'smartparens-mode 1)
-  (add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
-  (show-smartparens-global-mode t)
-  (sp-local-pair 'org-mode "_" "_" )
-  (sp-local-pair 'org-mode "$" "$" )
-  (sp-local-pair 'LaTeX-mode "$" "$" )
-  (sp-local-pair 'LaTeX-mode "\\left(" "\\right)" :trigger "\\l(")
-  ;; highligh matching brackets
-  (show-paren-mode 1) 
-  (setq show-paren-style 'expression)
-  )
+;; (use-package smartparens
+;;   :ensure t
+;;   ;;:defer t
+;;   ;;:commands smartparens-mode
+;;   :config
+;;   (add-hook 'prog-mode-hook 'smartparens-mode) ; ; ;
+;;   (add-hook 'org-mode-hook 'smartparens-mode) ; ; ;
+;;   ;;(add-hook 'latex-mode-hook 'smartparens-mode 1)
+;;   (add-hook 'LaTeX-mode-hook 'smartparens-mode 1)
+;;   (show-smartparens-global-mode t)
+;;   (sp-local-pair 'org-mode "_" "_" )
+;;   (sp-local-pair 'org-mode "$" "$" )
+;;   (sp-local-pair 'LaTeX-mode "$" "$" )
+;;   (sp-local-pair 'LaTeX-mode "\\left(" "\\right)" :trigger "\\l(")
+;;   ;; highligh matching brackets
+;;   (show-paren-mode 1) 
+;;   (setq show-paren-style 'expression)
+;;   )
 ;; ;; Show matching parens (mixed style)
 (show-paren-mode t)
 ;; (setq show-paren-delay 0.0)
