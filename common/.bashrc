@@ -219,9 +219,9 @@ export XUGGLE_HOME="/usr/local/xuggler"
 export TRACKER_HOME="/usr/local/tracker"
 
 ## LMGC90 2016
-export PYTHONPATH=${PYTHONPATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/build
+# export PYTHONPATH=${PYTHONPATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/build
 export PATH=${PATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/src/addons
-#export OMP_SCHEDULE=STATIC
+export OMP_SCHEDULE=STATIC
 #export OMP_NUM_THREADS=4
 
 # mechsys
@@ -239,6 +239,9 @@ fi
 
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export MP_FULLNAME="William Fernando Oquendo Patino"
+
+# Anaconda
+. $HOME/miniconda3/etc/profile.d/conda.sh
 
 ###########################################
 # utility functions
