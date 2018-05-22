@@ -87,6 +87,8 @@ function killemacs {
     for a in $(ps aux | grep emacs | grep -v grep | grep -v emacs.d | awk '{print $2}'); do
 	echo "Killing pid : $a"
 	kill -3 $a &>/dev/null;
+	sleep 1
+	kill -2 $a &>/dev/null;
 	echo "Done."
     done
 }	
