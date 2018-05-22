@@ -15,6 +15,11 @@
 ;;   )
 #+END_SRC
 
+* Authentication
+  #+BEGIN_SRC emacs-lisp
+  (setq auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+  #+END_SRC
+
 * Server
   Check: https://github.com/youngker/emacs.d/blob/master/init.el#L146
   #+BEGIN_SRC emacs-lisp
@@ -683,6 +688,11 @@ executable.")
 	  ("j" "Journal" entry (file+datetree "~/Dropbox/TODO/journal.org")
 	   "* %?\nEntered on %U\n  %i\n  %a")))
   (setq org-agenda-files (list "~/Dropbox/TODO/TODO.org"
+			       "~/Dropbox/TODO/TODO-orgcaldav.org"
+			       "~/Dropbox/TODO/calendars/"
+			       ;;"~/Dropbox/TODO/calendars/woquendo.org"
+			        ;;"~/Dropbox/TODO/calendars/health.org"
+			        ;;"~/Dropbox/TODO/calendars/teaching.org"
 			       ))
   ;; (add-to-list 'org-export-latex-classes
   ;;         '("koma-article"
@@ -751,7 +761,7 @@ executable.")
 ;;   (setq alert-user-configuration (quote ((((:category . "org-pomodoro")) libnotify nil)))))  
   #+END_SRC
 
-** [DEACTIVATED] Org gcal
+** Org-gcal 
    I need to find a way to store the password authenticated
   #+BEGIN_SRC emacs-lisp
 ;; ;; check http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WG52MOtj0wE.reddit
@@ -760,17 +770,46 @@ executable.")
 ;;   )
 
 
-;; ;; org-gcal : http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WIyKvLYrKHq
+;; org-gcal : http://cestlaz.github.io/posts/using-emacs-26-gcal/#.WIyKvLYrKHq
+(setq package-check-signature nil)
+(use-package org-gcal
+  :ensure t
+  :config
+  (setq org-gcal-client-id "273459534032-kg8hhko56k6ocdllq4o160ate814lfka.apps.googleusercontent.com"
+	org-gcal-client-secret "eIIRlNzHlAIHpZILDX2UNCbP"
+	;; org-gcal-file-alist '(("woquendo@gmail.com" .  "~/Dropbox/TODO/TODO-orgcaldav.org"))))
+	org-gcal-file-alist '(("bpmt8bcae6f2ps7hkuqrc4qn1k@group.calendar.google.com" .  "~/Dropbox/TODO/TODO-orgcaldav.org")
+			      ("woquendo@gmail.com" . "~/Dropbox/TODO/calendars/woquendo.org")
+			      ("vpo53nvma5tv0m1tmnnes7md1o@group.calendar.google.com"  . "~/Dropbox/TODO/calendars/teaching.org")
+			      ("grjolnj9vhevmhu6oq3fabla68@group.calendar.google.com"  . "~/Dropbox/TODO/calendars/health.org")
+			      )))
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+(add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+(setq epa-pinentry-mode 'loopback) ;; see https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
+  
+  #+END_SRC
+
+** Org-caldav [DEACTIVATED]
+   ERROR: Ask too much for authentication
+   I need to find a way to store the password authenticated
+  #+BEGIN_SRC emacs-lisp
 ;; (setq package-check-signature nil)
-;; (use-package org-gcal
+;; (use-package org-caldav
 ;;   :ensure t
 ;;   :config
-;;   (setq org-gcal-client-id "oauth 2.0 client ID"
-;; 	org-gcal-client-secret "PASSWORD"
-;; 	org-gcal-file-alist '(("woquendo@gmail.com" .  "~/Dropbox/TODO/TODO.org"))))
+;;   (setq org-caldav-url "https://calendar.google.com/calendar/dav"
+;; 	org-caldav-calendar-id "bpmt8bcae6f2ps7hkuqrc4qn1k@group.calendar.google.co"
+;;         org-caldav-oauth2-client-id "273459534032-kg8hhko56k6ocdllq4o160ate814lfka.apps.googleusercontent.com"
+;;         org-caldav-oauth2-client-secret "eIIRlNzHlAIHpZILDX2UNCbP"
+;; 	org-caldav-inbox (expand-file-name "~/Dropbox/TODO/TODO-orgcaldav.org")
+;; 	org-caldav-files '("~/Dropbox/TODO/TODO.org")
+;; 	)
+;;   )
 ;; (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
-  
+;; (require 'plstore)
+;; (setq plstore-cache-passphrase-for-symmetric-encryption t)  
+;; (setq vc-handled-backends nil)
   #+END_SRC
 
 * [DEACTIVATED] EasyPG
