@@ -1332,10 +1332,10 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   ;; ;; solarized theme
 ;; (use-package solarized-theme
 ;; :ensure t :init (load-theme 'solarized-light t)) ;; light | dark
-;; ;; zenburn theme
-;; ;;(use-package zenburn-theme
-;; ;;  :init (load-theme 'zenburn t)
-;; ;;)
+;; zenburn theme
+(use-package zenburn-theme
+ :init (load-theme 'zenburn t)
+)
 
 ;; Theme
 (use-package color-theme
@@ -1352,10 +1352,10 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;   )
 ;; ;(load-theme 'zenburn t)
 
-(use-package leuven-theme
-  :defer t
-  )
-(load-theme 'leuven t)
+;; (use-package leuven-theme
+;;   :defer t
+;;   )
+;; (load-theme 'leuven t)
 ;; ;; (use-package leuven-theme-dark
 ;; ;;   :ensure t
 ;; ;;   )
