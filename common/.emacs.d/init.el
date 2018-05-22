@@ -67,6 +67,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;; (org-agenda-files (quote ("~/Dropbox/TODO/TODO.org")))
  '(package-selected-packages
    (quote
     (nlinum spaceline smartparens-html expand-region zenburn-theme yasnippet yaml-mode writegood-mode which-key web-mode w3m use-package underwater-theme try symon solarized-theme smex smartparens smart-mode-line selected rainbow-delimiters powerline pov-mode pdf-tools pcre2el page-break-lines outshine osx-clipboard org-pomodoro org-gcal org-bullets names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hydra hungry-delete htmlize highlight-symbol highlight-parentheses helm-themes helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb dracula-theme dired+ default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-package-update auto-compile auctex-latexmk aggressive-indent))))
