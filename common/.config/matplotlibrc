@@ -1,0 +1,2 @@
+# see full config at : https://matplotlib.org/users/customizing.html#customizing-matplotlib
+text.usetex         : True
