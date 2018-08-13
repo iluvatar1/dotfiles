@@ -1432,6 +1432,11 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;; (use-package dracula-theme
 ;;   :ensure t
 ;;   )
+;; Theme
+;;(use-package doom-themes
+;;  :ensure t
+;;  :config
+;;  (load-theme 'doom-nord)) ;; doom-one doom-dracula doom-nord
   #+END_SRC
 
 * ECB : Emacs code browser
