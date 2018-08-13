@@ -1357,7 +1357,10 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 * which-key
   #+BEGIN_SRC emacs-lisp
   (use-package which-key
-  :defer t 
+  :ensure t 
+  :init
+  (setq which-key-separator " ")
+  (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode))  
   #+END_SRC
