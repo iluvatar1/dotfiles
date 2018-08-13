@@ -1388,25 +1388,27 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   ;; ;; solarized theme
 ;; (use-package solarized-theme
 ;; :ensure t :init (load-theme 'solarized-light t)) ;; light | dark
+
 ;; zenburn theme
+;;(use-package zenburn-theme
+;; :init (load-theme 'zenburn t)
+;;)
 (use-package zenburn-theme
- :init (load-theme 'zenburn t)
-)
+   :ensure t
+   )
+(load-theme 'zenburn t)
 
 ;; Theme
-(use-package color-theme
-  :ensure t
-  :defer t
-  )
+;;(use-package color-theme
+;;  :ensure t
+;;  :defer t
+;;  )
+;; moe
 ;; (use-package moe-theme
 ;;   :ensure t
 ;;   )
 ;; ;;(moe-light)
 ;;(moe-dark)
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   )
-;; ;(load-theme 'zenburn t)
 
 ;; (use-package leuven-theme
 ;;   :defer t
