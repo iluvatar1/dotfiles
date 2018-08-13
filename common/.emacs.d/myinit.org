@@ -1,6 +1,6 @@
 * General Refs
   - https://github.com/jinnovation/dotemacs
-
+  - https://huytd.github.io/emacs-from-scratch.html
 * Notes
   - [2017-11-27 Mon] I converted the config to an org file. It is much
     clearer, but the startup time went from 1.5 s to 8.9 s. I will
