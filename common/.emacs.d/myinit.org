@@ -751,6 +751,43 @@ executable.")
   )
   #+END_SRC
 
+** Org journal
+   Based on
+   https://www.reddit.com/r/emacs/comments/8kz8dv/tip_how_i_use_orgjournal_to_improve_my/
+   #+BEGIN_SRC emacs-lisp
+;; (use-package org-journal
+;;   :bind (("C-c t" . journal-file-today)
+;; 	 ("C-c y" . journal-file-yesterday))
+;;   :custom
+;;   ;; (org-journal-dir "~/Sync/shared/.journal/2018/")
+;;   (org-journal-dir "~/Dropbox/TODO/journal/2018/")
+;;   (org-journal-file-format "%Y%m%d")
+;;   (org-journal-date-format "%e %b %Y (%A)")
+;;   (org-journal-time-format "")
+;;   :preface
+;;   (defun get-journal-file-today ()
+;;     "Gets filename for today's journal entry."
+;;     (let ((daily-name (format-time-string "%Y%m%d")))
+;;       (expand-file-name (concat org-journal-dir daily-name))))
+
+;;   (defun journal-file-today ()
+;;     "Creates and load a journal file based on today's date."
+;;     (interactive)
+;;     (find-file (get-journal-file-today)))
+
+;;   (defun get-journal-file-yesterday ()
+;;     "Gets filename for yesterday's journal entry."
+;;     (let* ((yesterday (time-subtract (current-time) (days-to-time 1)))
+;; 	   (daily-name (format-time-string "%Y%m%d" yesterday)))
+;;       (expand-file-name (concat org-journal-dir daily-name))))
+
+;;   (defun journal-file-yesterday ()
+;;     "Creates and load a file based on yesterday's date."
+;;     (interactive)
+;;     (find-file (get-journal-file-yesterday)))
+
+   #+END_SRC
+
 ** [DEACTIVATED] Org pomodoro
   #+BEGIN_SRC emacs-lisp
 ;; ;; org pomodoro
