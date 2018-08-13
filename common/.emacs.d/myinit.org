@@ -849,6 +849,21 @@ executable.")
 ;; (setq vc-handled-backends nil)
   #+END_SRC
 
+** Org reveal
+   This allows to export org reveal expos
+   #+BEGIN_SRC emacs-lisp
+   ;;(use-package ox-reveal
+   ;;  :ensure t
+   ;;  )
+   ;; from http://cestlaz.github.io/posts/using-emacs-11-reveal/
+   (use-package ox-reveal
+   :ensure ox-reveal)
+   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+   (setq org-reveal-mathjax t)
+   (use-package htmlize
+   :ensure t)
+   (require 'ox-reveal)
+   #+END_SRC
 * [DEACTIVATED] EasyPG
   #+BEGIN_SRC emacs-lisp
 ;; (use-package epg
