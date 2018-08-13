@@ -1301,6 +1301,10 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   #+BEGIN_SRC emacs-lisp
   (use-package helm 
   :defer t
+  :init
+  (setq helm-mode-fuzzy-match t)
+  (setq helm-completion-in-region-fuzzy-match t)
+  (setq helm-candidate-number-list 50)
   :bind (("C-c h" . helm-mini)
 	 ("C-h a" . helm-apropos)
 	 ("C-x C-b" . helm-buffers-list)
