@@ -1618,8 +1618,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
          ("\\.js\\'" . web-mode)
          ("\\.mustache\\'" . web-mode))
   :config
-  (add-hook 'web-mode-hook 'smartparens-mode)
-  (use-package smartparens-html)
+  ;; (add-hook 'web-mode-hook 'smartparens-mode)
+  ;; (use-package smartparens-html)
   )
   #+END_SRC
 
