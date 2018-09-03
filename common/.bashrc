@@ -10,6 +10,10 @@ if [[ -e ~/.git-prompt.sh ]]; then
     source ~/.git-prompt.sh  
 fi	  							     
 
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    . /usr/local/share/bash-completion/bash_completion
+fi
+
 fortune -a
 
 # Detect os
@@ -267,3 +271,9 @@ function set_unal_proxy {
     export ftp_proxy="$http_proxy"                                    
     export RSYNC_PROXY="$PROXY"                                       
 }
+
+# Lpp from ligghts
+export LPP_DIR=$HOME/repos/LPP/src
+export LPP_NPROCS=4
+export LPP_CHUNKSIZE=1
+alias lpp='python -i $LPP_DIR/lpp.py --cpunum $LPP_NPROCS --chunksize $LPP_CHUNKSIZE'
