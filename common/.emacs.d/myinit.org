@@ -910,6 +910,25 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 
 #+END_SRC
 
+** Hippie expand
+   #+BEGIN_SRC emacs-lisp
+;; from https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
+;; (use-package hippie-exp                 ; Powerful expansion and completion
+;;   :bind ("C-c /" . hippie-expand)
+;;   :config
+;;   (;;validate-setq
+;;    hippie-expand-try-functions-list
+;;    '(try-expand-dabbrev
+;;      try-expand-dabbrev-all-buffers
+;;      try-expand-dabbrev-from-kill
+;;      try-complete-file-name-partially
+;;      try-complete-file-name
+;;      try-expand-all-abbrevs
+;;      try-expand-list
+;;      try-complete-lisp-symbol-partially
+;;      try-complete-lisp-symbol)))
+
+   #+END_SRC
 ** Auto insert templates
 #+BEGIN_SRC emacs-lisp
 ;; (use-package auto-insert
