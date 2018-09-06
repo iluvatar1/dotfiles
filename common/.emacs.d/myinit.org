@@ -885,6 +885,14 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
   :config 
   (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
   (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
+  ;; This from https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
+  (validate-setq
+   yas-verbosity 1                      ; No need to be so verbose
+   yas-wrap-around-region t)
+  (with-eval-after-load 'yasnippet
+    (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
+  (yas-reload-all)
+
   ;; from: https://emacs.stackexchange.com/questions/9670/yasnippet-not-working-with-auto-complete-mode?rq=1
   ;;(define-key yas-minor-mode-map (kbd "<tab>") nil)
   ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
@@ -899,6 +907,7 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
   ;; ;;;; Bind `C-c y' to `yas-expand' ONLY.
   ;; ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
   )
+
 #+END_SRC
 
 ** Auto insert templates
