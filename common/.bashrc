@@ -277,3 +277,8 @@ export LPP_DIR=$HOME/repos/LPP/src
 export LPP_NPROCS=4
 export LPP_CHUNKSIZE=1
 alias lpp='python -i $LPP_DIR/lpp.py --cpunum $LPP_NPROCS --chunksize $LPP_CHUNKSIZE'
+
+
+if [ -f ~/.bash_utils ]; then
+    . ~/.bash_utils
+fi
