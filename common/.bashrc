@@ -224,12 +224,6 @@ export XUGGLE_HOME="/usr/local/xuggler"
 #export DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:/usr/local/xuggler/lib"
 export TRACKER_HOME="/usr/local/tracker"
 
-## LMGC90 2016
-# export PYTHONPATH=${PYTHONPATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/build
-export PATH=${PATH}:$HOME/Desktop/work/academic/codes/LMGC90/lmgc90_user/src/addons
-export OMP_SCHEDULE=STATIC
-#export OMP_NUM_THREADS=4
-
 # mechsys
 export MECHSYS_ROOT=$HOME/local/src/2016-MECHSYS/
 # PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
@@ -248,6 +242,13 @@ export MP_FULLNAME="William Fernando Oquendo Patino"
 
 # Anaconda
 . $HOME/miniconda3/etc/profile.d/conda.sh
+
+## LMGC90
+#export PYTHONPATH=${PYTHONPATH}:$HOME/repos/lmgc90/build # better dont do this and instead change path on script
+export PATH=${PATH}:$HOME/repos/lmgc90/src/addons/
+#export OMP_SCHEDULE=STATIC
+#export OMP_NUM_THREADS=4
+
 
 ###########################################
 # utility functions
