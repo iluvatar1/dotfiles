@@ -1,3 +1,8 @@
+# Avoid problems when using non-interactive sessions
+# See: https://serverfault.com/questions/304125/rsync-seems-incompatible-with-bashrc-causes-is-your-shell-clean
+[[ $- != *i* ]] && return
+
+# read proxy info
 if [ -e $HOME/.proxy ]; then 
    source $HOME/.proxy
 fi
