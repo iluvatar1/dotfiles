@@ -142,12 +142,6 @@
 
 ** Mac os X specific
    #+BEGIN_SRC emacs-lisp
-   ;;(setq mac-command-key-is-meta nil)
-   (setq mac-option-key-is-meta nil)
-   ;;(setq mac-option-modifier 'meta)
-   ;;(setq mac-command-modifier 'meta)
-   (setq mac-option-modifier nil)
-   (setq ns-function-modifier 'hyper)
    ;;(add-to-list 'ido-ignore-files "\\.DS_Store")
    #+END_SRC
    #+BEGIN_SRC emacs-lisp
@@ -172,6 +166,15 @@
    (osx-clipboard-mode +1)
    )
    )
+   ;;; Option and meta modifiers
+   ;;(setq mac-command-key-is-meta nil)
+   ;(setq mac-option-key-is-meta nil)
+   ;;(setq mac-option-modifier 'meta)
+   ;;(setq mac-command-modifier 'meta)
+   ;(setq mac-option-modifier nil)
+   ;(setq ns-function-modifier 'hyper)
+   (setq ns-alternate-modifier 'meta)
+   (setq ns-right-alternate-modifier 'none)
    )
    #+END_SRC
 
