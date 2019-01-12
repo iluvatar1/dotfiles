@@ -1,2 +1,4 @@
 *auto/
 *.emacs
+common/.config/beets/musiclibrary.db
+common/.config/beets/state.pickle
