@@ -359,10 +359,10 @@
 
 * dired+, from : http://cestlaz.github.io/posts/using-emacs-38-dired/#.Whg1B1Hdxcw.reddit
   #+BEGIN_SRC emacs-lisp
-  (use-package dired+
-  :ensure t
-  :config (require 'dired+)
-  )
+  ;;(use-package dired+
+  ;;:ensure t
+  ;;:config (require 'dired+)
+ ;; )
   #+END_SRC
 * Regex without much scapes
   #+BEGIN_SRC emacs-lisp
