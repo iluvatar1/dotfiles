@@ -1,8 +1,0 @@
-#directory: /Volumes/Elements/Music
-directory: ~/Desktop/Music
-library: ~/.config/beets/musiclibrary.db
-
-#import:
-#    move: yes
-
-plugins: fromfilename embedart #chroma
