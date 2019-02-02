@@ -1750,36 +1750,46 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 
 * C++ irony mode and completion
   From http://cachestocaches.com/2015/8/c-completion-emacs/
-#  #+BEGIN_SRC emacs-lisp
-#  (defun setup-c-clang-options ()
-#  (setq irony-additional-clang-options (quote ("-std=c11"))))
-#
-#(defun setup-cpp-clang-options ()
-#(setq irony-additional-clang-options (quote ("-std=c++14" "-stdlib=libc++"))))
-#
-#;; == irony-mode ==
-#(use-package irony
-#  :defer t
-#  :init
-#  (add-hook 'c++-mode-hook 'electric-pair-mode)
-#  (add-hook 'c++-mode-hook 'irony-mode)
-#  (add-hook 'c-mode-hook 'irony-mode)
-#  (add-hook 'objc-mode-hook 'irony-mode)
-#  :config
-#  ;; replace the `completion-at-point' and `complete-symbol' bindings in
-#  ;; irony-mode's buffers by irony-mode's function
-#  (defun my-irony-mode-hook ()
-#    (define-key irony-mode-map [remap completion-at-point]
-#      'irony-completion-at-point-async)
-#    (define-key irony-mode-map [remap complete-symbol]
-#      'irony-completion-at-point-async))
-#  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-#  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-#  (progn
-#    (add-hook 'c++-mode-hook 'setup-cpp-clang-options)
-#    (add-hook 'c-mode-hook 'setup-c-clang-options))
-#  )
-#  #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+(defun setup-c-clang-options ()
+  (setq irony-additional-clang-options (quote ("-std=c11"))))
+
+(defun setup-cpp-clang-options ()
+  (setq irony-additional-clang-options (quote ("-std=c++14" "-stdlib=libc++"))))
+
+
+;;irony from using emacs ep 55
+(use-package irony
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  )
+
+;; ;; == irony-mode ==
+;; (use-package irony
+;;   :defer t
+;;   :init
+;;   (add-hook 'c++-mode-hook 'electric-pair-mode)
+;;   (add-hook 'c++-mode-hook 'irony-mode)
+;;   (add-hook 'c-mode-hook 'irony-mode)
+;;   (add-hook 'objc-mode-hook 'irony-mode)
+;;   :config
+;;   ;; replace the `completion-at-point' and `complete-symbol' bindings in
+;;   ;; irony-mode's buffers by irony-mode's function
+;;   (defun my-irony-mode-hook ()
+;;     (define-key irony-mode-map [remap completion-at-point]
+;;       'irony-completion-at-point-async)
+;;     (define-key irony-mode-map [remap complete-symbol]
+;;       'irony-completion-at-point-async))
+;;   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;;   (progn
+;;     (add-hook 'c++-mode-hook 'setup-cpp-clang-options)
+;;     (add-hook 'c-mode-hook 'setup-c-clang-options))
+;;   )
+  #+END_SRC
 
 * Company-mode
   #+BEGIN_SRC emacs-lisp
@@ -1855,6 +1865,12 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;; (add-to-list 'company-backends 'company-my-backend)
 ;; (add-to-list 'company-backends 'company-simple-backend)
 ;; (add-to-list 'company-backends 'company-sample-backend)
+
+(use-package company-irony
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-irony)
+  )
   #+END_SRC
 
 * fix-mode, Highlight TODO/FIXME type messages in comments.
