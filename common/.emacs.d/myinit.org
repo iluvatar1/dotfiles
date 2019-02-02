@@ -1427,10 +1427,13 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;(use-package zenburn-theme
 ;; :init (load-theme 'zenburn t)
 ;;)
-(use-package zenburn-theme
-   :ensure t
-   )
-(load-theme 'zenburn t)
+
+;;(use-package zenburn-theme
+;;   :ensure t
+;;   )
+;;(load-theme 'zenburn t)
+
+(load-theme 'deeper-blue t)
 
 ;; Theme
 ;;(use-package color-theme
