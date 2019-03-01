@@ -135,9 +135,14 @@
 ;; Note that emacs chooses, by default, the filename
 ;; "~/.abbrev_defs", so don't try to be too clever
 ;; by changing its name
-(setq-default abbrev-mode t)
-(read-abbrev-file "~/.abbrev_defs")
-(setq save-abbrevs t)
+;; from https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
+;;(use-package abbrev                     ; Save abbreviations
+;;  :init (abbrev-mode)
+;;  :config (setq save-abbrevs t))
+
+(use-package dabbrev                    ; Dynamic abbreviations
+  :bind* (("C-." . dabbrev-completion)
+("C-," . dabbrev-expand)))
 #+END_SRC
 
 ** Mac os X specific
