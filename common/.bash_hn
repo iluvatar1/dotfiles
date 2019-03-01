@@ -1,0 +1,10 @@
+# From https://news.ycombinator.com/item?id=18898523
+
+function cheat() {
+      curl cht.sh/$1
+}
+
+alias fx="firefox --new-instance --profile $(mktemp -d)"
+
+alias ports="netstat -tulanp"
+alias vmstat="vmstat -w"
