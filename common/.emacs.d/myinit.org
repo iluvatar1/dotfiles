@@ -885,57 +885,34 @@ executable.")
 ** yasnippet
 from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 #+BEGIN_SRC emacs-lisp
-(use-package yasnippet
-  ;;:ensure t
-  :defer t
-  ;;:init
-  ;;(yas-global-mode 1)
-  :config 
-  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
-  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
-  ;; This from https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
-  (validate-setq
-   yas-verbosity 1                      ; No need to be so verbose
-   yas-wrap-around-region t)
-  (with-eval-after-load 'yasnippet
-    (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
+;; From  https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
+(use-package yasnippet                  ; Snippets
+  :ensure t
+  :config
+  (setq yas-verbosity 1
+        yas-wrap-around-region t)
+
   (yas-reload-all)
-
-  ;; from: https://emacs.stackexchange.com/questions/9670/yasnippet-not-working-with-auto-complete-mode?rq=1
-  ;;(define-key yas-minor-mode-map (kbd "<tab>") nil)
-  ;;(define-key yas-minor-mode-map (kbd "TAB") nil)
-  ;;(define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
-  ;;
-  ;; ;; From https://github.com/joaotavora/yasnippet/blob/master/doc/snippet-expansion.org
-  ;; (define-key yas-minor-mode-map (kbd "<tab>") nil)
-  ;; (define-key yas-minor-mode-map (kbd "TAB") nil)
-  ;; ;; Bind `SPC' to `yas-expand' when snippet expansion available (it
-  ;; ;; will still call `self-insert-command' otherwise).
-  ;; (define-key yas-minor-mode-map (kbd "SPC") yas-maybe-expand)
-  ;; ;;;; Bind `C-c y' to `yas-expand' ONLY.
-  ;; ;;(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
-  )
-
+(yas-global-mode))
 #+END_SRC
 
 ** Hippie expand
    #+BEGIN_SRC emacs-lisp
-;; from https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
-;; (use-package hippie-exp                 ; Powerful expansion and completion
-;;   :bind ("C-c /" . hippie-expand)
-;;   :config
-;;   (;;validate-setq
-;;    hippie-expand-try-functions-list
-;;    '(try-expand-dabbrev
-;;      try-expand-dabbrev-all-buffers
-;;      try-expand-dabbrev-from-kill
-;;      try-complete-file-name-partially
-;;      try-complete-file-name
-;;      try-expand-all-abbrevs
-;;      try-expand-list
-;;      try-complete-lisp-symbol-partially
-;;      try-complete-lisp-symbol)))
+;; From https://github.com/manuel-uberti/.emacs.d/blob/master/lisp/mu-completion.el
+(use-package hippie-exp                 ; Powerful expansion and completion
+  :bind ("C-c /" . hippie-expand)
+  :config
+  (setq hippie-expand-try-functions-list '(try-complete-file-name
+                                           try-complete-file-name-partially
+                                           try-complete-lisp-symbol
+                                           try-complete-lisp-symbol-partially
+                                           try-expand-all-abbrevs
+                                           try-expand-dabbrev-all-buffers
+                                           try-expand-dabbrev-from-kill
+                                           try-expand-list
+                                           try-expand-dabbrev)))
 
+(add-to-list 'completion-styles 'initials t)
    #+END_SRC
 ** Auto insert templates
 #+BEGIN_SRC emacs-lisp
