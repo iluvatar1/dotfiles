@@ -35,7 +35,8 @@ fi
 
 # Mac Os X only commands
 if [[ $platform == 'darwin' ]]; then
-    #archey | lolcat
+   export HOME=/home/oquendo
+   #archey | lolcat
     # the fuck, requires python 2
     #eval "$(thefuck --alias)"
     # HOMEBREW CASK
@@ -211,6 +212,7 @@ export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h\[\e[m\] \[\e[1;34m\]\w/\[\e[m\
 #export PROMPT_COMMAND="echo; date; $PROMPT_COMMAND"
 export PROMPT_COMMAND="echo; date;"
 
+alias skim="open -a Skim "
 # Open man with skim
 manp() 
 {  
