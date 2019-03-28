@@ -148,19 +148,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Formatted numeric printing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%\newcommand{\Num}[1]{\pgfmathprintnumber{#1}}
+%% pgf
+% \newcommand{\Num}[1]{\pgfmathprintnumber{#1}}
 %\newcommand{\NumPre}[2]{\pgfkeys{/pgf/number format/.cd, precision=#2}\pgfmathprintnumber{#1}\pgfkeys{/pgf/number format/.cd, precision=2}}
 %\newcommand{\NumSign}[1]{\pgfkeys{/pgf/number format/showpos=true}\Num{#1}\pgfkeys{/pgf/number format/showpos=false}}
 %\newcommand{\NumEval}[1]{\pgfmathparse{(1*#1)}\Num{\pgfmathresult}}
 %\newcommand{\NumSI}[2]{\Num{#1}\ \si{#2}}
-\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num{\tmpnum}}}
+% %% Siunitx
+% \newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num{\tmpnum}}}
+% \newcommand{\NumPre}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=places,round-precision=#2]{\tmpnum}}}
+% \newcommand{\NumFig}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=#2]{\tmpnum}}}
+% \newcommand{\NumSign}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[explicit-sign=+]{\tmpnum}}}
+% \newcommand{\NumEval}[1]{\pgfmathparse{(1*(#1))}\Num{\pgfmathresult}}
+% \newcommand{\NumEvalPre}[2]{\pgfmathparse{(1*(#1))}\NumPre{\pgfmathresult}{#2}}
+% \newcommand{\NumEvalFig}[2]{\pgfmathparse{(1*(#1))}\NumFig{\pgfmathresult}{#2}}
+% \newcommand{\NumSI}[2]{\mbox{\Num{#1}\ \si{#2}}}
+%% siunitx + exams
+%\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3,scientific-notation = engineering]{\tmpnum}}}
+\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3,scientific-notation = engineering]{\tmpnum}}}
 \newcommand{\NumPre}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=places,round-precision=#2]{\tmpnum}}}
 \newcommand{\NumFig}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=#2]{\tmpnum}}}
 \newcommand{\NumSign}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[explicit-sign=+]{\tmpnum}}}
-\newcommand{\NumEval}[1]{\pgfmathparse{(1*(#1))}\Num{\pgfmathresult}}
+\newcommand{\NumEval}[1]{\pgfmathparse{(1.0*(#1))}\Num{\pgfmathresult}}
 \newcommand{\NumEvalPre}[2]{\pgfmathparse{(1*(#1))}\NumPre{\pgfmathresult}{#2}}
 \newcommand{\NumEvalFig}[2]{\pgfmathparse{(1*(#1))}\NumFig{\pgfmathresult}{#2}}
 \newcommand{\NumSI}[2]{\mbox{\Num{#1}\ \si{#2}}}
+
+
 
 \newcommand{\phasors}[6]{
   % arg 1: SXC = XC/R
