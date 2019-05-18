@@ -2,3 +2,15 @@
 *.emacs
 common/.config/beets/musiclibrary.db
 common/.config/beets/state.pickle
+common/.config/.mono
+common/.config/Fritzing
+common/.config/Jackett
+common/.config/MusicBrainz
+common/.config/Sonarr
+common/.config/alacritty
+common/.config/beets
+common/.config/git
+common/.config/gtk-2.0
+common/.config/inkscape
+common/.config/kitty
+common/.config/htop
