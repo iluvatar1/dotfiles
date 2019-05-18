@@ -1420,7 +1420,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;   )
 ;;(load-theme 'zenburn t)
 
-(load-theme 'deeper-blue t)
+;;(load-theme 'deeper-blue t)
+(load-theme 'wombat t)
 
 ;; Theme
 ;;(use-package color-theme
