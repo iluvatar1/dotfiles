@@ -1859,7 +1859,22 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   :config
   (add-to-list 'company-backends 'company-irony)
   )
+
+  ;; https://github.com/vspinu/company-math
+(use-package math-symbol-list
+  :ensure t
+)
+(use-package company-math
+  :requires math-symbol-list
+  :ensure t
+  :defer t
+  :config
+  ;; global activation
+  (add-to-list 'company-backends 'company-math-symbols-latex)
+  (add-to-list 'company-backends 'company-latex-commands)
+  )
   #+END_SRC
+
 
 * fix-mode, Highlight TODO/FIXME type messages in comments.
   #+BEGIN_SRC emacs-lisp
