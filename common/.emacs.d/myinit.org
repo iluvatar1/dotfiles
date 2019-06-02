@@ -1344,8 +1344,17 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
-  ;;(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
+  ;;
+  ;; Remap TAB for completion
+  ;; Source: https://emacs.stackexchange.com/questions/33727/how-does-spacemacs-allow-tab-completion-in-helm#38235
+  ;; https://writequit.org/denver-emacs/presentations/2016-03-01-helm.html
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "TAB") #'helm-execute-persistent-action)
+  ;; make TAB works in terminal, C-i is tha same as TAB
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  ;;
+  ;; ;;(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;;(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
   (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
 	helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
