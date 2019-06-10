@@ -1,4 +1,5 @@
 * General Refs
+  - https://github.com/zamansky/using-emacs/blob/master/myinit.org
   - https://github.com/jinnovation/dotemacs
   - https://huytd.github.io/emacs-from-scratch.html
 * Notes
@@ -71,7 +72,7 @@
 (setq enable-local-variables :safe)
 (setq byte-compile-verbose nil)
 (setq comment-column 80)
-(setq compile-command "g++-5")
+(setq compile-command "g++")
 (setq delete-selection-mode t)
 (setq keyboard-coding-system (quote utf-8-unix))
 (setq osx-clipboard-mode t)
@@ -122,7 +123,7 @@
 ;; occur mode
 (global-set-key (kbd "C-c o") 'occur)
    #+END_SRC
-
+   
 ** Integrate copy/paste with X
    #+BEGIN_SRC emacs-lisp
 (setq x-select-enable-clipboard t)
@@ -886,7 +887,27 @@ executable.")
 ;;   )  
   #+END_SRC
 
+* Try package, to try packages without installing
+  #+BEGIN_SRC emacs-lisp
+(use-package try
+	:ensure t)
+  #+END_SRC
 * Completion
+** posframe
+   #+BEGIN_SRC emacs-lisp
+(use-package posframe 
+        :ensure t)
+   #+END_SRC
+** autocomplete
+   #+BEGIN_SRC emacs-lisp
+   (use-package auto-complete 
+:ensure t
+:init
+(progn
+(ac-config-default)
+  (global-auto-complete-mode t)
+ ))
+   #+END_SRC
 ** yasnippet
 from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 #+BEGIN_SRC emacs-lisp
@@ -896,9 +917,14 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
   :config
   (setq yas-verbosity 1
         yas-wrap-around-region t)
-
   (yas-reload-all)
-(yas-global-mode))
+  (yas-global-mode)
+  :init
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t
+  )
 #+END_SRC
 
 ** Hippie expand
@@ -946,7 +972,22 @@ from: http://howardism.org/Technical/Emacs/templates-tutorial.html
 #+BEGIN_SRC emacs-lisp
    (use-package counsel
   :ensure t
+  :bind
+  (("M-y" . counsel-yank-pop)
+   :map ivy-minibuffer-map
+   ("M-y" . ivy-next-line))
   )
+
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "%d/%d ")
+  (setq ivy-display-style 'fancy))
+
 (use-package swiper
   :ensure t
   :config
@@ -1787,7 +1828,7 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;     (add-hook 'c-mode-hook 'setup-c-clang-options))
 ;;   )
   #+END_SRC
-
+  
 * Company-mode
   #+BEGIN_SRC emacs-lisp
   (use-package company
@@ -1870,9 +1911,9 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   )
 
   ;; https://github.com/vspinu/company-math
-(use-package math-symbol-list
-  :ensure t
-)
+;;(use-package math-symbol-list
+;;  :ensure t
+;;)
 (use-package company-math
   :requires math-symbol-list
   :ensure t
@@ -1881,6 +1922,16 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   ;; global activation
   (add-to-list 'company-backends 'company-math-symbols-latex)
   (add-to-list 'company-backends 'company-latex-commands)
+  )
+
+  (defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+(use-package company-jedi
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
   )
   #+END_SRC
 
