@@ -16,3 +16,5 @@
 	ci = commit
 	lo = log --oneline --graph
 	
+[credential]
+	helper = cache
