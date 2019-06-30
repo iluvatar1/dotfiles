@@ -199,18 +199,19 @@ function url2pdf {
 # shell config
 export HISTCONTROL=ignorespace
 export HISTIGNORE="&:mutt:[bf]g:exit"
-export HISTSIZE=10000
+export HISTSIZE=5000
 #export CDPATH=".:~"
 export CDPATH="."
 shopt -s cdspell
 shopt -s cmdhist 
 shopt -s dotglob
+shopt -s histappend
 #export PS1="\[\033[1;37m\][\[\033[1;32m\]\u\[\033[1;37m\]@\[\033[1;37m\]\h\[\033[1;37m\]] \[\033[1;36m\]\w \[\033[1;33m\]\$\[\033[0m\] "
 #export PS1='\[\e[1;32m\]\h:\[\e[m\]\[\e[1;30m\]\W\[\e[m\] \[\e[1;34m\]\u\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 #export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h\[\e[m\] \[\e[1;34m\]\w/\[\e[m\]\[\e[1;32m\]\[\e[m\]\n\[\e[1;32m\]$ \[\e[m\]'
 export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h\[\e[m\] \[\e[1;34m\]\w/\[\e[m\]\[\e[1;32m\]\[\e[m\]\n\[\e[1;32m\]$(__git_ps1 "(%s)") $ \[\e[m\]'
 #export PROMPT_COMMAND="echo; date; $PROMPT_COMMAND"
-export PROMPT_COMMAND="echo; date;"
+export PROMPT_COMMAND="echo; date; history -a"
 
 alias skim="open -a Skim "
 # Open man with skim
