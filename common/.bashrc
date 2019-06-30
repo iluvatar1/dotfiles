@@ -205,10 +205,14 @@ export CDPATH="."
 shopt -s cdspell
 shopt -s cmdhist 
 shopt -s dotglob
+
+IP=$(/sbin/ifconfig | grep 192 | awk '{print $2}')
+
 #export PS1="\[\033[1;37m\][\[\033[1;32m\]\u\[\033[1;37m\]@\[\033[1;37m\]\h\[\033[1;37m\]] \[\033[1;36m\]\w \[\033[1;33m\]\$\[\033[0m\] "
 #export PS1='\[\e[1;32m\]\h:\[\e[m\]\[\e[1;30m\]\W\[\e[m\] \[\e[1;34m\]\u\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 #export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h\[\e[m\] \[\e[1;34m\]\w/\[\e[m\]\[\e[1;32m\]\[\e[m\]\n\[\e[1;32m\]$ \[\e[m\]'
 export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h\[\e[m\] \[\e[1;34m\]\w/\[\e[m\]\[\e[1;32m\]\[\e[m\]\n\[\e[1;32m\]$(__git_ps1 "(%s)") $ \[\e[m\]'
+export PS1='\[\e[1;32m\]\u\[\e[m\]@\[\e[1;33m\]\h-$IP\[\e[m\] \[\e[1;34m\]\w/\[\e[m\]\[\e[1;32m\]\[\e[m\]\n\[\e[1;32m\]$(__git_ps1 "(%s)") $ \[\e[m\]'
 #export PROMPT_COMMAND="echo; date; $PROMPT_COMMAND"
 export PROMPT_COMMAND="echo; date;"
 
@@ -248,7 +252,7 @@ fi
 export MP_FULLNAME="William Fernando Oquendo Patino"
 
 # Anaconda
-. $HOME/miniconda3/etc/profile.d/conda.sh
+# . $HOME/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 
 ## LMGC90
 #export PYTHONPATH=${PYTHONPATH}:$HOME/repos/lmgc90/build # better dont do this and instead change path on script
@@ -273,7 +277,7 @@ function set_unal_proxy {
     # PROXY_AUTH sets PROXY_USER and PROXY_PASSWD and is private
     echo "Decrypting file to read proxy credentials ..."
     source <( gpg --decrypt ~/.PROXY_AUTH.gpg )
-    export PROXY="$PROXY_USER:$PROXY_PASSWD@proxyapp.unal.edu.co:8080/"
+    export PROXY="$PROXY_USER:$PROXY_PASSWD@proxyapp.unal.edu.co:8080"
     export http_proxy="http://$PROXY"                                 
     export https_proxy="https://$PROXY"                               
     export ftp_proxy="$http_proxy"                                    
@@ -290,3 +294,19 @@ alias lpp='python -i $LPP_DIR/lpp.py --cpunum $LPP_NPROCS --chunksize $LPP_CHUNK
 if [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/oquendo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/oquendo/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/oquendo/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/oquendo/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
