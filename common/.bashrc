@@ -283,6 +283,7 @@ function set_unal_proxy {
     export https_proxy="https://$PROXY"                               
     export ftp_proxy="$http_proxy"                                    
     export RSYNC_PROXY="$PROXY"                                       
+    export all_proxy="socks5://$PROXY"                                 
 }
 
 # Lpp from ligghts
