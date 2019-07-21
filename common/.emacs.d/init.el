@@ -11,9 +11,10 @@
 ;; http://cestlaz.github.io/posts/using-emacs-10-org-init/
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa-stb" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
