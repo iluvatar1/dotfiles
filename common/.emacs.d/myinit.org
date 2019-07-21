@@ -1933,6 +1933,21 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   :config
   (add-hook 'python-mode-hook 'jedi:setup)
   )
+
+; complete yasnippets: https://www.reddit.com/r/emacs/comments/bm8r3c/help_how_do_i_get_yasnippet_names_to_show_up_in/
+(defun mars/company-backend-with-yas (backends)
+      "Add :with company-yasnippet to company BACKENDS.
+Taken from https://github.com/syl20bnr/spacemacs/pull/179."
+      (if (and (listp backends) (memq 'company-yasnippet backends))
+	  backends
+	(append (if (consp backends)
+		    backends
+		  (list backends))
+		'(:with company-yasnippet))))
+
+    ;; add yasnippet to all backends
+    (setq company-backends
+          (mapcar #'mars/company-backend-with-yas company-backends))
   #+END_SRC
 
 
