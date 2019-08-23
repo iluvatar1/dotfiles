@@ -17,4 +17,5 @@
 #   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
 #+LATEX_HEADER: \usepackage{lmodern}
 #+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
+#+LATEX_HEADER:\pgfplotsset{compat=1.16}
 #+OPTIONS: tex:t
