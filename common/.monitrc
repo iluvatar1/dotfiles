@@ -1,0 +1,12 @@
+set daemon 30
+
+CHECK PROGRAM syncthing PATH /usr/bin/syncthing
+      if status != 0 then alert
+
+#CHECK PROGRAM monit PATH /usr/bin/monit
+
+#CHECK PROGRAM dropbox PATH /home/oquendo/.dropbox-dist/dropbox-lnx.x86_64-79.4.143/dropbox 
+CHECK PROGRAM dropbox PATH /home/oquendo/.dropbox-dist/dropboxd 
+      if status != 0 then alert
+      
+
