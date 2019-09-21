@@ -17,7 +17,7 @@ Structure description:
   - Make the commit: git commit -m "..."
   - stow it (this assumes that the file was created under the folder "common"): 
   stow common 
-
+  stow -n -t ~/ -v  common/
 * Refs
   - https://code.tutsplus.com/tutorials/setting-up-a-mac-dev-machine-from-zero-to-hero-with-dotfiles--net-35449
   - http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
