@@ -74,12 +74,12 @@ if [[ $platform == 'darwin' ]]; then
     alias t="todo.sh -d ~/Dropbox/TODO/todo-txt/todo.cfg"
     alias aquamacs='open -b org.gnu.Aquamacs'
     alias soffice="open -a 'LibreOffice.app'"
-    export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+    #export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
     # PATH for Vagrant
-    PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
-    export PATH
-    # pdftk
-    export PATH=$PATH:/opt/pdflabs/pdftk/bin/
+    #PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
+    #export PATH
+    ## pdftk
+    #export PATH=$PATH:/opt/pdflabs/pdftk/bin/
     # custom libs without interfering with system libs
     export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib:/usr/lib:/usr/local/lib
 fi
@@ -131,7 +131,7 @@ alias xmgracel="xmgrace -legend load "
 alias xmxydy="xmgrace -settype xydy "
 alias xmxydxdy="xmgrace -settype xydxdy "
 alias no="nohup wget -t inf -U 'Mozilla/5.0 (compatible; Konqueror/3.2; Linux)'"
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+#export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export MANPATH=$MANPATH:/usr/local/man
 export MANPATH=$MANPATH:/usr/local/share/man
 #export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
@@ -297,18 +297,8 @@ if [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/oquendo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/oquendo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/oquendo/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/oquendo/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Module 
+source /usr/local/opt/lmod/init/profile # for macosx
+# spack
+source ~/repos/spack/share/spack/setup-env.sh
 
