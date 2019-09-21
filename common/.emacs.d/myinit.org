@@ -602,8 +602,10 @@
   :mode (("\\.org$" . org-mode)
 	 ("\\.txt$" . org-mode))
   :commands (org-mode org-capture-mode)
+  :ensure org-plus-contrib
   :config
   ;; org agenda refile : see https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+  (require 'ox-bibtex)
   (setq org-refile-targets '((org-agenda-files :maxlevel . 6)))
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-completion-use-ido nil)
@@ -878,6 +880,22 @@ executable.")
 ** Org-tempo to get easy templaes in org mode 9.2
    #+BEGIN_SRC emacs-lisp
    ;;(require 'org-tempo)
+   #+END_SRC
+
+** Org-ref
+   #+BEGIN_SRC emacs-lisp
+   ;;(use-package org-ref
+   ;;:after org
+   ;;)
+   #+END_SRC
+** Ox-bibtex   
+   #+BEGIN_SRC emacs-lisp
+   ;;(use-package org-plus-contrib
+   ;;:after org)
+   ;;(use-package ox-bibtex
+   ;;:load-path "~/.emacs.d/lisp/"
+   ;;:after org
+   ;;)
    #+END_SRC
 * [DEACTIVATED] EasyPG
   #+BEGIN_SRC emacs-lisp
