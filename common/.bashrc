@@ -82,6 +82,8 @@ if [[ $platform == 'darwin' ]]; then
     #export PATH=$PATH:/opt/pdflabs/pdftk/bin/
     # custom libs without interfering with system libs
     export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib:/usr/lib:/usr/local/lib
+    # Module 
+    source /usr/local/opt/lmod/init/profile # for macosx
 fi
 
 # Linux only commands
@@ -304,8 +306,6 @@ if [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
 fi
 
-# Module 
-source /usr/local/opt/lmod/init/profile # for macosx
 # spack
 source ~/repos/spack/share/spack/setup-env.sh
 
