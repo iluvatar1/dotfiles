@@ -273,6 +273,10 @@ function reset_proxy {
     export https_proxy=""
     export ftp_proxy=""
     export RSYNC_PROXY=""
+    export HTTPS_PROXY=""
+    export HTTP_PROXY=""
+    export all_proxy=""
+    export ALL_PROXY=""
 }
 function set_unal_proxy {
     # PROXY_AUTH sets PROXY_USER and PROXY_PASSWD and is private
@@ -284,6 +288,9 @@ function set_unal_proxy {
     export ftp_proxy="$http_proxy"                                    
     export RSYNC_PROXY="$PROXY"                                       
     export all_proxy="socks5://$PROXY"                                 
+    export ALL_PROXY="$all_proxy"                                 
+    export HTTP_PROXY="$http_proxy"                                 
+    export HTTPS_PROXY="https_proxy"                               
 }
 
 # Lpp from ligghts
