@@ -10,3 +10,10 @@ set convert-meta off
 "\e[1;9D": backward-word
 "\e[1;9C": forward-word
 "\eh": backward-kill-word # iterm2 : make left option send esc+
+
+# control bindings
+"\C-p":previous-history
+"\C-n":next-history
+"\C-a.":beginning-of-line
+"\C-e.":end-of-line
+"\C-l":clear-screen
