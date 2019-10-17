@@ -252,9 +252,6 @@ fi
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export MP_FULLNAME="William Fernando Oquendo Patino"
 
-# Anaconda
-# . $HOME/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
-
 ## LMGC90
 #export PYTHONPATH=${PYTHONPATH}:$HOME/repos/lmgc90/build # better dont do this and instead change path on script
 export PATH=${PATH}:$HOME/repos/lmgc90/src/addons/
