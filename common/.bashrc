@@ -252,9 +252,6 @@ fi
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export MP_FULLNAME="William Fernando Oquendo Patino"
 
-# Anaconda
-# . $HOME/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
-
 ## LMGC90
 #export PYTHONPATH=${PYTHONPATH}:$HOME/repos/lmgc90/build # better dont do this and instead change path on script
 export PATH=${PATH}:$HOME/repos/lmgc90/src/addons/
@@ -273,6 +270,10 @@ function reset_proxy {
     export https_proxy=""
     export ftp_proxy=""
     export RSYNC_PROXY=""
+    export HTTPS_PROXY=""
+    export HTTP_PROXY=""
+    export all_proxy=""
+    export ALL_PROXY=""
 }
 function set_unal_proxy {
     # PROXY_AUTH sets PROXY_USER and PROXY_PASSWD and is private
@@ -284,6 +285,9 @@ function set_unal_proxy {
     export ftp_proxy="$http_proxy"                                    
     export RSYNC_PROXY="$PROXY"                                       
     export all_proxy="socks5://$PROXY"                                 
+    export ALL_PROXY="$all_proxy"                                 
+    export HTTP_PROXY="$http_proxy"                                 
+    export HTTPS_PROXY="https_proxy"                               
 }
 
 # Lpp from ligghts

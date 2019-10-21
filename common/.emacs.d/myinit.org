@@ -879,7 +879,7 @@ executable.")
    #+END_SRC
 ** Org-tempo to get easy templaes in org mode 9.2
    #+BEGIN_SRC emacs-lisp
-   ;;(require 'org-tempo)
+   (require 'org-tempo)
    #+END_SRC
 
 ** Org-ref
@@ -1494,8 +1494,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 
 (use-package spacemacs-theme
   :defer t
-  :init (load-theme 'spacemacs-dark t)
-  ;;:init (load-theme 'spacemacs-light t)
+  ;;:init (load-theme 'spacemacs-dark t)
+  :init (load-theme 'spacemacs-light t)
   )
 
 ;; ;; https://github.com/greduan/emacs-theme-gruvbox
