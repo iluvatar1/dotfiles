@@ -1,6 +1,7 @@
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [10pt,letterpaper,onecolumn]
-#+LATEX_HEADER:\usepackage[AUTO]{inputenc}
+# #+LATEX_HEADER:\usepackage[AUTO]{inputenc}
+#+LATEX_HEADER:\usepackage[utf8]{inputenc}
 #+LATEX_HEADER:\usepackage[svgnames]{xcolor}
 #+LATEX_HEADER:\usepackage{minted}
 #+LATEX_HEADER: \usepackage{enumerate}
@@ -11,6 +12,7 @@
 #+LATEX_HEADER: \usepackage{wrapfig}
 #+LATEX_HEADER: \usepackage{tcolorbox}
 #+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \usepackage{textcomp}
 # Fix the margins
 #+LATEX_HEADER: \usepackage[letterpaper,margin=2.5cm]{geometry}
 #+LATEX_HEADER:\pagestyle{fancy}
