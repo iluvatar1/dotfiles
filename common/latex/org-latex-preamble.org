@@ -8,15 +8,17 @@
 #+LATEX_HEADER: \usepackage{multicol}
 #+LATEX_HEADER: \usepackage{booktabs}
 #+LATEX_HEADER: \usepackage{fancyhdr}
-#+LATEX_HEADER: \usepackage{microtype}
+# #+LATEX_HEADER: \usepackage{microtype}
+# #+LATEX_HEADER:\microtypesetup{expansion=false}
 #+LATEX_HEADER: \usepackage{wrapfig}
 #+LATEX_HEADER: \usepackage{tcolorbox}
 #+LATEX_HEADER: \usepackage{pgfplots}
 #+LATEX_HEADER: \usepackage{textcomp}
 # Fix the margins
-#+LATEX_HEADER: \usepackage[letterpaper,margin=2.5cm]{geometry}
+#+LATEX_HEADER: \usepackage[letterpaper,margin=1.5cm]{geometry}
 #+LATEX_HEADER:\pagestyle{fancy}
 #   +OPTIONS: toc:nil # do not put toc, remove if you want a toc
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage{lmodern}
 #+LATEX_HEADER:\renewcommand{\rmdefault}{cmss}
 #+LATEX_HEADER:\pgfplotsset{compat=1.16}
