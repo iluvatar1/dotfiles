@@ -2032,3 +2032,16 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
   )
   #+END_SRC
 
+* Custom Functions
+  - From https://news.ycombinator.com/item?id=22129636
+    #+begin_src emacs-lisp
+(defun arrayify (start end quote)
+  "Turn strings on newlines into a QUOTEd, comma-separated one-liner."
+  (interactive "r\nMQuote: ")
+  (let ((insertion
+	 (mapconcat
+	  (lambda (x) (format "%s%s%s" quote x quote))
+	  (split-string (buffer-substring start end)) ", ")))
+    (delete-region start end)
+    (insert insertion)))
+    #+end_src
