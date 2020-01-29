@@ -2,7 +2,8 @@
 %\newfloat{Video}{tbp}{}
 %\def\ext{avi}
 \newcommand{\citenew}[1]{\textit{\scriptsize\textcolor{blue}{\cite{#1}}}}
-\newcommand{\partialval}[1]{\ifes@solutions (\textbf{#1}) \fi} % for esami extra string
+%\newcommand{\partialval}[1]{\ifes@solutions (\textbf{#1}) \fi} % for esami extra string
+\newcommand{\partialval}[1]{\if\SOLUTION1{\scriptsize(\textcolor{blue}{\textbf{#1}})}\fi} % for partial credits
 \newcommand{\bbb}[1]{\begin{block}{#1}}
   \newcommand{\beb}{\end{block}}
 %%\newcommand{\bbb}[1]{\begin{beamerboxesrounded}{#1}}
@@ -165,7 +166,12 @@
 % \newcommand{\NumSI}[2]{\mbox{\Num{#1}\ \si{#2}}}
 %% siunitx + exams
 %\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3,scientific-notation = engineering]{\tmpnum}}}
-\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3,scientific-notation = engineering]{\tmpnum}}}
+%\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3,scientific-notation
+%= engineering]{\tmpnum}}}
+
+
+
+\newcommand{\Num}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=3]{\tmpnum}}}
 \newcommand{\NumPre}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=places,round-precision=#2]{\tmpnum}}}
 \newcommand{\NumFig}[2]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[round-mode=figures,round-precision=#2]{\tmpnum}}}
 \newcommand{\NumSign}[1]{\pgfmathprintnumberto{#1}{\tmpnum}\ensuremath{\num[explicit-sign=+]{\tmpnum}}}
@@ -173,6 +179,34 @@
 \newcommand{\NumEvalPre}[2]{\pgfmathparse{(1*(#1))}\NumPre{\pgfmathresult}{#2}}
 \newcommand{\NumEvalFig}[2]{\pgfmathparse{(1*(#1))}\NumFig{\pgfmathresult}{#2}}
 \newcommand{\NumSI}[2]{\mbox{\Num{#1}\ \si{#2}}}
+
+
+
+% Fix num printing from : https://tex.stackexchange.com/questions/111670/scientific-notation-only-for-large-numbers
+\usepackage{expl3,siunitx}
+\sisetup{scientific-notation=true}
+\ExplSyntaxOn
+    \cs_new_eq:NN \fpcmpTF \fp_compare:nTF
+\ExplSyntaxOff
+
+%Edit these as you wish:
+\newcommand*{\ThresholdLow}{0.01}
+\newcommand*{\ThresholdHigh}{1000}
+
+\let\OldNum\num%
+\renewcommand*{\Num}[2][]{%
+    \fpcmpTF{abs(#2)<=\ThresholdLow}{%
+        \OldNum[scientific-notation=true,round-mode=figures,round-precision=3,#1]{#2}%
+    }{%
+        \fpcmpTF{abs(#2)>=\ThresholdHigh}{%
+            \OldNum[scientific-notation=true,round-mode=figures,round-precision=3,#1]{#2}%
+        }{%
+            \OldNum[scientific-notation=false,round-mode=figures,round-precision=3,#1]{#2}%
+        }%
+    }%
+}%
+
+
 
 
 
@@ -206,3 +240,23 @@
   \pgfkeys{/pgf/fpu=true}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% enviroments
+\newenvironment{problem}
+{{}{}}
+%\newenvironment{problem*}
+%{{}{}}
+
+%%% boxes for exams
+\newcommand{\solbox}[1][5]{\pgfkeys{/pgf/fpu=false}\begin{tcolorbox}[beforeafter skip=0pt,colback=yellow!2,width=0.95\linewidth, height=#1 ex]\end{tcolorbox}\pgfkeys{/pgf/fpu=true}}
+%\newcommand{\solbox}[1][5]{\framebox{\rule{0pt}{#1ex}}}
+\newenvironment{solution}
+    {\pgfkeys{/pgf/fpu=false}
+      \begin{tcolorbox}[parbox,title={solution},beforeafter skip=1pt,colback=green!5,width=0.95\linewidth]
+    }
+    {
+    \end{tcolorbox}
+    \pgfkeys{/pgf/fpu=true}
+    }
+%tables
+\newcolumntype{M}{>{$}c<{$}}

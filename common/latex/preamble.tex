@@ -11,10 +11,15 @@
 \usepackage{lmodern} % superseeds ae and aecompl
 \renewcommand{\rmdefault}{cmss}
 \usepackage{framed} % for shaded environments
+\usepackage[space]{grffile} % From Miguel: To use spaces inside questions paths
+\usepackage{version} % to include / exclude enviroments
 %\definecolor{shadecolor}{rgb}{0,0,0}
 %\colorlet{shadecolor}{lightgray!40}
 \definecolor{shadecolor}{rgb}{0.686,0.933,0.933}
 \usepackage{etoolbox} % To use modern ifdef
+\usepackage{adjustbox} % to adjust boxes arbitrarily
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
 %\usepackage[latin1,utf8]{inputenc}
 %\usepackage[utf8]{inputenc}
 \usepackage[latin1,utf8]{inputenc}
@@ -30,6 +35,7 @@
                        % blindlist{env}[number of items], \blinditemize,
                        % \blindmathtrue, \blindmathpaper
 %\usepackage{standalone} % for including compilable documents 
+\usepackage[skins,breakable]{tcolorbox} % for color tables
 \usepackage{bm}
 \usepackage{fp}
 \usepackage{minitoc} % for a small table of contents
@@ -38,8 +44,9 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage[final]{pdfpages} % \includepdf[pages=, ...]{filename}
-\usepackage{enumerate}
-\usepackage[shortlabels]{enumitem}
+%\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem} %superseeds enumerate
+\usepackage{tasks} % for better enumerates, with items spanning all columns!
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
 \usepackage{setspace}
@@ -90,11 +97,25 @@
             (path picture bounding box.south west) --
             (path picture bounding box.north east);
 }}}
+
 \pgfmathsetseed{25}
 \usepgflibrary{fpu}
 \usetikzlibrary{fpu}
-\pgfkeys{/pgf/fpu}
-\pgfset{fpu}
+\pgfkeys{/pgf/fpu} % this damages the behaviour of the pgf random generator
+%\pgfset{fpu} % this damage the behaviour of the pgf random generator
+%% Fix pgfrandom number generator. See: https://tex.stackexchange.com/questions/416372/is-there-a-limit-for-the-seed-value-in-pgfmathsetseed
+\makeatletter
+\def\pgfmath@rnd@a{16807}
+\def\pgfmath@rnd@r{2836}
+\def\pgfmath@rnd@q{127773}
+\makeatother
+% Fix pgfmathsetseed incompatibility with the fpu
+\newcommand{\pgfmathsetseednew}[1]{%
+  \pgfkeys{/pgf/fpu=false}
+  \pgfmathsetseed{#1}
+  \pgfkeys{/pgf/fpu=true}
+}
+
 \pgfkeys{/pgf/number format/.cd,
   sci,
   sci e,
@@ -103,8 +124,9 @@
 %  % /pgf/number format/assume math mode=true,
 %  %sci generic = {mantissa sep=\times, exponent={10^{#1}}}
 }
+\pgfkeys{/pgf/fpu/output format=sci}
 % siunitx
-\sisetup{round-half=even,inter-unit-product=\ensuremath{\cdot},zero-decimal-to-integer,exponent-product=\cdot,output-product=\cdot}
+%\sisetup{round-half=even,round-precision=4,inter-unit-product=\ensuremath{\cdot},zero-decimal-to-integer,exponent-product=\cdot,output-product=\times}
 \DeclareSIUnit\mm{\milli\meter}
 % \SendSettingsToPgf
 % circuitikz
