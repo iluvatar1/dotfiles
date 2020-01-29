@@ -1,0 +1,170 @@
+% Packages
+% Test graphicx since I am not using it here, why??
+%\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{xcolor}
+\usepackage{comment} % for org-latex tables
+\usepackage{dcolumn} % to align tables at decimal point, use D column type
+\usepackage{cite} % improves handling of numerical citations
+\usepackage{fancyvrb} % verbatim with line number, input and output
+\usepackage{verbatim}
+\usepackage{etex} % To solve problems with new dims and pgf/tkiz
+\usepackage{lmodern} % superseeds ae and aecompl
+\renewcommand{\rmdefault}{cmss}
+\usepackage{framed} % for shaded environments
+\usepackage[space]{grffile} % From Miguel: To use spaces inside questions paths
+\usepackage{version} % to include / exclude enviroments
+%\definecolor{shadecolor}{rgb}{0,0,0}
+%\colorlet{shadecolor}{lightgray!40}
+\definecolor{shadecolor}{rgb}{0.686,0.933,0.933}
+\usepackage{etoolbox} % To use modern ifdef
+\usepackage{adjustbox} % to adjust boxes arbitrarily
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+%\usepackage[latin1,utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1,utf8]{inputenc}
+%\inputencoding{latin1}
+\usepackage{amsmath,amstext,amssymb}
+\usepackage{tikz} % also for pgfmathparse
+\usepackage{pgfplots} % also for plotting
+\usepackage{pgfmath} % also for pgfmathparse
+\usepackage[scientific-notation=true]{siunitx}
+\usepackage{lipsum} % for dummy text, use as \lipsum[A-B], where A and B
+                    % are paragraphs numbers (among 47)
+\usepackage{blindtext} % \blindtext[3], \Blindtext, \blinddocument,
+                       % blindlist{env}[number of items], \blinditemize,
+                       % \blindmathtrue, \blindmathpaper
+%\usepackage{standalone} % for including compilable documents 
+\usepackage[skins,breakable]{tcolorbox} % for color tables
+\usepackage{bm}
+\usepackage{fp}
+\usepackage{minitoc} % for a small table of contents
+\usepackage[american,cuteinductors]{circuitikz}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[final]{pdfpages} % \includepdf[pages=, ...]{filename}
+%\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem} %superseeds enumerate
+\usepackage{tasks} % for better enumerates, with items spanning all columns!
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{setspace}
+\usepackage{float}
+%%\usepackage{multimedia}
+%%\usepackage{media9}
+\usepackage{movie15} % for includemovie
+%\usepackage{sidenotes} % incompatible with tufte 
+%\usepackage{subcaption}  % incompatible with tufte 
+%\usepackage[letterpaper]{geometry} % incompatible with tufte
+\usepackage{array} % to improve the tables, adds commands like m{}
+\usepackage{booktabs} % better tables: \toprule, \midrule, \bottomrule,
+                      % \cmidrule, \arrayrulecolor (with colortbl)
+\usepackage{multirow} %% for multirow command in tables
+\usepackage{colortbl}
+\usepackage{longtable}  % for tables on more than one page
+\usepackage{multicol}
+%\usepackage{microtype}  %% Improves letter spacing % INCOMPATIBLE with esami
+\usepackage{listings} %% for source code examples
+%\usepackage{MnSymbol} %% for \sumint symbol
+\usepackage{bigints} %% for \bigoint symbol
+%\usepackage{fancybox}  % fancy border  and shadowed boxed
+%\usepackage[Lenny]{fncychap} %% For fancy chapter headings
+\usepackage{fancyhdr} % footers and headers % incompatible with memoir
+\pagestyle{fancy} % footers and headings % incompatible with memoir
+%\fvset{fontsize=\normalsize} % 
+\usepackage{wrapfig}
+%%\usepackage{psfrag}
+%\usepackage{epsfig}
+%\usepackage{tocbibind}
+%\usepackage[spanish,es-tabla,es-nodecimaldot,es-lcroman]{babel} % incompatible with esami
+\usepackage[colorinlistoftodos]{todonotes} % requires tikzexternalizeoptimizefalse
+%\usepackage{marginfix} % to fix issues with margin notes
+
+%% SETTINGS FOR SEVERAL PACKAGES
+% tikz/pgf
+\pgfplotsset{compat=1.16}
+\usepgfplotslibrary{external}
+\tikzexternalize%[mode=list and make] % sometimes this mode does not
+                %work, does not recompute the figures
+%\tikzexternalize[/tikz/external/optimize=false] %for todonotes, better use xtodo macro
+%\tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname ``\image'' ``\texsource''}} % to let pdflatex work compile picture: pdflatex --shell-escape xxxxxxx.tex
+\usetikzlibrary{shapes,arrows,circuits,calc,babel,arrows.meta,shapes.misc} % babel is useful to avoid collisions with tikz <-> and spanish babel
+\tikzset{>=Latex} %% For better default arrows
+\tikzset{cross/.style={path picture={ \draw[black,thick]
+            (path picture bounding box.south east) --
+            (path picture bounding box.north west)
+            (path picture bounding box.south west) --
+            (path picture bounding box.north east);
+}}}
+
+\pgfmathsetseed{25}
+\usepgflibrary{fpu}
+\usetikzlibrary{fpu}
+\pgfkeys{/pgf/fpu} % this damages the behaviour of the pgf random generator
+%\pgfset{fpu} % this damage the behaviour of the pgf random generator
+%% Fix pgfrandom number generator. See: https://tex.stackexchange.com/questions/416372/is-there-a-limit-for-the-seed-value-in-pgfmathsetseed
+\makeatletter
+\def\pgfmath@rnd@a{16807}
+\def\pgfmath@rnd@r{2836}
+\def\pgfmath@rnd@q{127773}
+\makeatother
+% Fix pgfmathsetseed incompatibility with the fpu
+\newcommand{\pgfmathsetseednew}[1]{%
+  \pgfkeys{/pgf/fpu=false}
+  \pgfmathsetseed{#1}
+  \pgfkeys{/pgf/fpu=true}
+}
+
+\pgfkeys{/pgf/number format/.cd,
+  sci,
+  sci e,
+  sci zerofill,
+  precision = 3,
+%  % /pgf/number format/assume math mode=true,
+%  %sci generic = {mantissa sep=\times, exponent={10^{#1}}}
+}
+\pgfkeys{/pgf/fpu/output format=sci}
+% siunitx
+\sisetup{round-half=even,round-precision=4,inter-unit-product=\ensuremath{\cdot},zero-decimal-to-integer,exponent-product=\cdot,output-product=\cdot}
+\DeclareSIUnit\mm{\milli\meter}
+% \SendSettingsToPgf
+% circuitikz
+\ctikzset{bipoles/thickness=2}
+\ctikzset{bipoles/capacitor/height=0.4}
+\tikzset{C/.append style={color=blue, thick, *-*}}
+\tikzset{R/.append style={color=red, thick, *-*}}
+\tikzset{battery1/.append style={color=teal!80, thick, *-*}}
+\tikzset{battery/.append style={color=teal!80, thick, *-*}}
+% figurespath
+\graphicspath{{fig/}{./}}
+\DeclareGraphicsExtensions{.pdf,.pstex,.eps,.png,.jpg,}
+% hyperref
+\hypersetup{colorlinks}
+% makeindex
+\makeindex
+
+
+\hyphenation{sig-ni-fi-ca-ti-vas co-rrien-te lle-va dis-mi-nu-ye lle-van}
+
+% command helpers
+\setcounter{secnumdepth}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% fancy printing for commands, labels, etc 
+%% settings for listings package, extracted from http://tex.stackexchange.com/questions/46953/unix-command-highlighting-latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\lstdefinestyle{BashInputStyle}{
+  language=bash,
+  basicstyle=\small\sffamily,
+  breaklines=true,
+  % numbers=left,
+  %numberstyle=\tiny,
+  %numbersep=3pt,
+  frame=tb,
+  columns=fullflexible,
+  backgroundcolor=\color{yellow!20},
+  % linewidth=0.9\linewidth,
+  xleftmargin=0.1\linewidth}
+\newcommand{\cmd}[1]{\begin{lstlisting}[style=BashInputStyle] #1 \end{lstlisting}}
+\newcommand{\ins}[1]{\begin{shaded} \texttt{#1} \end{shaded} } % does not work with special math chars as -- or _
+\newcommand{\fname}[1]{\fcolorbox{white}{Dandelion!25}{\texttt{#1}}}
