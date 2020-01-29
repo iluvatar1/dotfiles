@@ -84,6 +84,10 @@ if [[ $platform == 'darwin' ]]; then
     export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib:/usr/lib:/usr/local/lib
 fi
 
+function cheat {
+	 curl "cheat.sh/$1"
+} 
+
 # Linux only commands
 if [[ $platform == 'linux' ]]; then
    alias open="xdg-open"
