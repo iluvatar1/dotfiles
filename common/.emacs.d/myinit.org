@@ -1967,15 +1967,15 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-to-list 'company-backends 'company-latex-commands)
   )
 
-  (defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-
-(add-hook 'python-mode-hook 'my/python-mode-hook)
-(use-package company-jedi
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'jedi:setup)
-  )
+  ;; jedi commented out since it needs a server an I cannot install it easily on all systems
+  ;;(defun my/python-mode-hook ()
+  ;;(add-to-list 'company-backends 'company-jedi))
+  ;;(add-hook 'python-mode-hook 'my/python-mode-hook)
+;(use-package company-jedi
+;  :ensure t
+;  :config
+;  (add-hook 'python-mode-hook 'jedi:setup)
+;  )
 
 ; complete yasnippets: https://www.reddit.com/r/emacs/comments/bm8r3c/help_how_do_i_get_yasnippet_names_to_show_up_in/
 (defun mars/company-backend-with-yas (backends)
