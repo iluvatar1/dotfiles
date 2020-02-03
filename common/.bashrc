@@ -146,8 +146,10 @@ export MANPATH=$MANPATH:$HOME/local/share/man
 
 
 # From arch bash wiki
-## Modified commands ## {{{
-alias diff='colordiff'              # requires colordiff package
+## Modified commands 
+if hash colordiff 2>/dev/null ; then
+    alias diff='colordiff'              # requires colordiff package
+fi
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
@@ -156,8 +158,8 @@ alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 alias ping='ping -c 5'
 alias dmesg='dmesg -HL'
-# }}}
-## ls ## {{{
+# 
+## ls ## 
 #alias ls='ls -hF'# --color=auto' # is at the beginning of this file
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -l'
@@ -166,20 +168,19 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
-# }}}
+# 
 #alias tail='tail -f -n 50'
 alias tmux='tmux -2'
 alias remake='make clean; make'
 alias extip='curl http://ipecho.net/plain; echo'
 alias remote='vncserver -geometry 1680x1050 -dpi 120'
 
-
 # Pygmentize less
 function cless () {
-    pygmentize -f terminal "$1" | less  -R
+    pygmentize -gf terminal "$1" | less  -R
 }
 
-## Safety features ## {{{
+## Safety features ## 
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'                    # 'rm -i' prompts for every file
@@ -188,7 +189,7 @@ alias ln='ln -i'
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in Terminology)
-# }}}
+#
 
 bind -x '"\C-l": clear;'
 
@@ -304,6 +305,17 @@ alias lpp='python -i $LPP_DIR/lpp.py --cpunum $LPP_NPROCS --chunksize $LPP_CHUNK
 if [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
 fi
+
+# From https://opensource.com/article/18/9/shell-dotfile
+if [[ `egrep 'dnssuffix1|dnssuffix2' /etc/resolv.conf` ]]; then
+    if [ -e $HOME/.work ]; then 
+	source $HOME/.work
+    else
+        echo "This looks like a work machine, but I can't find the ~/.work file"
+    fi
+fi
+shrug() { echo "¯\_(ツ)_/¯"; }
+
 
 # Module 
 source /usr/local/opt/lmod/init/profile # for macosx
