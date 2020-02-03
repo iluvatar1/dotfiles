@@ -1825,6 +1825,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-hook 'prog-mode-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'flycheck-mode)
+  (add-hook 'sh-mode-hook 'flycheck-mode)
+  (add-hook 'latex-mode-hook 'flycheck-mode)
   )
   #+END_SRC
 
