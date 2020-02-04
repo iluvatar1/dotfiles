@@ -2002,8 +2002,8 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
   :commands fic-mode
   :diminish fic-mode
   :config
-  (add-hook 'prog-mode-hook 'fic-mode)
-  (add-hook 'LaTeX-mode-hook 'fic-mode)
+  (add-hook 'prog-mode-hook 'turn-on-fic-mode)
+  (add-hook 'LaTeX-mode-hook 'turn-on-fic-mode)
   )
   #+END_SRC
 
