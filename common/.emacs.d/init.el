@@ -73,23 +73,4 @@
 
 
 (message "Start up time %.2fs" (float-time (time-subtract (current-time) my-start-time)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("b35a14c7d94c1f411890d45edfb9dc1bd61c5becd5c326790b51df6ebf60f402" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" default)))
- '(org-agenda-files
-   (quote
-    ("~/Desktop/work/jobs/2018-II-Usabana/00-Asignaturas/02-MDGP-HerramientasDeModelacion/00-lectures/02-SolucionSistemasNoLineales/02-NonLinearSystemsSolutions-EXPO.org" "~/Dropbox/TODO/TODO.org" "~/Dropbox/TODO/TODO-orgcaldav.org" "/Users/oquendo/Dropbox/TODO/calendars/health.org" "/Users/oquendo/Dropbox/TODO/calendars/teaching.org" "/Users/oquendo/Dropbox/TODO/calendars/woquendo.org")))
- '(package-selected-packages
-   (quote
-    (ox-reveal nlinum spaceline smartparens-html expand-region zenburn-theme yasnippet yaml-mode writegood-mode which-key web-mode w3m use-package underwater-theme try symon solarized-theme smex smartparens smart-mode-line selected rainbow-delimiters powerline pov-mode pdf-tools pcre2el page-break-lines outshine osx-clipboard org-pomodoro org-gcal org-bullets names multi-term moe-theme magit magic-latex-buffer leuven-theme latex-extra hydra hungry-delete htmlize highlight-symbol highlight-parentheses helm-themes helm-pages helm-descbinds helm-bibtex gnuplot git-gutter-fringe ggtags flycheck fill-column-indicator fic-mode exec-path-from-shell esup ein ecb dracula-theme dired+ default-text-scale cuda-mode company-irony color-theme color-identifiers-mode clang-format cdlatex beacon autopair auto-package-update auto-compile auctex-latexmk aggressive-indent))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
