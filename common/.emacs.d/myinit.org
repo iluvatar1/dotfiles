@@ -16,6 +16,13 @@
 ;;   )
 #+END_SRC
 
+* Noproxy
+  #+begin_src emacs-lisp
+(setq url-proxy-services
+      '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+	("http" . "127.0.0.0:10000")
+	("https" . "127.0.0.1:10000")))
+  #+end_src
 * Authentication
   #+BEGIN_SRC emacs-lisp
   (setq auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
@@ -1608,6 +1615,9 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-hook 'org-mode-hook 'highlight-parentheses-mode)
   (add-hook 'LaTeX-mode-hook 'highlight-parentheses-mode)
   (add-hook 'python-mode-hook 'highlight-parentheses-mode))
+
+;; global highlight line
+(global-hl-line-mode 1)
   #+END_SRC
 
 * tags for code navigation
@@ -1825,6 +1835,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-hook 'prog-mode-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'flycheck-mode)
+  (add-hook 'sh-mode-hook 'flycheck-mode)
+  (add-hook 'latex-mode-hook 'flycheck-mode)
   )
   #+END_SRC
 
@@ -1891,7 +1903,8 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 	company-show-numbers            t
 	company-tooltip-limit           20
 	company-dabbrev-downcase        nil
-	company-backends                '((company-irony company-gtags company-rtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
+	;; company-backends                '((company-irony company-gtags company-rtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
+	company-backends                '((company-irony company-gtags company-abbrev company-clang company-files company-capf company-semantic company-cmake)) ;; company-my-backend
 	;; (define-key c-mode-map  [(tab)] 'company-complete)
 	;; (define-key c++-mode-map  [(tab)] 'company-complete)
 	;; (add-to-list 'company-backends 'company-c-headers)
@@ -1966,15 +1979,15 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-to-list 'company-backends 'company-latex-commands)
   )
 
-  (defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-
-(add-hook 'python-mode-hook 'my/python-mode-hook)
-(use-package company-jedi
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'jedi:setup)
-  )
+  ;; jedi commented out since it needs a server an I cannot install it easily on all systems
+  ;;(defun my/python-mode-hook ()
+  ;;(add-to-list 'company-backends 'company-jedi))
+  ;;(add-hook 'python-mode-hook 'my/python-mode-hook)
+;(use-package company-jedi
+;  :ensure t
+;  :config
+;  (add-hook 'python-mode-hook 'jedi:setup)
+;  )
 
 ; complete yasnippets: https://www.reddit.com/r/emacs/comments/bm8r3c/help_how_do_i_get_yasnippet_names_to_show_up_in/
 (defun mars/company-backend-with-yas (backends)
@@ -1995,12 +2008,24 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
 
 * fix-mode, Highlight TODO/FIXME type messages in comments.
   #+BEGIN_SRC emacs-lisp
-  (use-package fic-mode
+;(use-package fic-mode
+;  :commands fic-mode
+;  :diminish fic-mode
+;  :config
+;  (add-hook 'prog-mode-hook 'turn-on-fic-mode)
+;  (add-hook 'LaTeX-mode-hook 'turn-on-fic-mode)
+;  )
+(use-package fic-mode
   :commands fic-mode
-  :diminish fic-mode
-  :config
+  :ensure t
+  :init
   (add-hook 'prog-mode-hook 'fic-mode)
-  (add-hook 'LaTeX-mode-hook 'fic-mode)
+  :config
+
+  (defun fic-view-listing ()
+    "Use occur to list related FIXME keywords"
+    (interactive)
+    (occur "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"))
   )
   #+END_SRC
 
@@ -2031,3 +2056,24 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
   )
   #+END_SRC
 
+* Custom Functions
+  - From https://news.ycombinator.com/item?id=22129636
+    #+begin_src emacs-lisp
+(defun arrayify (start end quote)
+  "Turn strings on newlines into a QUOTEd, comma-separated one-liner."
+  (interactive "r\nMQuote: ")
+  (let ((insertion
+	 (mapconcat
+	  (lambda (x) (format "%s%s%s" quote x quote))
+	  (split-string (buffer-substring start end)) ", ")))
+    (delete-region start end)
+    (insert insertion)))
+    #+end_src
+* Utf8
+    #+begin_src emacs-lisp
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+      #+end_src 

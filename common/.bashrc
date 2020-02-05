@@ -86,6 +86,10 @@ if [[ $platform == 'darwin' ]]; then
     source /usr/local/opt/lmod/init/profile # for macosx
 fi
 
+function cheat {
+	 curl "cheat.sh/$1"
+} 
+
 # Linux only commands
 if [[ $platform == 'linux' ]]; then
    alias open="xdg-open"
@@ -144,8 +148,10 @@ export MANPATH=$MANPATH:$HOME/local/share/man
 
 
 # From arch bash wiki
-## Modified commands ## {{{
-alias diff='colordiff'              # requires colordiff package
+## Modified commands 
+if hash colordiff 2>/dev/null ; then
+    alias diff='colordiff'              # requires colordiff package
+fi
 alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
@@ -154,8 +160,8 @@ alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 alias ping='ping -c 5'
 alias dmesg='dmesg -HL'
-# }}}
-## ls ## {{{
+# 
+## ls ## 
 #alias ls='ls -hF'# --color=auto' # is at the beginning of this file
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -l'
@@ -164,20 +170,19 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
-# }}}
+# 
 #alias tail='tail -f -n 50'
 alias tmux='tmux -2'
 alias remake='make clean; make'
 alias extip='curl http://ipecho.net/plain; echo'
 alias remote='vncserver -geometry 1680x1050 -dpi 120'
 
-
 # Pygmentize less
 function cless () {
-    pygmentize -f terminal "$1" | less  -R
+    pygmentize -gf terminal "$1" | less  -R
 }
 
-## Safety features ## {{{
+## Safety features ## 
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'                    # 'rm -i' prompts for every file
@@ -186,7 +191,7 @@ alias ln='ln -i'
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'       # clear screen for real (it does not work in Terminology)
-# }}}
+#
 
 bind -x '"\C-l": clear;'
 
@@ -254,9 +259,6 @@ fi
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export MP_FULLNAME="William Fernando Oquendo Patino"
 
-# Anaconda
-# . $HOME/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
-
 ## LMGC90
 #export PYTHONPATH=${PYTHONPATH}:$HOME/repos/lmgc90/build # better dont do this and instead change path on script
 export PATH=${PATH}:$HOME/repos/lmgc90/src/addons/
@@ -306,6 +308,41 @@ if [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
 fi
 
+# From https://opensource.com/article/18/9/shell-dotfile
+if [[ `egrep '168.176|17.42|' /etc/resolv.conf` ]]; then
+    if [ -e $HOME/.work ]; then 
+	source $HOME/.work
+    else
+        echo "This looks like a work machine, but I can't find the ~/.work file"
+    fi
+fi
+shrug() { echo "¯\_(ツ)_/¯"; }
+
+
+# Module
+fname=/usr/local/opt/lmod/init/profile
+if [ -f $fname ]; then
+    source $fname # for macosx
+fi
 # spack
-source ~/repos/spack/share/spack/setup-env.sh
+fname=$HOME/repos/spack/share/spack/setup-env.sh
+if [ -f $fname ]; then
+    source $fname # for macosx
+fi
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/oquendo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/oquendo/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/oquendo/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/oquendo/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

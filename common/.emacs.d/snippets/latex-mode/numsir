@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor : William Oquendo (woquendo (at) gmail (dot) com )
+# name: numsir
+# key: nsr
+# --
+\NumSI{""" +str($1) +r"""}{$2} 
