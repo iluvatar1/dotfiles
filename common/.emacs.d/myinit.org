@@ -1998,12 +1998,24 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
 
 * fix-mode, Highlight TODO/FIXME type messages in comments.
   #+BEGIN_SRC emacs-lisp
-  (use-package fic-mode
+;(use-package fic-mode
+;  :commands fic-mode
+;  :diminish fic-mode
+;  :config
+;  (add-hook 'prog-mode-hook 'turn-on-fic-mode)
+;  (add-hook 'LaTeX-mode-hook 'turn-on-fic-mode)
+;  )
+(use-package fic-mode
   :commands fic-mode
-  :diminish fic-mode
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'fic-mode)
   :config
-  (add-hook 'prog-mode-hook 'turn-on-fic-mode)
-  (add-hook 'LaTeX-mode-hook 'turn-on-fic-mode)
+
+  (defun fic-view-listing ()
+    "Use occur to list related FIXME keywords"
+    (interactive)
+    (occur "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"))
   )
   #+END_SRC
 
