@@ -16,6 +16,13 @@
 ;;   )
 #+END_SRC
 
+* Noproxy
+  #+begin_src emacs-lisp
+(setq url-proxy-services
+      '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+	("http" . "127.0.0.0:10000")
+	("https" . "127.0.0.1:10000")))
+  #+end_src
 * Authentication
   #+BEGIN_SRC emacs-lisp
   (setq auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
@@ -1608,6 +1615,9 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
   (add-hook 'org-mode-hook 'highlight-parentheses-mode)
   (add-hook 'LaTeX-mode-hook 'highlight-parentheses-mode)
   (add-hook 'python-mode-hook 'highlight-parentheses-mode))
+
+;; global highlight line
+(global-hl-line-mode 1)
   #+END_SRC
 
 * tags for code navigation
