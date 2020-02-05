@@ -1,5 +1,4 @@
 ;; Add horizontal rulers with Ctrl-q Ctrl-l
-
 (defvar my-start-time (current-time)
   "Time when Emacs was started")
 
@@ -11,6 +10,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p custom-file)
   (load custom-file))
+
+;;(package-initialize)
+;;(package-refresh-contents)
+;;(package-install 'use-package)
 
 ;; from http://cachestocaches.com/2015/8/getting-started-use-package/
 ;; http://cestlaz.github.io/posts/using-emacs-10-org-init/
