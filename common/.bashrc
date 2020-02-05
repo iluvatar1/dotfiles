@@ -297,6 +297,18 @@ function set_unal_proxy {
     export HTTPS_PROXY="https_proxy"                               
 }
 
+function set_unal_proxy_cntlm {
+    export PROXY="192.168.10.1:3128"
+    export http_proxy="http://$PROXY"                                 
+    export https_proxy="https://$PROXY"                               
+    export ftp_proxy="$http_proxy"                                    
+    export RSYNC_PROXY="$PROXY"                                       
+    export all_proxy="socks5://$PROXY"                                 
+    export ALL_PROXY="$all_proxy"                                 
+    export HTTP_PROXY="$http_proxy"                                 
+    export HTTPS_PROXY="https_proxy"                               
+}
+
 # Lpp from ligghts
 export LPP_DIR=$HOME/repos/LPP/src
 export LPP_NPROCS=4
