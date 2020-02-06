@@ -7,8 +7,10 @@ set convert-meta off
 #"\e[1;5C": forward-word
 
 # alt
-"\e[1;9D": backward-word
-"\e[1;9C": forward-word
+#"\e[1;9D": backward-word
+#"\e[1;9C": forward-word
+"\e[1;3D": backward-word	# works for xfce4 terminal
+"\e[1;3C": forward-word		# works for xfce4 terminal
 "\eh": backward-kill-word # iterm2 : make left option send esc+
 
 # control bindings
