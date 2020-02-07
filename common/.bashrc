@@ -323,7 +323,7 @@ if [ -f ~/.bash_utils ]; then
 fi
 
 # From https://opensource.com/article/18/9/shell-dotfile
-if [[ `egrep '168.176|17.42|' /etc/resolv.conf` ]]; then
+if [[ `egrep '168.176|17.42' /etc/resolv.conf` ]]; then
     if [ -e $HOME/.work ]; then 
 	source $HOME/.work
     else
