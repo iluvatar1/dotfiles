@@ -67,13 +67,16 @@
 ;; ;; load the org file
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
-;; From https://writequit.org/org/settings.html
-(require 'org)
-(require 'ob-tangle)
-(org-babel-load-file
- (expand-file-name "~/.emacs.d/myinit.org"
-                   user-emacs-directory))
+;;From https://writequit.org/org/settings.html
+;; (require 'org)
+;; (require 'ob-tangle)
+;; (org-babel-load-file
+;;  (expand-file-name "myinit.org"
+;; 		   user-emacs-directory))
+;; From https://raw.githubusercontent.com/zamansky/using-emacs/master/myinit.org
+(org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
+;; TP RELOAD I NEED T REMOVE myinit.el
 
 (message "Start up time %.2fs" (float-time (time-subtract (current-time) my-start-time)))
 

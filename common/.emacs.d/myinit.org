@@ -1,4 +1,5 @@
 * General Refs
+  - https://alhassy.github.io/init/
   - https://github.com/zamansky/using-emacs/blob/master/myinit.org
   - https://github.com/jinnovation/dotemacs
   - https://huytd.github.io/emacs-from-scratch.html
@@ -248,6 +249,40 @@
   )
   #+END_SRC
 
+* neotree
+  #+begin_src emacs-lisp
+(use-package all-the-icons)
+;; neotree --sidebar for project file navigation
+(use-package neotree
+  :config (global-set-key "\C-x\ d" 'neotree-toggle))
+
+;; Only do this once:
+(when nil
+  (use-package all-the-icons)
+  (all-the-icons-install-fonts 'install-without-asking))
+
+(setq neo-theme 'icons)
+(neotree-refresh)
+
+;; Open it up upon startup.
+(neotree-toggle)
+  
+  #+end_src
+* Parents
+  #+begin_src emacs-lisp
+(use-package electric
+  :init
+  (electric-pair-mode 1)
+  :config
+  (setq electric-pair-pairs
+      '(
+        (?$ . ?$)
+	(?~ . ?~)
+        (?* . ?*)
+        (?/ . ?/)
+       ))
+  )
+  #+end_src
 * Modeline
 ** [DEACTIVATED] power line
   #+BEGIN_SRC emacs-lisp :exports none
@@ -262,6 +297,8 @@
   #+BEGIN_SRC emacs-lisp
   (use-package spaceline
   :ensure t
+  :config 
+  (spaceline-spacemacs-theme)
   )
   #+END_SRC
 * Hydra
@@ -611,6 +648,9 @@
   (setq org-completion-use-ido nil)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
+  ;;Seamless use of babel: No confirmation upon execution.
+  ;; Downside: Could accidentally evaluate harmful code.
+  (setq org-confirm-babel-evaluate nil)
   ;; org babel
   (org-babel-do-load-languages
    'org-babel-load-languages '((C . t)))
@@ -1703,14 +1743,36 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)  
   #+END_SRC
 
+* Synosaurus
+  For better writing
+  #+begin_src emacs-lisp
+(use-package synosaurus
+  :diminish synosaurus-mode
+  :init    (synosaurus-mode)
+  :config  (setq synosaurus-choose-method 'popup) ;; 'ido is default.
+           (global-set-key (kbd "M-#") 'synosaurus-choose-and-replace)
+)
+  #+end_src
 * htmlize for org html source code export
   #+BEGIN_SRC emacs-lisp
   (use-package htmlize
   :defer t
-  ;;:ensure t
+  :ensure t
   )
   #+END_SRC
 
+* speedtype
+  #+begin_src emacs-lisp
+  (use-package speed-type)
+  #+end_src
+* Fix the path
+  #+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+  :init
+    (when (memq window-system '(mac ns x))
+     (exec-path-from-shell-initialize))
+)
+  #+end_src
 * w3m browser mode
   inspired from http://beatofthegeek.com/2014/02/my-setup-for-using-emacs-as-web-browser.html
   #+BEGIN_SRC emacs-lisp
@@ -2070,3 +2132,37 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
 (set-keyboard-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
       #+end_src 
+* Calendar 
+  #+begin_src emacs-lisp
+(use-package calfw
+  :ensure ;TODO:
+  :config
+  (use-package calfw-org)
+  (setq cfw:org-overwrite-default-keybinding t)
+  (use-package calfw-ical)
+
+  (defun mycalendar ()
+    (interactive)
+    (cfw:open-calendar-buffer
+     :contents-sources
+     (list
+      ;; (cfw:org-create-source "Green")  ; orgmode source
+      (cfw:ical-create-source "gcal" "https://calendar.google.com/calendar/ical/woquendo%40gmail.com/public/basic.ics" "IndianRed") ; devorah calender
+      (cfw:ical-create-source "gcal" "https://calendar.google.com/calendar/ical/vpo53nvma5tv0m1tmnnes7md1o%40group.calendar.google.com/public/basic.ics" "IndianRed") ; google calendar ICS
+      )))
+  (setq cfw:org-overwrite-default-keybinding t))
+
+(use-package calfw-gcal
+:ensure t
+:config
+(require 'calfw-gcal))
+  #+end_src
+* Email
+** notmuch
+   #+begin_src emacs-lisp
+(use-package notmuch
+  :config
+  (setq send-mail-function (quote sendmail-send-it))
+  (setq user-mail-address "woquendo@gmail.com.com"
+	user-full-name "William Oquendo"))
+   #+end_src
