@@ -15,6 +15,7 @@
 ;;(package-refresh-contents)
 ;;(package-install 'use-package)
 
+
 ;; from http://cachestocaches.com/2015/8/getting-started-use-package/
 ;; http://cestlaz.github.io/posts/using-emacs-10-org-init/
 (require 'package)
@@ -33,6 +34,7 @@
   :ensure t)
 (use-package bind-key
   :ensure t)
+(package-refresh-contents t) ;; runs in background
 
 ;;https://github.com/rranelli/auto-package-update.el
 ;; run: M-x auto-package-update-now
