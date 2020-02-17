@@ -1,7 +1,15 @@
 set daemon 30
+set httpd port 2813
+    USE ADDRESS 127.0.0.1
+    ALLOW 127.0.0.1
 
-CHECK PROGRAM syncthing PATH /usr/bin/syncthing
-      if status != 0 then alert
+#CHECK PROGRAM syncthing PATH /usr/bin/syncthing
+#      if status != 0 then alert
+
+CHECK process syncthing 
+      matching "syncthing"
+      start program = "/usr/bin/syncthing"
+      stop program = "/usr/bin/killall syncthing"
 
 #CHECK PROGRAM monit PATH /usr/bin/monit
 
