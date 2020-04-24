@@ -361,3 +361,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 source ~/.bashrc-ohmybash-config
+alias obs="QT_QPA_PLATFORM_PLUGIN_PATH=/Applications/OBS.app/Contents//Plugins/  /Applications/OBS.app/Contents/MacOS/obs" 
