@@ -1549,10 +1549,21 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;(load-theme 'deeper-blue t)
 ;;(load-theme 'wombat t)
 
+
 (use-package spacemacs-theme
   :defer t
   ;;:init (load-theme 'spacemacs-dark t)
-  :init (load-theme 'spacemacs-light t)
+  ;;:init (load-theme 'spacemacs-light t)
+  )
+
+(use-package modus-vivendi-theme
+  :defer t
+  :init (load-theme 'modus-vivendi t)
+  )
+
+(use-package modus-operandi-theme
+  :defer t
+  ;;:init (load-theme 'modus-operandi t)
   )
 
 ;; ;; https://github.com/greduan/emacs-theme-gruvbox
