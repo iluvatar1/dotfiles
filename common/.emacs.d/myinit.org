@@ -2256,3 +2256,11 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
   (setq user-mail-address "woquendo@gmail.com.com"
 	user-full-name "William Oquendo"))
    #+end_src
+* Floobits
+  This is useful to share a programming session with students
+   #+begin_src emacs-lisp
+(use-package floobits
+  :ensure t
+)
+   #+end_src
+  
