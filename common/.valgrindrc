@@ -1,0 +1,1 @@
+--suppressions=$HOME/.config/valgrind/valgrind.supp
