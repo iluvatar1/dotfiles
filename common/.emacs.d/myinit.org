@@ -270,18 +270,18 @@
   #+end_src
 * Parents
   #+begin_src emacs-lisp
-(use-package electric
-  :init
-  (electric-pair-mode 1)
-  :config
-  (setq electric-pair-pairs
-      '(
-        (?$ . ?$)
-	(?~ . ?~)
-        (?* . ?*)
-        (?/ . ?/)
-       ))
-  )
+;;(use-package electric
+;;  :init
+;;  (electric-pair-mode 1)
+;;  :config
+;;  (add-hook 'prog-mode-hook
+;;    (lambda ()
+;;    (define-key prog-mode-map "\"" 'electric-pair)
+;;    (define-key prog-mode-map "\'" 'electric-pair)
+;;    (define-key prog-mode-map "(" 'electric-pair)
+;;    (define-key prog-mode-map "[" 'electric-pair)
+;;    (define-key prog-mode-map "{" 'electric-pair)))
+;;  )
   #+end_src
 * Modeline
 ** [DEACTIVATED] power line
