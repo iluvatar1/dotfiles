@@ -11,15 +11,11 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;;(package-initialize)
-;;(package-refresh-contents)
-;;(package-install 'use-package)
-
 ;; from http://cachestocaches.com/2015/8/getting-started-use-package/
 ;; http://cestlaz.github.io/posts/using-emacs-10-org-init/
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa-stb" . "https://stable.melpa.org/packages/"))
+;;(add-to-list 'package-archives '("melpa-stb" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
@@ -33,6 +29,7 @@
   :ensure t)
 (use-package bind-key
   :ensure t)
+(package-refresh-contents t) ;; runs in background
 
 ;;https://github.com/rranelli/auto-package-update.el
 ;; run: M-x auto-package-update-now
