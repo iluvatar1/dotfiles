@@ -85,11 +85,11 @@
 % tikz/pgf
 \pgfplotsset{compat=1.16}
 \usepgfplotslibrary{external}
-\tikzexternalize%[mode=list and make] % sometimes this mode does not
+%\tikzexternalize%[mode=list and make] % sometimes this mode does not
                 %work, does not recompute the figures
 %\tikzexternalize[/tikz/external/optimize=false] %for todonotes, better use xtodo macro
 %\tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname ``\image'' ``\texsource''}} % to let pdflatex work compile picture: pdflatex --shell-escape xxxxxxx.tex
-\usetikzlibrary{shapes,arrows,circuits,calc,babel,arrows.meta,shapes.misc} % babel is useful to avoid collisions with tikz <-> and spanish babel
+\usetikzlibrary{shapes,arrows,circuits,calc,babel,arrows.meta,shapes.misc,positioning} % babel is useful to avoid collisions with tikz <-> and spanish babel
 \tikzset{>=Latex} %% For better default arrows
 \tikzset{cross/.style={path picture={ \draw[black,thick]
             (path picture bounding box.south east) --
