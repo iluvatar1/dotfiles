@@ -2264,3 +2264,10 @@ Taken from https://github.com/syl20bnr/spacemacs/pull/179."
 )
    #+end_src
   
+* Keypression
+  This allows to show pressed keys inside emacs
+  #+begin_src emacs-lisp
+(use-package keypression
+  :ensure t
+)  
+  #+end_src
