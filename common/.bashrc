@@ -290,7 +290,7 @@ function set_unal_proxy {
     source <( gpg --decrypt ~/.PROXY_AUTH.gpg )
     export PROXY="$PROXY_USER:$PROXY_PASSWD@proxyapp.unal.edu.co:8080"
     export http_proxy="http://$PROXY"                                 
-    export https_proxy="https://$PROXY"                               
+    export https_proxy="http://$PROXY"                               
     export ftp_proxy="$http_proxy"                                    
     export RSYNC_PROXY="$PROXY"                                       
     export all_proxy="socks5://$PROXY"                                 
