@@ -1701,7 +1701,24 @@ Check: https://github.com/nasseralkmim/.emacs.d/blob/master/init.el#L631
 ;;  :config
 ;;  (load-theme 'doom-nord)) ;; doom-one doom-dracula doom-nord
   #+END_SRC
+** Color theme follows system mode
+   #+begin_src emacs-lisp
+   (defun set-system-dark-mode ()
 
+(interactive)
+
+(if (string= (shell-command-to-string "printf %s \"$( osascript -e \'tell application \"System Events\" to tell appearance preferences to return dark mode\' )\"") "true")
+
+(load-theme 'modus-vivendi t)
+
+(load-theme 'modus-operandi t)
+
+)
+
+)
+
+(set-system-dark-mode)
+   #+end_src
 * ECB : Emacs code browser
   #+BEGIN_SRC emacs-lisp
   (use-package ecb
