@@ -19,7 +19,7 @@ if [ -f /usr/local/share/bash-completion/bash_completion ]; then
     . /usr/local/share/bash-completion/bash_completion
 fi
 
-fortune -a
+# fortune -a
 
 # Detect os
 # From : https://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
@@ -64,7 +64,7 @@ if [[ $platform == 'darwin' ]]; then
     alias zz='fasd_cd -d -i' # cd with interactive selection
     fasd_cache="$HOME/.fasd-init-bash"
     if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-	fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+	    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
     fi
     source "$fasd_cache"
     unset fasd_cache
@@ -185,10 +185,10 @@ function cless () {
 }
 
 ## Safety features ## 
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='rm -iv'                    # 'rm -i' prompts for every file
-alias ln='ln -i'
+#alias cp='cp -iv'
+#alias mv='mv -iv'
+#alias rm='rm -iv'                    # 'rm -i' prompts for every file
+#alias ln='ln -i'
 #alias chown='chown --preserve-root'
 #alias chmod='chmod --preserve-root'
 #alias chgrp='chgrp --preserve-root'
@@ -333,11 +333,6 @@ fi
 shrug() { echo "¯\_(ツ)_/¯"; }
 
 
-# Module
-fname=/usr/local/opt/lmod/init/profile
-if [ -f $fname ]; then
-    source $fname # for macosx
-fi
 # spack
 fname=$HOME/repos/spack/share/spack/setup-env.sh
 if [ -f $fname ]; then
@@ -345,20 +340,14 @@ if [ -f $fname ]; then
 fi
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/oquendo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/oquendo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/oquendo/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/oquendo/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source ~/.bashrc-ohmybash-config
 alias obs="QT_QPA_PLATFORM_PLUGIN_PATH=/Applications/OBS.app/Contents//Plugins/  /Applications/OBS.app/Contents/MacOS/obs" 
+
+# tmux split to edit file
+alias e='tmux split-window -h emacs -nw -q  $@'
+
+# ohmybash or bashit
+#source ~/.bashrc-ohmybash-config
+source ~/.bashrc-bashit
+
+# conda
+source ~/.bashrc-conda
