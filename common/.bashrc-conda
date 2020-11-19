@@ -13,9 +13,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Add conda environment to prompt
-if [ ! -z "$CONDA_DEFAULT_ENV" ]
-then
-    PS1+="($CONDA_DEFAULT_ENV) "
-fi
-export PS1
+# # Add conda environment to prompt
+# if [ ! -z "$CONDA_DEFAULT_ENV" ]
+# then
+#     echo $CONDA_DEFAULT_ENV
+#     #PS1+="($CONDA_DEFAULT_ENV) "
+#     #PS1="($CONDA_DEFAULT_ENV) $PS1"
+# fi
+# #export PS1
