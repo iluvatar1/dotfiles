@@ -241,3 +241,8 @@ function 2gif() {
 }
 function tonvid() { mpv --vo=opengl,x11,drm,tct,caca --ao=pulse,alsa --ytdl-format="[ext=mp4][height<=?720]" http://tonvid.com/info.php?video_id=$1; }
 function weather() { echo ""; w3m http://www.usairnet.com/weather/forecast/local/?pands=$1 | grep -A 10 "${2^^}"; echo ""; curl -s http://wttr.in/$2; }
+
+generateqr ()
+{
+    printf "$@" | curl -F-=\<- qrenco.de
+}
