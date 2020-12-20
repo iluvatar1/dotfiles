@@ -86,6 +86,13 @@ if [[ $platform == 'darwin' ]]; then
     export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib:/usr/lib:/usr/local/lib
     # Module
     #source /usr/local/opt/lmod/init/profile # for macosx
+    #tauu
+    # do not remove these lines!
+    # uninstall may not work if modified
+    PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/:/Applications/TAU/tau/apple/bin:$PATH"
+    export PATH
+    # end modification
+    #tauend
 fi
 
 function cheat {
