@@ -83,7 +83,7 @@ if [[ $platform == 'darwin' ]]; then
     #  ## pdftk
     #  #export PATH=$PATH:/opt/pdflabs/pdftk/bin/
     #  # custom libs without interfering with system libs
-    export DYLD_FALLBACK_LIBRARY_PATH=$HOME/local/lib:/usr/lib:/usr/local/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$HOME/.local/lib:/usr/lib:/usr/local/lib
     # Module
     #source /usr/local/opt/lmod/init/profile # for macosx
     #tauu
@@ -154,7 +154,7 @@ export MANPATH=$MANPATH:/usr/local/man
 export MANPATH=$MANPATH:/usr/local/share/man
 # #export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 # PATH local commands
-export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 # export MANPATH=$MANPATH:$HOME/local/man
 # export MANPATH=$MANPATH:$HOME/local/share/man
 
