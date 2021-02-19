@@ -1,0 +1,74 @@
+function cheat {
+	 curl "cheat.sh/$1"
+}
+
+# emacs
+function killemacs {
+    for pattern in emacs Emacs; do
+	for a in $(ps aux | grep $pattern | grep -v grep | grep -v emacs.d | grep -v AppCleaner | awk '{print $2}'); do
+	echo "Killing pid : $a"
+	kill -3 $a &>/dev/null;
+	sleep 1
+	kill -2 $a &>/dev/null;
+	echo "Done."
+	done
+    done
+}
+
+# Pygmentize less
+function cless () {
+    pygmentize -gf terminal "$1" | less  -R
+}
+
+function url2pdf {
+	 chromium --headless --disable-gpu --sleepMillis=1000 --print-to-pdf=url.pdf "${1}"
+}
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# ###########################################
+# # utility functions
+# ###########################################
+
+# exports and reset proxy at unal
+function reset_proxy {
+    export PROXY=""
+    export http_proxy=""
+    export https_proxy=""
+    export ftp_proxy=""
+    export RSYNC_PROXY=""
+    export HTTPS_PROXY=""
+    export HTTP_PROXY=""
+    export all_proxy=""
+    export ALL_PROXY=""
+}
+function set_unal_proxy {
+    # PROXY_AUTH sets PROXY_USER and PROXY_PASSWD and is private
+    echo "Decrypting file to read proxy credentials ..."
+    source <( gpg --decrypt ~/.PROXY_AUTH.gpg )
+    export PROXY="$PROXY_USER:$PROXY_PASSWD@proxyapp.unal.edu.co:8080"
+    export http_proxy="http://$PROXY"
+    export https_proxy="http://$PROXY"
+    export ftp_proxy="$http_proxy"
+    export RSYNC_PROXY="$PROXY"
+    export all_proxy="socks5://$PROXY"
+    export ALL_PROXY="$all_proxy"
+    export HTTP_PROXY="$http_proxy"
+    export HTTPS_PROXY="https_proxy"
+}
+
+function set_unal_proxy_cntlm {
+    export PROXY="192.168.10.1:3128"
+    export http_proxy="http://$PROXY"
+    export https_proxy="http://$PROXY"
+    export ftp_proxy="$http_proxy"
+    export RSYNC_PROXY="$PROXY"
+    export all_proxy="http://$PROXY"
+    export ALL_PROXY="$all_proxy"
+    export HTTP_PROXY="$http_proxy"
+    export HTTPS_PROXY="https_proxy"
+}
+
+shrug() { echo "¯\_(ツ)_/¯"; }
