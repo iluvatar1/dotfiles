@@ -22,8 +22,8 @@
         dired
         electric
         undo
-        :term
-        vterm
+        ;:term
+        ;vterm
         :checkers
         syntax
         :tools
@@ -38,7 +38,7 @@
         latex
         markdown
         org
-        (python +lsp +conda)
+        ;(python +lsp +conda)
         sh
         :email
         :app
