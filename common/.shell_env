@@ -10,7 +10,8 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
     platform='freebsd'
 fi
 
-CURRENT_SHELL=$(ps $$ | tail -n 1 | tr -s ' ' | cut -d" " -f5)
+#CURRENT_SHELL=$(ps $$ | tail -n 1 | tr -s ' ' | cut -d" " -f5)
+CURRENT_SHELL=$0
 INBASH=1
 if [ -z $(echo $CURRENT_SHELL | grep bash ) ]; then
     INBASH=0
