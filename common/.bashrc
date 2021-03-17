@@ -24,19 +24,20 @@ fi
 #    source ~/.git-prompt.sh
 #fi
 
-if [[ 1==$INBASH ]] && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    . /usr/local/etc/bash_completion.d/git-completion.bash
+if [[ 1==$INBASH ]] && [ -f $HOME/.git-completion.bash ]; then
+    source $HOME/.git-completion.bash
 fi
 
-if [[ 1==$INBASH ]] && [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+if [[ 1==$INBASH ]] && [ -f $HOME/.git-prompt.sh ]; then
     GIT_PS1_SHOWDIRTYSTATE=true
     GIT_PS1_SHOWSTASHSTATE=true
     GIT_PS1_SHOWUNTRACKEDFILES=true
     GIT_PS1_SHOWUPSTREAM="auto"
     GIT_PS1_HIDE_IF_PWD_IGNORED=true
     GIT_PS1_SHOWCOLORHINTS=true
-    . /usr/local/etc/bash_completion.d/git-prompt.sh
+    source $HOME/.git-prompt.sh    .
 fi
+
 
 if [ 1 -eq $INBASH ] && [ -f ~/.bash_utils ]; then
     . ~/.bash_utils
