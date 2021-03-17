@@ -15,4 +15,4 @@
 # #+HTML_HEAD: <script type="text/javascript" src="styles/bigblow/js/hideshow.js"></script>
 # #+HTML_HEAD: <script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
 
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-bigblow.setup
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
