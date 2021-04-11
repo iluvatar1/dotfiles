@@ -2,7 +2,7 @@
 #+LATEX_CLASS_OPTIONS: [10pt,letterpaper,onecolumn]
 # #+LATEX_HEADER:\usepackage[AUTO]{inputenc}
 #+LATEX_HEADER:\usepackage[utf8]{inputenc}
-#+LATEX_HEADER:\usepackage[svgnames]{xcolor}
+#+LATEX_HEADER:\usepackage[dvipsnames,svgnames]{xcolor}
 #+LATEX_HEADER:\usepackage{minted}
 #+LATEX_HEADER: \usepackage{enumerate}
 #+LATEX_HEADER: \usepackage{multicol}
