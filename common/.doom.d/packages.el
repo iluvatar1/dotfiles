@@ -3,5 +3,6 @@
 (package! try)
 (package! neotree)
 (package! gnuplot)
-
 (package! elpy)
+(package! vuiet)
+(package! lastfm)
