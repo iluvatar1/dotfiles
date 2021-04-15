@@ -32,3 +32,7 @@ common/.config/mpv/
 common/.config/nnn/
 common/.config/rstudio/
 common/.floorc.json
+*ccls-cache
+*.lastfmrc
+*init.lua
+common/.doom.d/custom.el
