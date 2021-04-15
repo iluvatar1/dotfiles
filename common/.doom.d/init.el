@@ -5,7 +5,7 @@
         :ui
         doom
         doom-dashboard
-        doom-quit
+        ;doom-quit
         hl-todo
         hydra
         minimap
@@ -25,10 +25,10 @@
         ;:term
         ;vterm
         :checkers
-        syntax
+        ;syntax
         :tools
         (eval +overlay)
-        ;lsp
+        ;;lsp
         magit
         make
         ;;pdf
