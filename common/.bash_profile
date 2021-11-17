@@ -3,4 +3,5 @@ if [ -r ~/.profile ]; then
 fi
 case "$-" in *i*) if [ -r ~/.bashrc ]; then . ~/.bashrc; fi;; esac
 
-export PATH=$PATH:/Users/oquendo/.local/bin
+
+source /home/oquendo/.config/broot/launcher/bash/br

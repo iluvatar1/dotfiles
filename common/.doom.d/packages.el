@@ -1,5 +1,4 @@
-(package! modus-vivendi-theme)
-(package! modus-operandi-theme)
+(package! modus-themes)
 (package! try)
 (package! gnuplot)
 (package! elpy)
@@ -8,3 +7,5 @@
 (package! eglot)
 (package! spacemacs-theme)
 (package! elpy)
+(package! multiple-cursors)
+(package! auctex)

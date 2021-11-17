@@ -35,14 +35,28 @@
         :lang 
         (cc +irony)
         emacs-lisp
-        latex
+        (latex
+	 +latexmk
+	 +cdlatex
+	 +fold)
         markdown
-        org
+        (org
+	 +pretty
+	 +dragndrop
+	 +jupyter
+	 +pandoc
+	 +gnuplot
+	 +pomodoro
+	 +present)
         ;(python +lsp +conda)
+        (python +conda +pyright)
         sh
+	yaml
         :email
+	(:if (executable-find "mu") (mu4e +org +gmail))
         :app
         calendar
+	(rss +org)
         :config
         (default +smartparens)
 )

@@ -172,27 +172,27 @@ lastvalue='RET=$?; if [[ $RET -eq 0 ]]; then echo -ne "\033[0;32m$RET\033[0m ;)"
 #See this for a list of language codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 function translate(){ wget -U "Mozilla/5.0" -qO - "http://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=$2&dt=t&q=$(echo $1 | sed "s/[\"'<>]//g")" | sed "s/,,,0]],,.*//g" | awk -F'"' '{print $2, $6}'; }
 
-#Task List
-TASKFILE="$HOME/.bashtask" #Hidden for neatness
-NC='\033[0m' # No Color
-LIGHTRED='\e[1;31m'
-LIGHTBLUE='\e[1;34m'
-if [ -f "$TASKFILE" ] && [ $(stat -c %s "$TASKFILE") != 0 ] #Check if file has content
-then
-    echo -e "${LIGHTRED}Task List${NC} as of ${LIGHTBLUE}$(date -r "$TASKFILE")${NC}"
-    echo ""
-    cat "$TASKFILE"
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "-"
-else
-    echo "Yay! No tasks :)"
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "-"
-    touch "$TASKFILE"
-fi
-alias tasklist="bash"
-function taskadd() { echo "- $1" >> "$TASKFILE"; } #Example: taskadd "Go grocery shopping"
-function taskin() { sed -i "$1i- $2" "$TASKFILE"; } #Insert a task between items
-function taskrm() { sed -i "$1d" "$TASKFILE"; } #Example: taskrm 2 --> Removes second item in list
-function taskcl() { rm "$TASKFILE"; touch "$TASKFILE"; } #Delete and create a new taskfile
+# #Task List
+# TASKFILE="$HOME/.bashtask" #Hidden for neatness
+# NC='\033[0m' # No Color
+# LIGHTRED='\e[1;31m'
+# LIGHTBLUE='\e[1;34m'
+# if [ -f "$TASKFILE" ] && [ $(stat -c %s "$TASKFILE") != 0 ] #Check if file has content
+# then
+#     echo -e "${LIGHTRED}Task List${NC} as of ${LIGHTBLUE}$(date -r "$TASKFILE")${NC}"
+#     echo ""
+#     cat "$TASKFILE"
+#     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "-"
+# else
+#     echo "Yay! No tasks :)"
+#     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "-"
+#     touch "$TASKFILE"
+# fi
+# alias tasklist="bash"
+# function taskadd() { echo "- $1" >> "$TASKFILE"; } #Example: taskadd "Go grocery shopping"
+# function taskin() { sed -i "$1i- $2" "$TASKFILE"; } #Insert a task between items
+# function taskrm() { sed -i "$1d" "$TASKFILE"; } #Example: taskrm 2 --> Removes second item in list
+# function taskcl() { rm "$TASKFILE"; touch "$TASKFILE"; } #Delete and create a new taskfile
 
 #Converting audio and video files
 function 2ogg() { eyeD3 --remove-all-images "$1"; fname="${1%.*}"; sox "$1" "$fname.ogg"; rm "$1"; }

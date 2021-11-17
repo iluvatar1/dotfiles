@@ -91,3 +91,5 @@ if [ 1 -eq $INBASH ]; then
         export PS1=${CONDA_PROMPT_MODIFIER}${ORIG_PS1}" \[\e[0:37m\]\$(parse_git_branch)\n\\[\033[00m\]\$ "
     fi
 fi
+
+source /home/oquendo/.config/broot/launcher/bash/br

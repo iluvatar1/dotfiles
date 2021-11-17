@@ -4,6 +4,7 @@
 [core]
 	editor = emacs -nw
 	pager = less -R
+	excludesfile = /Users/oquendo/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -18,3 +19,6 @@
 	
 [credential]
 	helper = cache
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

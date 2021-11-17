@@ -8,12 +8,12 @@ export ZSH="/home/oquendo/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="bira"
 #ZSH_THEME="afowler"
 #ZSH_THEME="amuse"
-ZSH_THEME="clean"
-ZSH_THEME="new-clean"
+#ZSH_THEME="clean"
+#ZSH_THEME="new-clean"
 #ZSH_THEME="cypher"
 #ZSH_THEME="daveverwer"
 
@@ -125,3 +125,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+source /home/oquendo/.config/broot/launcher/bash/br

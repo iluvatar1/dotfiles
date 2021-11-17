@@ -30,6 +30,7 @@ if [[ $platform == 'darwin' ]]; then
     # homebrew path
     #PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
     export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+    # alias ls="gls"
     # completion
     # git
     #source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -73,7 +74,7 @@ if [[ $platform == 'darwin' ]]; then
     #tauu
     # do not remove these lines!
     # uninstall may not work if modified
-    export PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/:/Applications/TAU/tau/apple/bin:$PATH"
+    # export PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/:/Applications/TAU/tau/apple/bin:$PATH"
     # end modification
     #tauend
 fi
@@ -89,6 +90,7 @@ export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
 alias ect="emacsclient -t"
 alias ecc="emacsclient -c"
+alias em="emacs -Q "
 
 # # gnus mail emacs
 # export EMAIL="woquendo@gmail.com"
@@ -108,7 +110,7 @@ alias tmux="tmux -2"
 
 # Aliases
 # alias pdflatex="pdflatex -file-line-error -shell-escape "
-alias ls="ls -FG --color=auto  --group-directories-first"
+alias ls="ls -FG --color=auto" #  --group-directories-first"
 alias l="ls"
 alias rm="rm -i"
 # #alias xfig="xfig -startg 2 -startfo 21 -lat -spec -metric -startla SansSerif -startpo 0"
