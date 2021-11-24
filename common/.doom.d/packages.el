@@ -9,3 +9,4 @@
 (package! elpy)
 (package! multiple-cursors)
 (package! auctex)
+(package! org-tree-slide)

@@ -16,6 +16,7 @@
 (setq org-latex-listings 'minted) ;; colored latex
 (setq org-src-preserve-indentation t) ;; for preserving indentation when tangling
 (setq org-latex-packages-alist '())
+(add-to-list 'org-latex-packages-alist '("dvipsnames,svgnames" "xcolor"))
 (add-to-list 'org-latex-packages-alist '("" "minted"))
 (setq org-latex-minted-options
       '(("frame" "lines")
@@ -48,3 +49,5 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(setq org-image-actual-width 'nil)
