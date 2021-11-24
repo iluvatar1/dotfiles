@@ -92,4 +92,4 @@ if [ 1 -eq $INBASH ]; then
     fi
 fi
 
-source /home/oquendo/.config/broot/launcher/bash/br
+#source /home/oquendo/.config/broot/launcher/bash/br
