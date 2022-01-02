@@ -53,3 +53,6 @@ common/.config/bpytop/error.log
 common/.config/broot/launcher/bash/br
 common/.config/broot/launcher/installed-v1
 common/.config/broot/conf.hjson
+common/.config/raycast
+common/.config/rclone
+common/.config/wezterm
