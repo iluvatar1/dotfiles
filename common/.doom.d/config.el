@@ -75,3 +75,11 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
+
+;; check gramar
+;; see : https://www.reddit.com/r/DoomEmacs/comments/j61u6u/how_to_configure_writegood_mode_from_grammar/
+(add-load-path! "\~/.doom.d/lisp/writegood-mode/")
+(use-package! writegood-mode
+:config
+(global-set-key (kbd "C-c g") 'writegood-mode)
+(add-hook 'markdown-mode-hook 'writegood-mode))

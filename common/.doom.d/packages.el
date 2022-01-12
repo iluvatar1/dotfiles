@@ -13,3 +13,4 @@
 (package! format-all)
 (package! ox-reveal)
 (package! moom)
+(package! writegood-mode)
