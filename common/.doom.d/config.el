@@ -83,3 +83,12 @@
 :config
 (global-set-key (kbd "C-c g") 'writegood-mode)
 (add-hook 'markdown-mode-hook 'writegood-mode))
+
+;; telegram client for emacs
+(use-package! telega
+  :commands (telega)
+  :defer t
+  :bind ("C-c t" . #'telega)
+  :init
+  (unless (display-graphic-p) (setq telega-use-images nil))
+  )

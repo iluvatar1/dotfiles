@@ -14,3 +14,4 @@
 (package! ox-reveal)
 (package! moom)
 (package! writegood-mode)
+(package! telega)
