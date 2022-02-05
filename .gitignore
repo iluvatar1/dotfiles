@@ -12,7 +12,6 @@ common/.config/beets
 common/.config/git
 common/.config/gtk-2.0
 common/.config/inkscape
-common/.config/kitty
 common/.config/htop
 common/.emacs.d/init.el
 common/.config/ParaView/
