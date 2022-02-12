@@ -1,23 +1,25 @@
 In this repo I will store configuration files and some other util
 files, which can be linked directly or through gnu stow.
 
-Structure description:
-* common
-  Common files like bashrc.
-* common/latex
-  Config files for latex, org mode latex, etc.
-* work-U
-  Old files specific to work with proxy.
-  
+* Structure description:
+** common
+Common files like bashrc.
+** common/latex
+Config files for latex, org mode latex, etc.
+** work-U
+Old files specific to work with proxy.
 
 * Adding new files 
-  What to do when adding a new file which is not linked?
-  When everything is fine:
-  - Add it to the repo: git add ...
-  - Make the commit: git commit -m "..."
-  - stow it (this assumes that the file was created under the folder "common"): 
-  stow common 
+What to do when adding a new file which is not linked?
+When everything is fine:
+- Add it to the repo: git add ...
+- Make the commit: git commit -m "..."
+- stow it (this assumes that the file was created under the folder "common"):
+  #+begin_src shell
+  # stow common
   stow -n -t ~/ -v  common/
+  #+end_src
+
 * Refs
   - https://code.tutsplus.com/tutorials/setting-up-a-mac-dev-machine-from-zero-to-hero-with-dotfiles--net-35449
   - http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
