@@ -96,7 +96,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # ------------------
 # Initialize modules
 # ------------------
-
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   # Download zimfw script if missing.
   command mkdir -p ${ZIM_HOME}
