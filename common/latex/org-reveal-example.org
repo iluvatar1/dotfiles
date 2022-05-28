@@ -1,0 +1,39 @@
+# Ref: https://opensource.com/article/18/2/how-create-slides-emacs-org-mode-and-revealjs
+#+OPTIONS: toc:nil num:nil reveal_width:1400 reveal_height:1000
+#+REVEAL_TRANS: None/Fade/Slide/Convex/Concave/Zoom
+#+REVEAL_THEME: Black/White/League/Sky/Beige/Simple/Serif/Blood/Night/Moon/Sol
+
+#+TITLE: Example presentation
+#+AUTHOR: Author
+#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/
+
+
+* Hello
+* /Thank you/
+* Refs
+- https://www.reddit.com/r/emacs/comments/hiaqdj/doom_emacs_revealjs_does_it_work_for_you/
+
+* Slide 1
+  here's some text
+
+* Slide 2
+** subslide 1
+** subslide 2
+* Slide 3
+  #+ATTR_REVEAL: :frag (roll-in)
+  - list item 1
+  - list item 2
+    | a | b | c |
+    |---+---+---|
+    | 1 | 2 | 3 |
+    | 4 | 5 | 6 |
+    |---+---+---|
+* slide 4
+  #+BEGIN_SRC python
+    def f(x):
+        return x + 1
+
+    print f(5)
+
+
+  #+END_SRC
