@@ -45,7 +45,7 @@
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "/Library/TeX/texbin/")
-;;(add-to-list 'exec-path "/Users/oquendo/anaconda2/bin/")
+;;(add-to-list 'exec-path "~/anaconda2/bin/")
 #+END_SRC
 ** Some other config
    #+BEGIN_SRC emacs-lisp
