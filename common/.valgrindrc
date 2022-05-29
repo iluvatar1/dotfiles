@@ -1,1 +1,1 @@
---suppressions=/home/oquendo/.config/valgrind/valgrind.supp
+--suppressions=~/.config/valgrind/valgrind.supp

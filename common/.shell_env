@@ -28,7 +28,7 @@ fi
 
 # # Mac Os X only aliases
 if [[ $platform == 'darwin' ]]; then
-    export HOME=/home/oquendo
+    export HOME=~
     #archey | lolcat
     # the fuck, requires python 2
     #eval "$(thefuck --alias)"
