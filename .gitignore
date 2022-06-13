@@ -55,3 +55,5 @@ common/.config/broot/conf.hjson
 common/.config/raycast
 common/.config/rclone
 common/.config/wezterm
+
+*.DS_Store*
