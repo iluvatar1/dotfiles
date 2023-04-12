@@ -93,3 +93,5 @@ if [ 1 -eq $INBASH ]; then
 fi
 
 #source ~/.config/broot/launcher/bash/br
+
+eval "$(starship init bash)"
