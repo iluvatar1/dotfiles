@@ -12,6 +12,8 @@
 (package! org-tree-slide)
 (package! format-all)
 (package! ox-reveal)
-(package! moom)
+;;(package! moom)
 (package! writegood-mode)
 (package! telega)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

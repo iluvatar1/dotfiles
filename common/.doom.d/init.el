@@ -11,8 +11,8 @@
        ;;doom-quit
        hl-todo
        ;;hydra
-       ;;minimap
-       ;;modeline
+       minimap
+       modeline
        ;;ophints
        ;;(popup +defaults)
        neotree
@@ -30,14 +30,15 @@
        ;;clang-format
        ;;(format +onsave)    ; automated prettiness
        multiple-cursors    ; editing in many places at once
+       format              ; automated prettiness
 
        :emacs
        dired
        ;;electric
        undo
 
-       ;;:term
-       ;;vterm
+       :term
+       vterm
 
        :checkers
        ;;(syntax +childframe)  ; tasing you for every semicolon you forget

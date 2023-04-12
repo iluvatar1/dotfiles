@@ -2,8 +2,8 @@
       user-mail-address "woquendo@gmail.com")
 (setq confirm-kill-emacs nil)
 (setq display-line-numbers-type t)
-;;(setq doom-theme 'doom-one)
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-one)
+;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'spacemacs-light)
 (custom-set-faces!
   '(doom-dashboard-banner :inherit default)
@@ -78,17 +78,51 @@
 
 ;; check gramar
 ;; see : https://www.reddit.com/r/DoomEmacs/comments/j61u6u/how_to_configure_writegood_mode_from_grammar/
-(add-load-path! "\~/.doom.d/lisp/writegood-mode/")
-(use-package! writegood-mode
-:config
-(global-set-key (kbd "C-c g") 'writegood-mode)
-(add-hook 'markdown-mode-hook 'writegood-mode))
+;;(add-load-path! "~/.doom.d/lisp/writegood-mode/")
+;;(use-package! writegood-mode
+;;:config
+;;(global-set-key (kbd "C-c g") 'writegood-mode)
+;;(add-hook 'markdown-mode-hook 'writegood-mode))
 
 ;; telegram client for emacs
-(use-package! telega
-  :commands (telega)
-  :defer t
-  :bind ("C-c t" . #'telega)
-  :init
-  (unless (display-graphic-p) (setq telega-use-images nil))
-  )
+;; (use-package! telega
+;;   :commands (telega)
+;;   :defer t
+;;   :bind ("C-c t" . #'telega)
+;;   :init
+;;   (unless (display-graphic-p) (setq telega-use-images nil))
+;;   )
+
+;; Allows to expand macro in org babel codes
+;; https://emacs.stackexchange.com/questions/48733/org-macros-in-header-arguments-of-org-babel
+;; (defun my-org-babel-expand-macros (params)
+;;   "Replace org macros in all header argument values."
+;;   (mapc
+;;    (lambda (par)
+;;      (let ((templates org-macro-templates)
+;;            (val (cdr par)))
+;;        (when (stringp val)
+;;          (setcdr par
+;;                  (with-temp-buffer
+;;                    (insert val)
+;;                    (org-macro-replace-all templates)
+;;                    (buffer-string))))))
+;;    params))
+
+;;(advice-add 'org-babel-process-params :filter-return #'my-org-babel-expand-macros)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
+
+
+;; transparency
+;;(set-frame-parameter (selected-frame) 'alpha-background 50)
+;;(add-to-list 'default-frame-alist '(alpha-background . 50))
+(set-frame-parameter (selected-frame) 'alpha '(97 . 95))
+(add-to-list 'default-frame-alist '(alpha . (97 . 95)))
