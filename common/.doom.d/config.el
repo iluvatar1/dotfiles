@@ -126,3 +126,13 @@
 ;;(add-to-list 'default-frame-alist '(alpha-background . 50))
 (set-frame-parameter (selected-frame) 'alpha '(97 . 95))
 (add-to-list 'default-frame-alist '(alpha . (97 . 95)))
+
+
+;; ruff python linter
+(add-hook 'python-mode-hook 'flymake-mode)
+(add-hook 'python-mode-hook #'flymake-ruff-load)
+(setq python-flymake-command '("ruff" "--quiet" "--stdin-filename=stdin" "-"))
+
+;; shellcheck
+(add-hook 'sh-mode-hook 'flymake-mode)
+(add-hook 'sh-mode-hook 'flymake-shellcheck-load)

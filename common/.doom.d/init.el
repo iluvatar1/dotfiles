@@ -71,8 +71,8 @@
        ;; +gnuplot
        ;; +pomodoro
        ;; +present)
-       (python +lsp)
-       ;;(python +conda +pyright)
+       ;;(python +lsp)
+       (python +pyright)
        (sh +lsp)
        yaml
 
