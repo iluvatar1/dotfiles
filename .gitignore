@@ -57,3 +57,10 @@ common/.config/rclone
 common/.config/wezterm
 
 *.DS_Store*
+
+common/.config/btop
+common/.config/gitui
+common/.config/github-copilot
+common/.config/joplin-desktop
+common/.config/thefuck
+common/.config/Awesomeness/
