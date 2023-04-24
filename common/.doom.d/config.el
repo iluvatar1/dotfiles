@@ -57,8 +57,8 @@
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 (set-eglot-client! 'c-mode '("clangd" "-j=3" "--clang-tidy"))
 (set-eglot-client! 'c++-mode '("clangd" "-j=3" "--clang-tidy"))
-(after! cc-mode (setq c-basic-offset 2)) ; set it globally
-(setq-hook! 'c++-mode-hook c-basic-offset 2) ; set it in c++-mode buffers
+;;(after! cc-mode (setq c-basic-offset 2)) ; set it globally
+;;(setq-hook! 'c++-mode-hook c-basic-offset 2) ; set it in c++-mode buffers
 
 ;; ~/.doom.d/config.el
 (setq +python-ipython-repl-args '("-i" "--simple-prompt" "--no-color-info"))
@@ -138,7 +138,3 @@
 (add-hook 'sh-mode-hook 'flymake-shellcheck-load)
 (setq flymake-shellcheck-command "shellcheck")
 
-;; editorconfig
-(use-package! editorconfig
-  :config
-  (editorconfig-mode 1))

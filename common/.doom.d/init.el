@@ -53,6 +53,7 @@
        ;;lookup                ; navigate your code and its documentation
        ;;(magit +forge)        ; a git porcelain for Emacs
        make                ; run make tasks from Emacs
+       editorconfig
 
        :lang 
        (cc +lsp)
