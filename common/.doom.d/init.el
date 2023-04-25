@@ -3,7 +3,6 @@
        (company)
        (ivy)
        ;;(ivy +prescient -childframe -fuzzy +icons)
-       ;;irony
 
        :ui
        doom
@@ -49,14 +48,14 @@
        (lsp +eglot)
        magit
        ;;pdf
-       (debugger +lsp)              ; FIXME stepping through code, to help you add bugs
+       (debugger)              ; FIXME stepping through code, to help you add bugs
        ;;lookup                ; navigate your code and its documentation
        ;;(magit +forge)        ; a git porcelain for Emacs
        make                ; run make tasks from Emacs
        editorconfig
 
        :lang 
-       (cc +lsp)
+       (cc)
        ;;emacs-lisp
        ;;(latex
        ;; +latexmk
@@ -72,9 +71,9 @@
        ;; +gnuplot
        ;; +pomodoro
        ;; +present)
-       ;;(python +lsp)
-       (python +pyright)
-       (sh +lsp)
+       ;;(python)
+       (python +pyright +flycheck)
+       (sh)
        yaml
 
        :email
