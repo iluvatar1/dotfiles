@@ -138,3 +138,18 @@
 (add-hook 'sh-mode-hook 'flymake-shellcheck-load)
 (setq flymake-shellcheck-command "shellcheck")
 
+;; ;; chatgpt-shell  I do not have quota
+;; (use-package! chatgpt-shell
+;;   :commands (chatgpt-shell)
+;;   :defer t
+;;   :bind ("C-c c" . #'chatgpt-shell)
+;;   :init
+;;   (unless (display-graphic-p) (setq chatgpt-use-images nil))
+;;   ;; or if using auth-sources, e.g., so the file ~/.authinfo has this line:
+;;   ;;  machine api.openai.com password OPENAI_KEY
+;;   (setq auth-sources (append '("~/.authinfo") auth-sources))
+;;   (after! auth-source
+;;   (setq chatgpt-shell-openai-key
+;;         (auth-source-pick-first-password :host "api.openai.com"))
+;;     )
+;;   )

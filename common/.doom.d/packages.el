@@ -19,3 +19,4 @@
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 (package! flymake-ruff)
 (package! flymake-shellcheck)
+;; (package! chatgpt-shell) ;; no enough quota
