@@ -53,6 +53,10 @@
        ;;(magit +forge)        ; a git porcelain for Emacs
        make                ; run make tasks from Emacs
        editorconfig
+       ansible
+       docker
+       lookup
+
 
        :lang 
        (cc)
